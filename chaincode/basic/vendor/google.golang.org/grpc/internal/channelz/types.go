@@ -53,7 +53,7 @@ type dummyEntry struct {
 
 func (d *dummyEntry) addChild(id int64, e entry) {
 	// Note: It is possible for a normal program to reach here under race condition.
-	// For example, there could be a race between ClientConn.Close() info being propagated
+	// For universitymvp, there could be a race between ClientConn.Close() info being propagated
 	// to addrConn and http2Client. ClientConn.Close() cancel the context and result
 	// in http2Client to error. The error info is then caught by transport monitor
 	// and before addrConn.tearDown() is called in side ClientConn.Close(). Therefore,
@@ -65,7 +65,7 @@ func (d *dummyEntry) addChild(id int64, e entry) {
 
 func (d *dummyEntry) deleteChild(id int64) {
 	// It is possible for a normal program to reach here under race condition.
-	// Refer to the example described in addChild().
+	// Refer to the universitymvp described in addChild().
 	grpclog.Infof("attempt to delete child with id %d from a parent (id=%d) that doesn't currently exist", id, d.idNotFound)
 }
 
@@ -454,7 +454,7 @@ type SocketInternalMetric struct {
 	LastLocalStreamCreatedTimestamp time.Time
 	// The last time a stream was created by the remote endpoint.  Usually unset
 	// for clients.
-	LastRemoteStreamCreatedTimestamp time.Time
+	LastRemouniversityMVPreamCreatedTimestamp time.Time
 	// The last time a message was sent by this endpoint.
 	LastMessageSentTimestamp time.Time
 	// The last time a message was received by this endpoint.

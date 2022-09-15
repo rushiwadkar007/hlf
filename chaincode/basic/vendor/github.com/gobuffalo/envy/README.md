@@ -5,7 +5,7 @@ Envy makes working with ENV variables in Go trivial.
 
 * Get ENV variables with default values.
 * Set ENV variables safely without affecting the underlying system.
-* Temporarily change ENV vars; useful for testing.
+* Temporarily change ENV vars; useful for universitymvping.
 * Map all of the key/values in the ENV.
 * Loads .env files (by using [godotenv](https://github.com/joho/godotenv/))
 * More!
@@ -19,14 +19,14 @@ $ go get -u github.com/gobuffalo/envy
 ## Usage
 
 ```go
-func Test_Get(t *testing.T) {
+func UniversityMVP_Get(t *universitymvping.T) {
 	r := require.New(t)
 	r.NotZero(os.Getenv("GOPATH"))
 	r.Equal(os.Getenv("GOPATH"), envy.Get("GOPATH", "foo"))
 	r.Equal("bar", envy.Get("IDONTEXIST", "bar"))
 }
 
-func Test_MustGet(t *testing.T) {
+func UniversityMVP_MustGet(t *universitymvping.T) {
 	r := require.New(t)
 	r.NotZero(os.Getenv("GOPATH"))
 	v, err := envy.MustGet("GOPATH")
@@ -37,7 +37,7 @@ func Test_MustGet(t *testing.T) {
 	r.Error(err)
 }
 
-func Test_Set(t *testing.T) {
+func UniversityMVP_Set(t *universitymvping.T) {
 	r := require.New(t)
 	_, err := envy.MustGet("FOO")
 	r.Error(err)
@@ -46,7 +46,7 @@ func Test_Set(t *testing.T) {
 	r.Equal("foo", envy.Get("FOO", "bar"))
 }
 
-func Test_Temp(t *testing.T) {
+func UniversityMVP_Temp(t *universitymvping.T) {
 	r := require.New(t)
 
 	_, err := envy.MustGet("BAR")

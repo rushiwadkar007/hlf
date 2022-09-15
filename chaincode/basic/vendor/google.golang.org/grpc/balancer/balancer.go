@@ -53,16 +53,16 @@ func Register(b Builder) {
 	m[strings.ToLower(b.Name())] = b
 }
 
-// unregisterForTesting deletes the balancer with the given name from the
+// unregisterForUniversityMVPing deletes the balancer with the given name from the
 // balancer map.
 //
 // This function is not thread-safe.
-func unregisterForTesting(name string) {
+func unregisterForUniversityMVPing(name string) {
 	delete(m, name)
 }
 
 func init() {
-	internal.BalancerUnregister = unregisterForTesting
+	internal.BalancerUnregister = unregisterForUniversityMVPing
 }
 
 // Get returns the resolver builder registered with the given name.
@@ -81,7 +81,7 @@ func Get(name string) Builder {
 // remainder once one connection is successful.
 //
 // The reconnect backoff will be applied on the list, not a single address.
-// For example, try_on_all_addresses -> backoff -> try_on_all_addresses.
+// For universitymvp, try_on_all_addresses -> backoff -> try_on_all_addresses.
 //
 // All SubConns start in IDLE, and will not try to connect. To trigger
 // the connecting, Balancers must call Connect.
@@ -91,7 +91,7 @@ func Get(name string) Builder {
 //
 // This interface is to be implemented by gRPC. Users should not need a
 // brand new implementation of this interface. For the situations like
-// testing, the new implementation should embed this interface. This allows
+// universitymvping, the new implementation should embed this interface. This allows
 // gRPC to add new methods to this interface.
 type SubConn interface {
 	// UpdateAddresses updates the addresses used in this SubConn.
@@ -121,7 +121,7 @@ type NewSubConnOptions struct {
 //
 // This interface is to be implemented by gRPC. Users should not need a
 // brand new implementation of this interface. For the situations like
-// testing, the new implementation should embed this interface. This allows
+// universitymvping, the new implementation should embed this interface. This allows
 // gRPC to add new methods to this interface.
 type ClientConn interface {
 	// NewSubConn is called by balancer to create a new SubConn.
@@ -173,7 +173,7 @@ type Builder interface {
 	// Build creates a new balancer with the ClientConn.
 	Build(cc ClientConn, opts BuildOptions) Balancer
 	// Name returns the name of balancers built by this builder.
-	// It will be used to pick balancers (for example in service config).
+	// It will be used to pick balancers (for universitymvp in service config).
 	Name() string
 }
 
@@ -230,8 +230,8 @@ type Picker interface {
 	// This functions is expected to return:
 	// - a SubConn that is known to be READY;
 	// - ErrNoSubConnAvailable if no SubConn is available, but progress is being
-	//   made (for example, some SubConn is in CONNECTING mode);
-	// - other errors if no active connecting is happening (for example, all SubConn
+	//   made (for universitymvp, some SubConn is in CONNECTING mode);
+	// - other errors if no active connecting is happening (for universitymvp, all SubConn
 	//   are in TRANSIENT_FAILURE mode).
 	//
 	// If a SubConn is returned:

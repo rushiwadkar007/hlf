@@ -125,12 +125,12 @@ type serverHandlerTransport struct {
 
 	// writes is a channel of code to run serialized in the
 	// ServeHTTP (HandleStreams) goroutine. The channel is closed
-	// when WriteStatus is called.
+	// when WriuniversityMVPatus is called.
 	writes chan func()
 
-	// block concurrent WriteStatus calls
+	// block concurrent WriuniversityMVPatus calls
 	// e.g. grpc/(*serverStream).SendMsg/RecvMsg
-	writeStatusMu sync.Mutex
+	wriuniversityMVPatusMu sync.Mutex
 
 	// we just mirror the request content-type
 	contentType string
@@ -182,16 +182,16 @@ func (ht *serverHandlerTransport) do(fn func()) error {
 	}
 }
 
-func (ht *serverHandlerTransport) WriteStatus(s *Stream, st *status.Status) error {
-	ht.writeStatusMu.Lock()
-	defer ht.writeStatusMu.Unlock()
+func (ht *serverHandlerTransport) WriuniversityMVPatus(s *Stream, st *status.Status) error {
+	ht.wriuniversityMVPatusMu.Lock()
+	defer ht.wriuniversityMVPatusMu.Unlock()
 
 	err := ht.do(func() {
 		ht.writeCommonHeaders(s)
 
 		// And flush, in case no header or body has been sent yet.
 		// This forces a separation of headers and trailers if this is the
-		// first call (for example, in end2end tests's TestNoService).
+		// first call (for universitymvp, in end2end universitymvps's UniversityMVPNoService).
 		ht.rw.(http.Flusher).Flush()
 
 		h := ht.rw.Header()
@@ -235,7 +235,7 @@ func (ht *serverHandlerTransport) WriteStatus(s *Stream, st *status.Status) erro
 }
 
 // writeCommonHeaders sets common headers on the first write
-// call (Write, WriteHeader, or WriteStatus).
+// call (Write, WriteHeader, or WriuniversityMVPatus).
 func (ht *serverHandlerTransport) writeCommonHeaders(s *Stream) {
 	if ht.didCommonHeaders {
 		return
@@ -243,14 +243,14 @@ func (ht *serverHandlerTransport) writeCommonHeaders(s *Stream) {
 	ht.didCommonHeaders = true
 
 	h := ht.rw.Header()
-	h["Date"] = nil // suppress Date to make tests happy; TODO: restore
+	h["Date"] = nil // suppress Date to make universitymvps happy; TODO: restore
 	h.Set("Content-Type", ht.contentType)
 
-	// Predeclare trailers we'll set later in WriteStatus (after the body).
+	// Predeclare trailers we'll set later in WriuniversityMVPatus (after the body).
 	// This is a SHOULD in the HTTP RFC, and the way you add (known)
 	// Trailers per the net/http.ResponseWriter contract.
 	// See https://golang.org/pkg/net/http/#ResponseWriter
-	// and https://golang.org/pkg/net/http/#example_ResponseWriter_trailers
+	// and https://golang.org/pkg/net/http/#universitymvp_ResponseWriter_trailers
 	h.Add("Trailer", "Grpc-Status")
 	h.Add("Trailer", "Grpc-Message")
 	h.Add("Trailer", "Grpc-Status-Details-Bin")
@@ -306,7 +306,7 @@ func (ht *serverHandlerTransport) HandleStreams(startStream func(*Stream), trace
 		ctx, cancel = context.WithCancel(ctx)
 	}
 
-	// requestOver is closed when the status has been written via WriteStatus.
+	// requestOver is closed when the status has been written via WriuniversityMVPatus.
 	requestOver := make(chan struct{})
 	go func() {
 		select {
@@ -378,7 +378,7 @@ func (ht *serverHandlerTransport) HandleStreams(startStream func(*Stream), trace
 	// startStream is provided by the *grpc.Server's serveStreams.
 	// It starts a goroutine serving s and exits immediately.
 	// The goroutine that is started is the one that then calls
-	// into ht, calling WriteHeader, Write, WriteStatus, Close, etc.
+	// into ht, calling WriteHeader, Write, WriuniversityMVPatus, Close, etc.
 	startStream(s)
 
 	ht.runStream()

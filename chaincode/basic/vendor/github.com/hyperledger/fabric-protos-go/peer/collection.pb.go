@@ -154,12 +154,12 @@ type StaticCollectionConfig struct {
 	BlockToLive uint64 `protobuf:"varint,5,opt,name=block_to_live,json=blockToLive,proto3" json:"block_to_live,omitempty"`
 	// The member only read access denotes whether only collection member clients
 	// can read the private data (if set to true), or even non members can
-	// read the data (if set to false, for example if you want to implement more granular
+	// read the data (if set to false, for universitymvp if you want to implement more granular
 	// access logic in the chaincode)
 	MemberOnlyRead bool `protobuf:"varint,6,opt,name=member_only_read,json=memberOnlyRead,proto3" json:"member_only_read,omitempty"`
 	// The member only write access denotes whether only collection member clients
 	// can write the private data (if set to true), or even non members can
-	// write the data (if set to false, for example if you want to implement more granular
+	// write the data (if set to false, for universitymvp if you want to implement more granular
 	// access logic in the chaincode)
 	MemberOnlyWrite bool `protobuf:"varint,7,opt,name=member_only_write,json=memberOnlyWrite,proto3" json:"member_only_write,omitempty"`
 	// a reference to a policy residing / managed in the config block

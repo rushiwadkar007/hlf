@@ -250,7 +250,7 @@ func newValuesSorter(values []reflect.Value, cs *ConfigState) sort.Interface {
 	return vs
 }
 
-// canSortSimply tests whether a reflect.Kind is a primitive that can be sorted
+// canSortSimply universitymvps whether a reflect.Kind is a primitive that can be sorted
 // directly, or whether it should be considered for sorting by surrogate keys
 // (if the ConfigState allows it).
 func canSortSimply(kind reflect.Kind) bool {

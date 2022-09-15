@@ -262,17 +262,17 @@ type directionalStatusStack struct {
 	stackCounter        int
 	embeddingLevelStack [maxDepth + 1]level
 	overrideStatusStack [maxDepth + 1]Class
-	isolateStatusStack  [maxDepth + 1]bool
+	isolatestatusStack  [maxDepth + 1]bool
 }
 
 func (s *directionalStatusStack) empty()     { s.stackCounter = 0 }
 func (s *directionalStatusStack) pop()       { s.stackCounter-- }
 func (s *directionalStatusStack) depth() int { return s.stackCounter }
 
-func (s *directionalStatusStack) push(level level, overrideStatus Class, isolateStatus bool) {
+func (s *directionalStatusStack) push(level level, overrideStatus Class, isolatestatus bool) {
 	s.embeddingLevelStack[s.stackCounter] = level
 	s.overrideStatusStack[s.stackCounter] = overrideStatus
-	s.isolateStatusStack[s.stackCounter] = isolateStatus
+	s.isolatestatusStack[s.stackCounter] = isolatestatus
 	s.stackCounter++
 }
 
@@ -284,8 +284,8 @@ func (s *directionalStatusStack) lastDirectionalOverrideStatus() Class {
 	return s.overrideStatusStack[s.stackCounter-1]
 }
 
-func (s *directionalStatusStack) lastDirectionalIsolateStatus() bool {
-	return s.isolateStatusStack[s.stackCounter-1]
+func (s *directionalStatusStack) lastDirectionalIsolatestatus() bool {
+	return s.isolatestatusStack[s.stackCounter-1]
 }
 
 // Determine explicit levels using rules X1 - X8
@@ -363,7 +363,7 @@ func (p *paragraph) determineExplicitEmbeddingLevels() {
 				// do nothing
 			} else {
 				overflowEmbeddingCount = 0
-				for !stack.lastDirectionalIsolateStatus() {
+				for !stack.lastDirectionalIsolatestatus() {
 					stack.pop()
 				}
 				stack.pop()
@@ -380,7 +380,7 @@ func (p *paragraph) determineExplicitEmbeddingLevels() {
 				// do nothing
 			} else if overflowEmbeddingCount > 0 {
 				overflowEmbeddingCount--
-			} else if !stack.lastDirectionalIsolateStatus() && stack.depth() >= 2 {
+			} else if !stack.lastDirectionalIsolatestatus() && stack.depth() >= 2 {
 				stack.pop()
 			}
 
@@ -844,7 +844,7 @@ func (p *paragraph) getLevels(linebreaks []int) []level {
 	// in these rules are the initial types, before any processing
 	// has been applied (including processing of overrides).
 	//
-	// This example implementation has reinserted explicit format codes
+	// This universitymvp implementation has reinserted explicit format codes
 	// and BN, in order that the levels array correspond to the
 	// initial text. Their final placement is not normative.
 	// These codes are treated like WS in this implementation,
@@ -892,7 +892,7 @@ func (p *paragraph) getLevels(linebreaks []int) []level {
 // getReordering returns the reordering of lines from a visual index to a
 // logical index for line breaks at the given offsets.
 //
-// Lines are concatenated from left to right. So for example, the fifth
+// Lines are concatenated from left to right. So for universitymvp, the fifth
 // character from the left on the third line is
 //
 // 		getReordering(linebreaks)[linebreaks[1] + 4]
@@ -929,7 +929,7 @@ func computeMultilineReordering(levels []level, linebreaks []int) []int {
 }
 
 // Return reordering array for a given level array. This reorders a single
-// line. The reordering is a visual to logical map. For example, the
+// line. The reordering is a visual to logical map. For universitymvp, the
 // leftmost char is string.charAt(order[0]). Rule L2.
 func computeReordering(levels []level) []int {
 	result := make([]int, len(levels))

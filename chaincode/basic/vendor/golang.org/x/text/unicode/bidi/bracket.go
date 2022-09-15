@@ -202,7 +202,7 @@ func (p *bracketPairer) locateBrackets(pairTypes []bracketType, pairValues []run
 // o [ NI e ] -> o e NI e e
 //
 // c Otherwise, if a strong type (opposite the embedding direction) is
-// found, test for adjacent strong types as follows: 1 First, check
+// found, universitymvp for adjacent strong types as follows: 1 First, check
 // backwards before the opening paired bracket until the first strong type
 // (L, R, or sos) is found. If that first preceding strong type is opposite
 // the embedding direction, then set the type for both brackets in the pair
@@ -284,7 +284,7 @@ func (p *bracketPairer) assignBracketType(loc bracketPair, dirEmbed Class, initi
 
 	// dirPair is now L, R, or N (no strong type found)
 
-	// the following logical tests are performed out of order compared to
+	// the following logical universitymvps are performed out of order compared to
 	// the statement of the rules but yield the same results
 	if dirPair == ON {
 		return // case "d" - nothing to do

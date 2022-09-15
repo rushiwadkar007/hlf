@@ -36,7 +36,7 @@ type ChaincodeStub struct {
 	delPrivateDataReturnsOnCall map[int]struct {
 		result1 error
 	}
-	DelStateStub        func(string) error
+	DelStauniversityMVPub        func(string) error
 	delStateMutex       sync.RWMutex
 	delStateArgsForCall []struct {
 		arg1 string
@@ -266,7 +266,7 @@ type ChaincodeStub struct {
 		result1 *peer.SignedProposal
 		result2 error
 	}
-	GetStateStub        func(string) ([]byte, error)
+	GetStauniversityMVPub        func(string) ([]byte, error)
 	getStateMutex       sync.RWMutex
 	getStateArgsForCall []struct {
 		arg1 string
@@ -426,7 +426,7 @@ type ChaincodeStub struct {
 	putPrivateDataReturnsOnCall map[int]struct {
 		result1 error
 	}
-	PutStateStub        func(string, []byte) error
+	PutStauniversityMVPub        func(string, []byte) error
 	putStateMutex       sync.RWMutex
 	putStateArgsForCall []struct {
 		arg1 string
@@ -632,8 +632,8 @@ func (fake *ChaincodeStub) DelState(arg1 string) error {
 	}{arg1})
 	fake.recordInvocation("DelState", []interface{}{arg1})
 	fake.delStateMutex.Unlock()
-	if fake.DelStateStub != nil {
-		return fake.DelStateStub(arg1)
+	if fake.DelStauniversityMVPub != nil {
+		return fake.DelStauniversityMVPub(arg1)
 	}
 	if specificReturn {
 		return ret.result1
@@ -651,7 +651,7 @@ func (fake *ChaincodeStub) DelStateCallCount() int {
 func (fake *ChaincodeStub) DelStateCalls(stub func(string) error) {
 	fake.delStateMutex.Lock()
 	defer fake.delStateMutex.Unlock()
-	fake.DelStateStub = stub
+	fake.DelStauniversityMVPub = stub
 }
 
 func (fake *ChaincodeStub) DelStateArgsForCall(i int) string {
@@ -664,7 +664,7 @@ func (fake *ChaincodeStub) DelStateArgsForCall(i int) string {
 func (fake *ChaincodeStub) DelStateReturns(result1 error) {
 	fake.delStateMutex.Lock()
 	defer fake.delStateMutex.Unlock()
-	fake.DelStateStub = nil
+	fake.DelStauniversityMVPub = nil
 	fake.delStateReturns = struct {
 		result1 error
 	}{result1}
@@ -673,7 +673,7 @@ func (fake *ChaincodeStub) DelStateReturns(result1 error) {
 func (fake *ChaincodeStub) DelStateReturnsOnCall(i int, result1 error) {
 	fake.delStateMutex.Lock()
 	defer fake.delStateMutex.Unlock()
-	fake.DelStateStub = nil
+	fake.DelStauniversityMVPub = nil
 	if fake.delStateReturnsOnCall == nil {
 		fake.delStateReturnsOnCall = make(map[int]struct {
 			result1 error
@@ -1708,8 +1708,8 @@ func (fake *ChaincodeStub) GetState(arg1 string) ([]byte, error) {
 	}{arg1})
 	fake.recordInvocation("GetState", []interface{}{arg1})
 	fake.getStateMutex.Unlock()
-	if fake.GetStateStub != nil {
-		return fake.GetStateStub(arg1)
+	if fake.GetStauniversityMVPub != nil {
+		return fake.GetStauniversityMVPub(arg1)
 	}
 	if specificReturn {
 		return ret.result1, ret.result2
@@ -1727,7 +1727,7 @@ func (fake *ChaincodeStub) GetStateCallCount() int {
 func (fake *ChaincodeStub) GetStateCalls(stub func(string) ([]byte, error)) {
 	fake.getStateMutex.Lock()
 	defer fake.getStateMutex.Unlock()
-	fake.GetStateStub = stub
+	fake.GetStauniversityMVPub = stub
 }
 
 func (fake *ChaincodeStub) GetStateArgsForCall(i int) string {
@@ -1740,7 +1740,7 @@ func (fake *ChaincodeStub) GetStateArgsForCall(i int) string {
 func (fake *ChaincodeStub) GetStateReturns(result1 []byte, result2 error) {
 	fake.getStateMutex.Lock()
 	defer fake.getStateMutex.Unlock()
-	fake.GetStateStub = nil
+	fake.GetStauniversityMVPub = nil
 	fake.getStateReturns = struct {
 		result1 []byte
 		result2 error
@@ -1750,7 +1750,7 @@ func (fake *ChaincodeStub) GetStateReturns(result1 []byte, result2 error) {
 func (fake *ChaincodeStub) GetStateReturnsOnCall(i int, result1 []byte, result2 error) {
 	fake.getStateMutex.Lock()
 	defer fake.getStateMutex.Unlock()
-	fake.GetStateStub = nil
+	fake.GetStauniversityMVPub = nil
 	if fake.getStateReturnsOnCall == nil {
 		fake.getStateReturnsOnCall = make(map[int]struct {
 			result1 []byte
@@ -2464,8 +2464,8 @@ func (fake *ChaincodeStub) PutState(arg1 string, arg2 []byte) error {
 	}{arg1, arg2Copy})
 	fake.recordInvocation("PutState", []interface{}{arg1, arg2Copy})
 	fake.putStateMutex.Unlock()
-	if fake.PutStateStub != nil {
-		return fake.PutStateStub(arg1, arg2)
+	if fake.PutStauniversityMVPub != nil {
+		return fake.PutStauniversityMVPub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
@@ -2483,7 +2483,7 @@ func (fake *ChaincodeStub) PutStateCallCount() int {
 func (fake *ChaincodeStub) PutStateCalls(stub func(string, []byte) error) {
 	fake.putStateMutex.Lock()
 	defer fake.putStateMutex.Unlock()
-	fake.PutStateStub = stub
+	fake.PutStauniversityMVPub = stub
 }
 
 func (fake *ChaincodeStub) PutStateArgsForCall(i int) (string, []byte) {
@@ -2496,7 +2496,7 @@ func (fake *ChaincodeStub) PutStateArgsForCall(i int) (string, []byte) {
 func (fake *ChaincodeStub) PutStateReturns(result1 error) {
 	fake.putStateMutex.Lock()
 	defer fake.putStateMutex.Unlock()
-	fake.PutStateStub = nil
+	fake.PutStauniversityMVPub = nil
 	fake.putStateReturns = struct {
 		result1 error
 	}{result1}
@@ -2505,7 +2505,7 @@ func (fake *ChaincodeStub) PutStateReturns(result1 error) {
 func (fake *ChaincodeStub) PutStateReturnsOnCall(i int, result1 error) {
 	fake.putStateMutex.Lock()
 	defer fake.putStateMutex.Unlock()
-	fake.PutStateStub = nil
+	fake.PutStauniversityMVPub = nil
 	if fake.putStateReturnsOnCall == nil {
 		fake.putStateReturnsOnCall = make(map[int]struct {
 			result1 error

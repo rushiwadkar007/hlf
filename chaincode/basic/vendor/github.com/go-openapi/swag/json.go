@@ -52,7 +52,7 @@ type ejUnmarshaler interface {
 }
 
 // WriteJSON writes json data, prefers finding an appropriate interface to short-circuit the marshaller
-// so it takes the fastest option available.
+// so it takes the fasuniversitymvp option available.
 func WriteJSON(data interface{}) ([]byte, error) {
 	if d, ok := data.(ejMarshaler); ok {
 		jw := new(jwriter.Writer)

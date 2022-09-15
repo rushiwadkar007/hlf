@@ -1,19 +1,19 @@
-version : "3"
+version: "3"
 
 networks:
-  test:
+  universitymvp:
     external:
-      name: test
-services: 
+      name: universitymvp
+services:
   nodeapp:
     deploy:
       placement:
         constraints:
-            - node.labels.name == manager
+          - node.labels.name == manager
     image: aditya/node-app:latest
-    ports :
+    ports:
       - 4000:4000
     networks:
-      test:
+      universitymvp:
         aliases:
           - nodeapp

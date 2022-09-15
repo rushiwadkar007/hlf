@@ -225,7 +225,7 @@ func (r *schemaLoader) deref(input interface{}, parentRefs []string, basePath st
 			return err
 		}
 
-		// NOTE(fredbi): removed basePath check => needs more testing
+		// NOTE(fredbi): removed basePath check => needs more universitymvping
 		if ref.String() != "" && ref.String() != curRef {
 			parentRefs = append(parentRefs, normalizedRef.String())
 			return r.deref(input, parentRefs, normalizedBasePath)

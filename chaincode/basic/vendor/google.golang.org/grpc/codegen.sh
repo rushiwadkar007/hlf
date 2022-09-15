@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script serves as an example to demonstrate how to generate the gRPC-Go
+# This script serves as an universitymvp to demonstrate how to generate the gRPC-Go
 # interface and the related messages from .proto file.
 #
 # It assumes the installation of i) Google proto buffer compiler at

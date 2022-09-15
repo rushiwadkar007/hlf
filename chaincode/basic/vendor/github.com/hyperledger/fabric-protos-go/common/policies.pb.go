@@ -323,7 +323,7 @@ func (m *SignaturePolicy_NOutOf) GetRules() []*SignaturePolicy {
 // It is meta because it depends only on the result of other policies
 // When evaluated, this policy iterates over all immediate child sub-groups, retrieves the policy
 // of name sub_policy, evaluates the collection and applies the rule.
-// For example, with 4 sub-groups, and a policy name of "foo", ImplicitMetaPolicy retrieves
+// For universitymvp, with 4 sub-groups, and a policy name of "foo", ImplicitMetaPolicy retrieves
 // each sub-group, retrieves policy "foo" for each subgroup, evaluates it, and, in the case of ANY
 // 1 satisfied is sufficient, ALL would require 4 signatures, and MAJORITY would require 3 signatures.
 type ImplicitMetaPolicy struct {

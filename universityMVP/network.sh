@@ -28,7 +28,7 @@ function removeUnwantedImages() {
   fi
 }
 
-# Versions of fabric known not to work with the test network
+# Versions of fabric known not to work with the universitymvp network
 NONWORKING_VERSIONS="^1\.0\. ^1\.1\. ^1\.2\. ^1\.3\. ^1\.4\."
 
 # Do some basic sanity checking to make sure that the appropriate versions of fabric
@@ -60,12 +60,12 @@ function checkPrereqs() {
   for UNSUPPORTED_VERSION in $NONWORKING_VERSIONS; do
     infoln "$LOCAL_VERSION" | grep -q $UNSUPPORTED_VERSION
     if [ $? -eq 0 ]; then
-      fatalln "Local Fabric binary version of $LOCAL_VERSION does not match the versions supported by the test network."
+      fatalln "Local Fabric binary version of $LOCAL_VERSION does not match the versions supported by the universitymvp network."
     fi
 
     infoln "$DOCKER_IMAGE_VERSION" | grep -q $UNSUPPORTED_VERSION
     if [ $? -eq 0 ]; then
-      fatalln "Fabric Docker image version of $DOCKER_IMAGE_VERSION does not match the versions supported by the test network."
+      fatalln "Fabric Docker image version of $DOCKER_IMAGE_VERSION does not match the versions supported by the universitymvp network."
     fi
   done
 
@@ -100,7 +100,7 @@ function checkPrereqs() {
 # material.
 
 # By default, the sample network uses cryptogen. Cryptogen is a tool that is
-# meant for development and testing that can quickly create the certificates and keys
+# meant for development and universitymvping that can quickly create the certificates and keys
 # that can be consumed by a Fabric network. The cryptogen tool consumes a series
 # of configuration files for each organization in the "organizations/cryptogen"
 # directory. Cryptogen uses the files to generate the crypto  material for each
@@ -112,7 +112,7 @@ function checkPrereqs() {
 # and the ordering organization. The configuration file for creating the Fabric CA
 # servers are in the "organizations/fabric-ca" directory. Within the same directory,
 # the "registerEnroll.sh" script uses the Fabric CA client to create the identities,
-# certificates, and MSP folders that are needed to create the test network in the
+# certificates, and MSP folders that are needed to create the universitymvp network in the
 # "organizations/ordererOrganizations" directory.
 
 # Create Organization crypto material using cryptogen or CAs
@@ -130,20 +130,20 @@ function createOrgs() {
     fi
     infoln "Generate certificates using cryptogen tool"
 
-    infoln "Create Org1 Identities"
+    infoln "Create Physics Identities"
 
     set -x
-    cryptogen generate --config=./organizations/cryptogen/crypto-config-org1.yaml --output="organizations"
+    cryptogen generate --config=./organizations/cryptogen/crypto-config-physics.yaml --output="organizations"
     res=$?
     { set +x; } 2>/dev/null
     if [ $res -ne 0 ]; then
       fatalln "Failed to generate certificates..."
     fi
 
-    infoln "Create Org2 Identities"
+    infoln "Create Maths Identities"
 
     set -x
-    cryptogen generate --config=./organizations/cryptogen/crypto-config-org2.yaml --output="organizations"
+    cryptogen generate --config=./organizations/cryptogen/crypto-config-maths.yaml --output="organizations"
     res=$?
     { set +x; } 2>/dev/null
     if [ $res -ne 0 ]; then
@@ -173,24 +173,24 @@ function createOrgs() {
 
   while :
     do
-      if [ ! -f "organizations/fabric-ca/org1/tls-cert.pem" ]; then
+      if [ ! -f "organizations/fabric-ca/physics/tls-cert.pem" ]; then
         sleep 1
       else
         break
       fi
     done
 
-    infoln "Create Org1 Identities"
+    infoln "Create Physics Identities"
     infoln "Delaying 10s"
-    createOrg1
+    createPhysics
     sleep 5
-    infoln "Create Org2 Identities"
+    infoln "Create Maths Identities"
 
-    createOrg2
+    createMaths
     sleep 5
-    infoln "Create Org3 Identities"
+    infoln "Create Chemistry Identities"
 
-    createOrg3
+    createChemistry
     sleep 5
     infoln "Create Orderer Org Identities"
 
@@ -198,7 +198,7 @@ function createOrgs() {
 
   fi
 
-  infoln "Generate CCP files for Org1 and Org2"
+  infoln "Generate CCP files for Physics and Maths"
   ./organizations/ccp-generate.sh
 }
 
@@ -251,7 +251,7 @@ function createConsortium() {
 
 # After we create the org crypto material and the system channel genesis block,
 # we can now bring up the peers and ordering service. By default, the base
-# file for creating the network is "docker-compose-test-net.yaml" in the ``docker``
+# file for creating the network is "docker-compose-universitymvp-net.yaml" in the ``docker``
 # folder. This file defines the environment variables and file mounts that
 # point the crypto material and genesis block that were created in earlier.
 
@@ -280,7 +280,7 @@ function networkUp() {
   fi
 }
 
-## call the script to join create the channel and join the peers of org1 and org2
+## call the script to join create the channel and join the peers of physics and maths
 function createChannel() {
 
 ## Bring up the network if it is not already up.
@@ -317,9 +317,9 @@ function deployCC() {
 
 # Tear down running network
 function networkDown() {
-  # stop org3 containers also in addition to org1 and org2, in case we were running sample to add org3
+  # stop chemistry containers also in addition to physics and maths, in case we were running sample to add chemistry
   docker-compose -f $COMPOSE_FILE_BASE -f $COMPOSE_FILE_COUCH -f $COMPOSE_FILE_CA down --volumes --remove-orphans
-  docker-compose -f $COMPOSE_FILE_COUCH_ORG3 -f $COMPOSE_FILE_ORG3 down --volumes --remove-orphans
+  docker-compose -f $COMPOSE_FILE_COUCH_CHEMISTRY -f $COMPOSE_FILE_CHEMISTRY down --volumes --remove-orphans
   # Don't remove the generated artifacts -- note, the ledgers are always removed
   if [ "$MODE" != "restart" ]; then
     # Bring down the network, deleting the volumes
@@ -330,11 +330,11 @@ function networkDown() {
     # remove orderer block and other channel configuration transactions and certs
     docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf system-genesis-block/*.block organizations/peerOrganizations organizations/ordererOrganizations'
     ## remove fabric ca artifacts
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/org1/msp organizations/fabric-ca/org1/tls-cert.pem organizations/fabric-ca/org1/ca-cert.pem organizations/fabric-ca/org1/IssuerPublicKey organizations/fabric-ca/org1/IssuerRevocationPublicKey organizations/fabric-ca/org1/fabric-ca-server.db'
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/org2/msp organizations/fabric-ca/org2/tls-cert.pem organizations/fabric-ca/org2/ca-cert.pem organizations/fabric-ca/org2/IssuerPublicKey organizations/fabric-ca/org2/IssuerRevocationPublicKey organizations/fabric-ca/org2/fabric-ca-server.db'
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/org3/msp organizations/fabric-ca/org3/tls-cert.pem organizations/fabric-ca/org3/ca-cert.pem organizations/fabric-ca/org3/IssuerPublicKey organizations/fabric-ca/org3/IssuerRevocationPublicKey organizations/fabric-ca/org3/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/physics/msp organizations/fabric-ca/physics/tls-cert.pem organizations/fabric-ca/physics/ca-cert.pem organizations/fabric-ca/physics/IssuerPublicKey organizations/fabric-ca/physics/IssuerRevocationPublicKey organizations/fabric-ca/physics/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/maths/msp organizations/fabric-ca/maths/tls-cert.pem organizations/fabric-ca/maths/ca-cert.pem organizations/fabric-ca/maths/IssuerPublicKey organizations/fabric-ca/maths/IssuerRevocationPublicKey organizations/fabric-ca/maths/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/chemistry/msp organizations/fabric-ca/chemistry/tls-cert.pem organizations/fabric-ca/chemistry/ca-cert.pem organizations/fabric-ca/chemistry/IssuerPublicKey organizations/fabric-ca/chemistry/IssuerRevocationPublicKey organizations/fabric-ca/chemistry/fabric-ca-server.db'
     docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/ordererOrg/msp organizations/fabric-ca/ordererOrg/tls-cert.pem organizations/fabric-ca/ordererOrg/ca-cert.pem organizations/fabric-ca/ordererOrg/IssuerPublicKey organizations/fabric-ca/ordererOrg/IssuerRevocationPublicKey organizations/fabric-ca/ordererOrg/fabric-ca-server.db'
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf addOrg3/fabric-ca/org3/msp addOrg3/fabric-ca/org3/tls-cert.pem addOrg3/fabric-ca/org3/ca-cert.pem addOrg3/fabric-ca/org3/IssuerPublicKey addOrg3/fabric-ca/org3/IssuerRevocationPublicKey addOrg3/fabric-ca/org3/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf addChemistry/fabric-ca/chemistry/msp addChemistry/fabric-ca/chemistry/tls-cert.pem addChemistry/fabric-ca/chemistry/ca-cert.pem addChemistry/fabric-ca/chemistry/IssuerPublicKey addChemistry/fabric-ca/chemistry/IssuerRevocationPublicKey addChemistry/fabric-ca/chemistry/fabric-ca-server.db'
     # remove channel and script artifacts
     docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf channel-artifacts log.txt *.tar.gz'
 
@@ -364,15 +364,15 @@ CC_COLL_CONFIG="NA"
 # chaincode init function defaults to "NA"
 CC_INIT_FCN="NA"
 # use this as the default docker-compose yaml definition
-COMPOSE_FILE_BASE=docker/docker-compose-test-net.yaml
+COMPOSE_FILE_BASE=docker/docker-compose-universitymvp-net.yaml
 # docker-compose.yaml file if you are using couchdb
 COMPOSE_FILE_COUCH=docker/docker-compose-couch.yaml
 # certificate authorities compose file
 COMPOSE_FILE_CA=docker/docker-compose-ca.yaml
-# use this as the docker compose couch file for org3
-COMPOSE_FILE_COUCH_ORG3=addOrg3/docker/docker-compose-couch-org3.yaml
-# use this as the default docker-compose yaml definition for org3
-COMPOSE_FILE_ORG3=addOrg3/docker/docker-compose-org3.yaml
+# use this as the docker compose couch file for chemistry
+COMPOSE_FILE_COUCH_CHEMISTRY=addChemistry/docker/docker-compose-couch-chemistry.yaml
+# use this as the default docker-compose yaml definition for chemistry
+COMPOSE_FILE_CHEMISTRY=addChemistry/docker/docker-compose-chemistry.yaml
 #
 # use go as the default language for chaincode
 CC_SRC_LANGUAGE="go"

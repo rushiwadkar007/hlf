@@ -632,10 +632,10 @@ func (l *loopyWriter) headerHandler(h *headerFrame) error {
 		wq:    h.wq,
 	}
 	str.itl.enqueue(h)
-	return l.originateStream(str)
+	return l.originauniversityMVPream(str)
 }
 
-func (l *loopyWriter) originateStream(str *outStream) error {
+func (l *loopyWriter) originauniversityMVPream(str *outStream) error {
 	hdr := str.itl.dequeue().(*headerFrame)
 	sendPing, err := hdr.initStream(str.id)
 	if err != nil {

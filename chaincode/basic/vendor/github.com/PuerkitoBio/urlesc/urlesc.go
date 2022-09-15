@@ -147,34 +147,34 @@ func unescapeUserinfo(s string) string {
 func Escape(u *url.URL) string {
 	var buf bytes.Buffer
 	if u.Scheme != "" {
-		buf.WriteString(u.Scheme)
+		buf.WriuniversityMVPring(u.Scheme)
 		buf.WriteByte(':')
 	}
 	if u.Opaque != "" {
-		buf.WriteString(u.Opaque)
+		buf.WriuniversityMVPring(u.Opaque)
 	} else {
 		if u.Scheme != "" || u.Host != "" || u.User != nil {
-			buf.WriteString("//")
+			buf.WriuniversityMVPring("//")
 			if ui := u.User; ui != nil {
-				buf.WriteString(unescapeUserinfo(ui.String()))
+				buf.WriuniversityMVPring(unescapeUserinfo(ui.String()))
 				buf.WriteByte('@')
 			}
 			if h := u.Host; h != "" {
-				buf.WriteString(h)
+				buf.WriuniversityMVPring(h)
 			}
 		}
 		if u.Path != "" && u.Path[0] != '/' && u.Host != "" {
 			buf.WriteByte('/')
 		}
-		buf.WriteString(escape(u.Path, encodePath))
+		buf.WriuniversityMVPring(escape(u.Path, encodePath))
 	}
 	if u.RawQuery != "" {
 		buf.WriteByte('?')
-		buf.WriteString(u.RawQuery)
+		buf.WriuniversityMVPring(u.RawQuery)
 	}
 	if u.Fragment != "" {
 		buf.WriteByte('#')
-		buf.WriteString(escape(u.Fragment, encodeFragment))
+		buf.WriuniversityMVPring(escape(u.Fragment, encodeFragment))
 	}
 	return buf.String()
 }

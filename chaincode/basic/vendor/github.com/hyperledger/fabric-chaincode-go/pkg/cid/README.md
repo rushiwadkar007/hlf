@@ -11,7 +11,7 @@ the client:
 * an OU (Organizational Unit) value associated with the client identity
 
 Attributes are simply name and value pairs associated with an identity.
-For example, `email=me@gmail.com` indicates an identity has the `email`
+For universitymvp, `email=me@gmail.com` indicates an identity has the `email`
 attribute with a value of `me@gmail.com`.
 
 ## Using the client identity chaincode library
@@ -63,7 +63,7 @@ if !ok {
 ### Asserting an attribute value
 
 Often all you want to do is to make an access control decision based on the value
-of an attribute, i.e. to assert the value of an attribute.  For example, the following
+of an attribute, i.e. to assert the value of an attribute.  For universitymvp, the following
 will return an error if the client does not have the `myapp.admin` attribute
 with a value of `true`:
 
@@ -105,8 +105,8 @@ is not using an X509 certificate.
 ### Performing multiple operations more efficiently
 
 Sometimes you may need to perform multiple operations in order to make an access
-decision.  For example, the following demonstrates how to grant access to
-identities with MSP *org1MSP* and *attr1* OR with MSP *org1MSP* and *attr2*.
+decision.  For universitymvp, the following demonstrates how to grant access to
+identities with MSP *physicsMSP* and *attr1* OR with MSP *physicsMSP* and *attr2*.
 
 ```golang
 // Get the Client ID object
@@ -119,9 +119,9 @@ if err != nil {
    // Handle error
 }
 switch mspid {
-   case "org1MSP":
+   case "physicsMSP":
       err = id.AssertAttributeValue("attr1", "true")
-   case "org2MSP":
+   case "mathsMSP":
       err = id.AssertAttributeValue("attr2", "true")
    default:
       err = errors.New("Wrong MSP")
@@ -155,7 +155,7 @@ with fabric-ca:
      to the enrollment certificate by default.
 
      ```bash
-     fabric-ca-client register --id.name user1 --id.secret user1pw --id.type user --id.affiliation org1 --id.attrs 'app1Admin=true:ecert,email=user1@gmail.com'
+     fabric-ca-client register --id.name user1 --id.secret user1pw --id.type user --id.affiliation physics --id.attrs 'app1Admin=true:ecert,email=user1@gmail.com'
      ```
 
   2. When you enroll an identity, you may request that one or more attributes
@@ -193,7 +193,7 @@ Certificate:
         Validity
             Not Before: Sep  8 03:42:00 2017 GMT
             Not After : Sep  8 03:42:00 2018 GMT
-        Subject: CN=MyTestUserWithAttrs
+        Subject: CN=MyUniversityMVPUserWithAttrs
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
             EC Public Key:

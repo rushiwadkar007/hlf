@@ -9,9 +9,9 @@
 const fs = require('fs');
 const path = require('path');
 
-exports.buildCCPOrg1 = () => {
+exports.buildCCPPhysics = () => {
 	// load the common connection configuration file
-	const ccpPath = path.resolve(__dirname, 'connection-org1.json');
+	const ccpPath = path.resolve(__dirname, 'connection-physics.json');
 	const fileExists = fs.existsSync(ccpPath);
 	if (!fileExists) {
 		throw new Error(`no such file or directory: ${ccpPath}`);
@@ -25,9 +25,9 @@ exports.buildCCPOrg1 = () => {
 	return ccp;
 };
 
-exports.buildCCPOrg2 = () => {
+exports.buildCCPMaths = () => {
 	// load the common connection configuration file
-	const ccpPath = path.resolve(__dirname,  'connection-org2.json');
+	const ccpPath = path.resolve(__dirname, 'connection-maths.json');
 	const fileExists = fs.existsSync(ccpPath);
 	if (!fileExists) {
 		throw new Error(`no such file or directory: ${ccpPath}`);
@@ -41,9 +41,9 @@ exports.buildCCPOrg2 = () => {
 	return ccp;
 };
 
-exports.buildCCPOrg3 = () => {
+exports.buildCCPChemistry = () => {
 	// load the common connection configuration file
-	const ccpPath = path.resolve(__dirname,  'connection-org3.json');
+	const ccpPath = path.resolve(__dirname, 'connection-chemistry.json');
 	const fileExists = fs.existsSync(ccpPath);
 	if (!fileExists) {
 		throw new Error(`no such file or directory: ${ccpPath}`);
@@ -73,9 +73,9 @@ exports.buildWallet = async (Wallets, walletPath) => {
 
 exports.prettyJSONString = (inputString) => {
 	if (inputString) {
-		 return JSON.stringify(JSON.parse(inputString), null, 2);
+		return JSON.stringify(JSON.parse(inputString), null, 2);
 	}
 	else {
-		 return inputString;
+		return inputString;
 	}
 }

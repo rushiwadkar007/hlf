@@ -1,15 +1,15 @@
 // Package require implements the same assertions as the `assert` package but
-// stops test execution when a test fails.
+// stops universitymvp execution when a universitymvp fails.
 //
-// Example Usage
+// UniversityMVP Usage
 //
-// The following is a complete example using require in a standard test function:
+// The following is a complete universitymvp using require in a standard universitymvp function:
 //    import (
-//      "testing"
-//      "github.com/stretchr/testify/require"
+//      "universitymvping"
+//      "github.com/stretchr/universitymvpify/require"
 //    )
 //
-//    func TestSomething(t *testing.T) {
+//    func UniversityMVPSomething(t *universitymvping.T) {
 //
 //      var a string = "Hello"
 //      var b string = "Hello"

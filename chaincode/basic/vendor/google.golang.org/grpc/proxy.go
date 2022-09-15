@@ -36,7 +36,7 @@ const proxyAuthHeaderKey = "Proxy-Authorization"
 var (
 	// errDisabled indicates that proxy is disabled for the address.
 	errDisabled = errors.New("proxy is disabled for the address")
-	// The following variable will be overwritten in the tests.
+	// The following variable will be overwritten in the universitymvps.
 	httpProxyFromEnvironment = http.ProxyFromEnvironment
 )
 

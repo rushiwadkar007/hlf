@@ -206,7 +206,7 @@ type Extension struct {
 	enc []byte
 }
 
-// SetRawExtension is for testing only.
+// SetRawExtension is for universitymvping only.
 func SetRawExtension(base Message, id int32, b []byte) {
 	epb, err := extendable(base)
 	if err != nil {

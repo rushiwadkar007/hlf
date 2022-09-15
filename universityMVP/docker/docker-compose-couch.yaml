@@ -6,9 +6,9 @@
 version: "3"
 
 networks:
-  test:
+  universitymvp:
     external:
-      name: test
+      name: universitymvp
 
 services:
   couchdb0:
@@ -24,22 +24,22 @@ services:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=adminpw
     # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
-    # for example map it to utilize Fauxton User Interface in dev environments.
+    # for universitymvp map it to utilize Fauxton User Interface in dev environments.
     ports:
       - "5984:5984"
     networks:
-      test:
+      universitymvp:
         aliases:
-          - couchdb0.example.com
+          - couchdb0.universitymvp.com
 
-  peer0org1examplecom:
+  peer0physicsuniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0.example.com:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0.universitymvp.com:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
@@ -61,22 +61,22 @@ services:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=adminpw
     # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
-    # for example map it to utilize Fauxton User Interface in dev environments.
+    # for universitymvp map it to utilize Fauxton User Interface in dev environments.
     ports:
       - "7984:5984"
     networks:
-      test:
+      universitymvp:
         aliases:
-          - couchdb1.example.com
+          - couchdb1.universitymvp.com
 
-  peer0org2examplecom:
+  peer0mathsuniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == worker1
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb1.example.com:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb1.universitymvp.com:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
@@ -98,22 +98,22 @@ services:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=adminpw
     # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
-    # for example map it to utilize Fauxton User Interface in dev environments.
+    # for universitymvp map it to utilize Fauxton User Interface in dev environments.
     ports:
       - "9984:5984"
     networks:
-      test:
+      universitymvp:
         aliases:
-          - couchdb2.example.com
+          - couchdb2.universitymvp.com
 
-  peer0org3examplecom:
+  peer0chemistryuniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == worker2
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2.example.com:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2.universitymvp.com:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.

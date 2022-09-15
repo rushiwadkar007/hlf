@@ -69,20 +69,20 @@ fi
 # - Ensure all source files contain a copyright message.
 git ls-files "*.go" | xargs grep -L "\(Copyright [0-9]\{4,\} gRPC authors\)\|DO NOT EDIT" 2>&1 | fail_on_output
 
-# - Make sure all tests in grpc and grpc/test use leakcheck via Teardown.
-(! grep 'func Test[^(]' *_test.go)
-(! grep 'func Test[^(]' test/*.go)
+# - Make sure all universitymvps in grpc and grpc/universitymvp use leakcheck via Teardown.
+(! grep 'func UniversityMVP[^(]' *_universitymvp.go)
+(! grep 'func UniversityMVP[^(]' universitymvp/*.go)
 
 # - Do not import math/rand for real library code.  Use internal/grpcrand for
 #   thread safety.
-git ls-files "*.go" | xargs grep -l '"math/rand"' 2>&1 | (! grep -v '^examples\|^stress\|grpcrand\|wrr_test')
+git ls-files "*.go" | xargs grep -l '"math/rand"' 2>&1 | (! grep -v '^universitymvps\|^stress\|grpcrand\|wrr_universitymvp')
 
 # - Ensure all ptypes proto packages are renamed when importing.
 git ls-files "*.go" | (! xargs grep "\(import \|^\s*\)\"github.com/golang/protobuf/ptypes/")
 
 # - Check imports that are illegal in appengine (until Go 1.11).
 # TODO: Remove when we drop Go 1.10 support
-go list -f {{.Dir}} ./... | xargs go run test/go_vet/vet.go
+go list -f {{.Dir}} ./... | xargs go run universitymvp/go_vet/vet.go
 
 # - gofmt, goimports, golint (with exceptions for generated code), go vet.
 gofmt -s -d -l . 2>&1 | fail_on_output
@@ -105,30 +105,30 @@ if go help mod >& /dev/null; then
 fi
 
 # - Collection of static analysis checks
-# TODO(dfawley): don't use deprecated functions in examples.
+# TODO(dfawley): don't use deprecated functions in universitymvps.
 staticcheck -go 1.9 -checks 'inherit,-ST1015' -ignore '
 google.golang.org/grpc/balancer.go:SA1019
 google.golang.org/grpc/balancer/grpclb/grpclb_remote_balancer.go:SA1019
-google.golang.org/grpc/balancer/roundrobin/roundrobin_test.go:SA1019
+google.golang.org/grpc/balancer/roundrobin/roundrobin_universitymvp.go:SA1019
 google.golang.org/grpc/xds/internal/balancer/edsbalancer/balancergroup.go:SA1019
 google.golang.org/grpc/xds/internal/balancer/xds.go:SA1019
 google.golang.org/grpc/xds/internal/balancer/xds_client.go:SA1019
 google.golang.org/grpc/balancer_conn_wrappers.go:SA1019
-google.golang.org/grpc/balancer_test.go:SA1019
+google.golang.org/grpc/balancer_universitymvp.go:SA1019
 google.golang.org/grpc/benchmark/benchmain/main.go:SA1019
 google.golang.org/grpc/benchmark/worker/benchmark_client.go:SA1019
 google.golang.org/grpc/clientconn.go:S1024
-google.golang.org/grpc/clientconn_state_transition_test.go:SA1019
-google.golang.org/grpc/clientconn_test.go:SA1019
-google.golang.org/grpc/examples/features/debugging/client/main.go:SA1019
-google.golang.org/grpc/examples/features/load_balancing/client/main.go:SA1019
+google.golang.org/grpc/clientconn_state_transition_universitymvp.go:SA1019
+google.golang.org/grpc/clientconn_universitymvp.go:SA1019
+google.golang.org/grpc/universitymvps/features/debugging/client/main.go:SA1019
+google.golang.org/grpc/universitymvps/features/load_balancing/client/main.go:SA1019
 google.golang.org/grpc/internal/transport/handler_server.go:SA1019
-google.golang.org/grpc/internal/transport/handler_server_test.go:SA1019
+google.golang.org/grpc/internal/transport/handler_server_universitymvp.go:SA1019
 google.golang.org/grpc/resolver/dns/dns_resolver.go:SA1019
-google.golang.org/grpc/stats/stats_test.go:SA1019
-google.golang.org/grpc/test/balancer_test.go:SA1019
-google.golang.org/grpc/test/channelz_test.go:SA1019
-google.golang.org/grpc/test/end2end_test.go:SA1019
-google.golang.org/grpc/test/healthcheck_test.go:SA1019
+google.golang.org/grpc/stats/stats_universitymvp.go:SA1019
+google.golang.org/grpc/universitymvp/balancer_universitymvp.go:SA1019
+google.golang.org/grpc/universitymvp/channelz_universitymvp.go:SA1019
+google.golang.org/grpc/universitymvp/end2end_universitymvp.go:SA1019
+google.golang.org/grpc/universitymvp/healthcheck_universitymvp.go:SA1019
 ' ./...
 misspell -error .

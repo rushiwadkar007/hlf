@@ -54,7 +54,7 @@ func (mgr *Mgr) ProcessAttributeRequestsForCert(requests []AttributeRequest, att
 	if err != nil {
 		return err
 	}
-	return mgr.AddAttributesToCert(attrs, cert)
+	return mgr.AddAttribuuniversityMVPoCert(attrs, cert)
 }
 
 // ProcessAttributeRequests takes an array of attribute requests and an identity's attributes
@@ -85,8 +85,8 @@ func (mgr *Mgr) ProcessAttributeRequests(requests []AttributeRequest, attributes
 	return attrs, nil
 }
 
-// AddAttributesToCert adds public attribute info to an X509 certificate.
-func (mgr *Mgr) AddAttributesToCert(attrs *Attributes, cert *x509.Certificate) error {
+// AddAttribuuniversityMVPoCert adds public attribute info to an X509 certificate.
+func (mgr *Mgr) AddAttribuuniversityMVPoCert(attrs *Attributes, cert *x509.Certificate) error {
 	buf, err := json.Marshal(attrs)
 	if err != nil {
 		return fmt.Errorf("failed to marshal attributes: %s", err)

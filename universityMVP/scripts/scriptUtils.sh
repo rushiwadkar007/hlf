@@ -29,7 +29,7 @@ function printHelp() {
     println "   \033[0;32mup\033[0m -ca -r -d -s -i -cai -verbose"
     println "   \033[0;32mup createChannel\033[0m -ca -c -r -d -s -i -cai -verbose"
     println
-    println " Examples:"
+    println " UniversityMVPs:"
     println "   network.sh up createChannel -ca -c mychannel -s couchdb -i 2.0.0"
   elif [ "$USAGE" == "createChannel" ]; then
     println "Usage: "
@@ -46,7 +46,7 @@ function printHelp() {
     println " Possible Mode and flag combinations"
     println "   \033[0;32mcreateChannel\033[0m -c -r -d -verbose"
     println
-    println " Examples:"
+    println " UniversityMVPs:"
     println "   network.sh createChannel -c channelName"
   elif [ "$USAGE" == "deployCC" ]; then
     println "Usage: "
@@ -59,7 +59,7 @@ function printHelp() {
     println "    -ccv <version>  - Chaincode version. 1.0 (default), v2, version3.x, etc"
     println "    -ccs <sequence>  - Chaincode definition sequence. Must be an integer, 1 (default), 2, 3, etc"
     println "    -ccp <path>  - (Optional) File path to the chaincode. When provided, the -ccn flag will be used only for the chaincode name."
-    println "    -ccep <policy>  - (Optional) Chaincode endorsement policy using signature policy syntax. The default policy requires an endorsement from Org1 and Org2"
+    println "    -ccep <policy>  - (Optional) Chaincode endorsement policy using signature policy syntax. The default policy requires an endorsement from Physics and Maths"
     println "    -cccg <collection-config>  - (Optional) File path to private data collections configuration file"
     println "    -cci <fcn name>  - (Optional) Name of chaincode initialization function. When a function is provided, the execution of init will be requested and the function will be invoked."
     println
@@ -68,7 +68,7 @@ function printHelp() {
     println " Possible Mode and flag combinations"
     println "   \033[0;32mdeployCC\033[0m -ccn -ccl -ccv -ccs -ccp -cci -r -d -verbose"
     println
-    println " Examples:"
+    println " UniversityMVPs:"
     println "   network.sh deployCC -ccn basic -ccl javascript"
     println "   network.sh deployCC -ccn mychaincode -ccp ./user/mychaincode -ccv 1 -ccl javascript"
   else
@@ -99,7 +99,7 @@ function printHelp() {
     println "    -ccv <version>  - Chaincode version. 1.0 (default), v2, version3.x, etc"
     println "    -ccs <sequence>  - Chaincode definition sequence. Must be an integer, 1 (default), 2, 3, etc"
     println "    -ccp <path>  - (Optional) File path to the chaincode. When provided, the -ccn flag will be used only for the chaincode name."
-    println "    -ccep <policy>  - (Optional) Chaincode endorsement policy using signature policy syntax. The default policy requires an endorsement from Org1 and Org2"
+    println "    -ccep <policy>  - (Optional) Chaincode endorsement policy using signature policy syntax. The default policy requires an endorsement from Physics and Maths"
     println "    -cccg <collection-config>  - (Optional) File path to private data collections configuration file"
     println "    -cci <fcn name>  - (Optional) Name of chaincode initialization function. When a function is provided, the execution of init will be requested and the function will be invoked."
     println
@@ -111,7 +111,7 @@ function printHelp() {
     println "   \033[0;32mcreateChannel\033[0m -c -r -d -verbose"
     println "   \033[0;32mdeployCC\033[0m -ccn -ccl -ccv -ccs -ccp -cci -r -d -verbose"
     println
-    println " Examples:"
+    println " UniversityMVPs:"
     println "   network.sh up createChannel -ca -c mychannel -s couchdb -i 2.0.0"
     println "   network.sh createChannel -c channelName"
     println "   network.sh deployCC -ccn basic -ccl javascript"

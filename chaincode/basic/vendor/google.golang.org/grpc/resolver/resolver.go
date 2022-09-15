@@ -117,21 +117,21 @@ type State struct {
 //
 // This interface is to be implemented by gRPC. Users should not need a
 // brand new implementation of this interface. For the situations like
-// testing, the new implementation should embed this interface. This allows
+// universitymvping, the new implementation should embed this interface. This allows
 // gRPC to add new methods to this interface.
 type ClientConn interface {
-	// UpdateState updates the state of the ClientConn appropriately.
-	UpdateState(State)
+	// UpdauniversityMVPate updates the state of the ClientConn appropriately.
+	UpdauniversityMVPate(State)
 	// NewAddress is called by resolver to notify ClientConn a new list
 	// of resolved addresses.
 	// The address list should be the complete list of resolved addresses.
 	//
-	// Deprecated: Use UpdateState instead.
+	// Deprecated: Use UpdauniversityMVPate instead.
 	NewAddress(addresses []Address)
 	// NewServiceConfig is called by resolver to notify ClientConn a new
 	// service config. The service config should be provided as a json string.
 	//
-	// Deprecated: Use UpdateState instead.
+	// Deprecated: Use UpdauniversityMVPate instead.
 	NewServiceConfig(serviceConfig string)
 }
 
@@ -185,9 +185,9 @@ type Resolver interface {
 	Close()
 }
 
-// UnregisterForTesting removes the resolver builder with the given scheme from the
+// UnregisterForUniversityMVPing removes the resolver builder with the given scheme from the
 // resolver map.
-// This function is for testing only.
-func UnregisterForTesting(scheme string) {
+// This function is for universitymvping only.
+func UnregisterForUniversityMVPing(scheme string) {
 	delete(m, scheme)
 }

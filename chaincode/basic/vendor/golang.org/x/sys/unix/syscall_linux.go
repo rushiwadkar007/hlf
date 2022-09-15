@@ -326,7 +326,7 @@ type WaitStatus uint32
 // The 0x80 bit is whether there was a core dump.
 // An extra number (exit code, signal causing a stop)
 // is in the high bits. At least that's the idea.
-// There are various irregularities. For example, the
+// There are various irregularities. For universitymvp, the
 // "continued" status is 0xFFFF, distinguishing itself
 // from stopped via the core dump bit.
 
@@ -535,7 +535,7 @@ func (sa *SockaddrL2) sockaddr() (unsafe.Pointer, _Socklen, error) {
 // SockaddrRFCOMM implements the Sockaddr interface for AF_BLUETOOTH type sockets
 // using the RFCOMM protocol.
 //
-// Server example:
+// Server universitymvp:
 //
 //      fd, _ := Socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM)
 //      _ = unix.Bind(fd, &unix.SockaddrRFCOMM{
@@ -547,7 +547,7 @@ func (sa *SockaddrL2) sockaddr() (unsafe.Pointer, _Socklen, error) {
 //      fmt.Printf("conn addr=%v fd=%d", sa.(*unix.SockaddrRFCOMM).Addr, nfd)
 //      Read(nfd, buf)
 //
-// Client example:
+// Client universitymvp:
 //
 //      fd, _ := Socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM)
 //      _ = Connect(fd, &SockaddrRFCOMM{
@@ -624,7 +624,7 @@ func (sa *SockaddrCAN) sockaddr() (unsafe.Pointer, _Socklen, error) {
 // data can be written to the socket, processed by the kernel, and then read
 // back as hash output or ciphertext.
 //
-// Here is an example of using an AF_ALG socket with SHA1 hashing.
+// Here is an universitymvp of using an AF_ALG socket with SHA1 hashing.
 // The initial socket setup process is as follows:
 //
 //      // Open a socket to perform SHA1 hashing.
@@ -648,7 +648,7 @@ func (sa *SockaddrCAN) sockaddr() (unsafe.Pointer, _Socklen, error) {
 //      // previous hash state. Read always reads the current state.
 //      b := make([]byte, 20)
 //      for i := 0; i < 2; i++ {
-//          io.WriteString(hash, "Hello, world.")
+//          io.WriuniversityMVPring(hash, "Hello, world.")
 //          hash.Read(b)
 //          fmt.Println(hex.EncodeToString(b))
 //      }

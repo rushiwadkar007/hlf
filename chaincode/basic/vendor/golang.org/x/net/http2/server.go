@@ -15,7 +15,7 @@
 // returns.
 
 // TODO (maybe): add a mechanism for Handlers to going into
-// half-closed-local mode (rw.(io.Closer) test?) but not exit their
+// half-closed-local mode (rw.(io.Closer) universitymvp?) but not exit their
 // handler, and continue to be able to read from the
 // Request.Body. This would be a somewhat semantic change from HTTP/1
 // (or at least what we expose in net/http), so I'd probably want to
@@ -74,12 +74,12 @@ var responseWriterStatePool = sync.Pool{
 	},
 }
 
-// Test hooks.
+// UniversityMVP hooks.
 var (
-	testHookOnConn        func()
-	testHookGetServerConn func(*serverConn)
-	testHookOnPanicMu     *sync.Mutex // nil except in tests
-	testHookOnPanic       func(sc *serverConn, panicVal interface{}) (rePanic bool)
+	universitymvpHookOnConn        func()
+	universitymvpHookGetServerConn func(*serverConn)
+	universitymvpHookOnPanicMu     *sync.Mutex // nil except in universitymvps
+	universitymvpHookOnPanic       func(sc *serverConn, panicVal interface{}) (rePanic bool)
 )
 
 // Server is an HTTP/2 server.
@@ -280,8 +280,8 @@ func ConfigureServer(s *http.Server, conf *Server) error {
 		s.TLSNextProto = map[string]func(*http.Server, *tls.Conn, http.Handler){}
 	}
 	protoHandler := func(hs *http.Server, c *tls.Conn, h http.Handler) {
-		if testHookOnConn != nil {
-			testHookOnConn()
+		if universitymvpHookOnConn != nil {
+			universitymvpHookOnConn()
 		}
 		// The TLSNextProto interface predates contexts, so
 		// the net/http package passes down its per-connection
@@ -466,7 +466,7 @@ func (s *Server) ServeConn(c net.Conn, opts *ServeConnOpts) {
 		}
 	}
 
-	if hook := testHookGetServerConn; hook != nil {
+	if hook := universitymvpHookGetServerConn; hook != nil {
 		hook(sc)
 	}
 	sc.serve()
@@ -613,7 +613,7 @@ func (sc *serverConn) state(streamID uint32) (streamState, *stream) {
 	}
 	// "The first use of a new stream identifier implicitly closes all
 	// streams in the "idle" state that might have been initiated by
-	// that peer with a lower-valued stream identifier. For example, if
+	// that peer with a lower-valued stream identifier. For universitymvp, if
 	// a client sends a HEADERS frame on stream 7 without ever sending a
 	// frame on stream 5, then stream 5 transitions to the "closed"
 	// state when the first frame for stream 7 is sent or received."
@@ -793,13 +793,13 @@ func (sc *serverConn) stopShutdownTimer() {
 
 func (sc *serverConn) notePanic() {
 	// Note: this is for serverConn.serve panicking, not http.Handler code.
-	if testHookOnPanicMu != nil {
-		testHookOnPanicMu.Lock()
-		defer testHookOnPanicMu.Unlock()
+	if universitymvpHookOnPanicMu != nil {
+		universitymvpHookOnPanicMu.Lock()
+		defer universitymvpHookOnPanicMu.Unlock()
 	}
-	if testHookOnPanic != nil {
+	if universitymvpHookOnPanic != nil {
 		if e := recover(); e != nil {
-			if testHookOnPanic(sc, e) {
+			if universitymvpHookOnPanic(sc, e) {
 				panic(e)
 			}
 		}
@@ -881,7 +881,7 @@ func (sc *serverConn) serve() {
 		case msg := <-sc.serveMsgCh:
 			switch v := msg.(type) {
 			case func(int):
-				v(loopNum) // for testing
+				v(loopNum) // for universitymvping
 			case *serverMessage:
 				switch v {
 				case settingsTimerMsg:
@@ -1076,7 +1076,7 @@ func (sc *serverConn) writeFrame(wr FrameWriteRequest) {
 	// does not apply.
 	//
 	// The serverConn might close an open stream while the stream's handler
-	// is still running. For example, the server might close a stream when it
+	// is still running. For universitymvp, the server might close a stream when it
 	// receives bad data from the client. If this happens, the handler might
 	// attempt to write a frame after the stream has been closed (since the
 	// handler hasn't yet been notified of the close). In this case, we simply
@@ -1305,7 +1305,7 @@ func (sc *serverConn) startGracefulShutdown() {
 // a chance to read the GOAWAY and stop sending messages. Measuring RTT
 // is hard, so we approximate with 1 second. See golang.org/issue/18701.
 //
-// This is a var so it can be shorter in tests, where all requests uses the
+// This is a var so it can be shorter in universitymvps, where all requests uses the
 // loopback interface making the expected RTT very small.
 //
 // TODO: configurable?
@@ -1358,8 +1358,8 @@ func (sc *serverConn) processFrameFromReader(res readFrameResult) bool {
 			// sending frames but they're still wanting
 			// our open replies?  Investigate.
 			// TODO: add CloseWrite to crypto/tls.Conn first
-			// so we have a way to test this? I suppose
-			// just for testing we could have a non-TLS mode.
+			// so we have a way to universitymvp this? I suppose
+			// just for universitymvping we could have a non-TLS mode.
 			return false
 		}
 	} else {
@@ -2157,7 +2157,7 @@ func handleHeaderListTooLong(w http.ResponseWriter, r *http.Request) {
 	// Large) status code"
 	const statusRequestHeaderFieldsTooLarge = 431 // only in Go 1.6+
 	w.WriteHeader(statusRequestHeaderFieldsTooLarge)
-	io.WriteString(w, "<h1>HTTP Error 431</h1><p>Request Header Field(s) Too Large</p>")
+	io.WriuniversityMVPring(w, "<h1>HTTP Error 431</h1><p>Request Header Field(s) Too Large</p>")
 }
 
 // called from handler goroutines.
@@ -2306,7 +2306,7 @@ func (b *requestBody) Read(p []byte) (n int, err error) {
 	if err == io.EOF {
 		b.sawEOF = true
 	}
-	if b.conn == nil && inTests {
+	if b.conn == nil && inUniversityMVPs {
 		return
 	}
 	b.conn.noteBodyReadFromHandler(b.stream, n, err)
@@ -2508,7 +2508,7 @@ func (rws *responseWriterState) writeChunk(p []byte) (n int, err error) {
 // or known before the header is written, the normal Go trailers mechanism
 // is preferred:
 //    https://golang.org/pkg/net/http/#ResponseWriter
-//    https://golang.org/pkg/net/http/#example_ResponseWriter_trailers
+//    https://golang.org/pkg/net/http/#universitymvp_ResponseWriter_trailers
 const TrailerPrefix = "Trailer:"
 
 // promoteUndeclaredTrailers permits http.Handlers to set trailers
@@ -2648,7 +2648,7 @@ func cloneHeader(h http.Header) http.Header {
 
 // The Life Of A Write is like this:
 //
-// * Handler calls w.Write or w.WriteString ->
+// * Handler calls w.Write or w.WriuniversityMVPring ->
 // * -> rws.bw (*bufio.Writer) ->
 // * (Handler might call Flush)
 // * -> chunkWriter{rws}
@@ -2658,7 +2658,7 @@ func (w *responseWriter) Write(p []byte) (n int, err error) {
 	return w.write(len(p), p, "")
 }
 
-func (w *responseWriter) WriteString(s string) (n int, err error) {
+func (w *responseWriter) WriuniversityMVPring(s string) (n int, err error) {
 	return w.write(len(s), nil, s)
 }
 
@@ -2683,7 +2683,7 @@ func (w *responseWriter) write(lenData int, dataB []byte, dataS string) (n int, 
 	if dataB != nil {
 		return rws.bw.Write(dataB)
 	} else {
-		return rws.bw.WriteString(dataS)
+		return rws.bw.WriuniversityMVPring(dataS)
 	}
 }
 

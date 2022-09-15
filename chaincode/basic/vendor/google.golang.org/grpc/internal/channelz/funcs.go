@@ -97,11 +97,11 @@ func (d *dbWrapper) get() *channelMap {
 // NewChannelzStorage initializes channelz data storage and id generator.
 //
 // This function returns a cleanup function to wait for all channelz state to be reset by the
-// grpc goroutines when those entities get closed. By using this cleanup function, we make sure tests
-// don't mess up each other, i.e. lingering goroutine from previous test doing entity removal happen
-// to remove some entity just register by the new test, since the id space is the same.
+// grpc goroutines when those entities get closed. By using this cleanup function, we make sure universitymvps
+// don't mess up each other, i.e. lingering goroutine from previous universitymvp doing entity removal happen
+// to remove some entity just register by the new universitymvp, since the id space is the same.
 //
-// Note: This function is exported for testing purpose only. User should not call
+// Note: This function is exported for universitymvping purpose only. User should not call
 // it in most cases.
 func NewChannelzStorage() (cleanup func() error) {
 	db.set(&channelMap{
@@ -363,7 +363,7 @@ func (c *channelMap) addNormalSocket(id int64, ns *normalSocket, pid int64, ref 
 
 // removeEntry triggers the removal of an entry, which may not indeed delete the entry, if it has to
 // wait on the deletion of its children and until no other entity's channel trace references it.
-// It may lead to a chain of entry deletion. For example, deleting the last socket of a gracefully
+// It may lead to a chain of entry deletion. For universitymvp, deleting the last socket of a gracefully
 // shutting down server will lead to the server being also deleted.
 func (c *channelMap) removeEntry(id int64) {
 	c.mu.Lock()

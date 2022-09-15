@@ -1,12 +1,12 @@
 version: "3"
 
 networks:
-  test:
+  universitymvp:
     external:
-      name: test
+      name: universitymvp
 
 services:
-  cliOrg1:
+  cliPhysics:
     container_name: cli
     image: hyperledger/fabric-tools:2.3
     tty: true
@@ -20,33 +20,33 @@ services:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - FABRIC_LOGGING_SPEC=DEBUG
-      - ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+      - ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/msp/tlscacerts/tlsca.universitymvp.com-cert.pem
       # - FABRIC_LOGGING_SPEC=INFO
       - CC_PATH=/opt/gopath/src/github.com/chaincode
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=universitymvp
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_ADDRESS=peer0.physics.universitymvp.com:7051
+      - CORE_PEER_LOCALMSPID=PhysicsMSP
       - CORE_PEER_TLS_ENABLED=true
-      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
-      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.key
-      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/physics.universitymvp.com/users/Admin@physics.universitymvp.com/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
     volumes:
       - /var/run/:/host/var/run/
       - /home/ubuntu/hlf-docker-swarm/chaincode/:/opt/gopath/src/github.com/chaincode
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/
-      - /home/ubuntu/hlf-docker-swarm/test-network/scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
-      - /home/ubuntu/hlf-docker-swarm/test-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
-    
-    networks:
-      test:
-        aliases:
-          - cliOrg1.example.com
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
 
-  cliOrg2:
+    networks:
+      universitymvp:
+        aliases:
+          - cliPhysics.universitymvp.com
+
+  cliMaths:
     container_name: cli
     image: hyperledger/fabric-tools:2.3
     tty: true
@@ -60,32 +60,32 @@ services:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - FABRIC_LOGGING_SPEC=DEBUG
-      - ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+      - ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/msp/tlscacerts/tlsca.universitymvp.com-cert.pem
       # - FABRIC_LOGGING_SPEC=INFO
       - CC_PATH=/opt/gopath/src/github.com/chaincode
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=universitymvp
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer0.org2.example.com:9051
-      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_ADDRESS=peer0.maths.universitymvp.com:9051
+      - CORE_PEER_LOCALMSPID=MathsMSP
       - CORE_PEER_TLS_ENABLED=true
-      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.crt
-      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.key
-      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/maths.universitymvp.com/users/Admin@maths.universitymvp.com/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
     volumes:
       - /var/run/:/host/var/run/
       - /home/ubuntu/hlf-docker-swarm/chaincode/:/opt/gopath/src/github.com/chaincode
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/
-      - /home/ubuntu/hlf-docker-swarm/test-network/scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
-      - /home/ubuntu/hlf-docker-swarm/test-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     networks:
-      test:
+      universitymvp:
         aliases:
-          - cliOrg2.example.com
+          - cliMaths.universitymvp.com
 
-  cliOrg3:
+  cliChemistry:
     container_name: cli
     image: hyperledger/fabric-tools:2.3
     tty: true
@@ -99,27 +99,27 @@ services:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - FABRIC_LOGGING_SPEC=DEBUG
-      - ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+      - ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/msp/tlscacerts/tlsca.universitymvp.com-cert.pem
       # - FABRIC_LOGGING_SPEC=INFO
       - CC_PATH=/opt/gopath/src/github.com/chaincode
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=universitymvp
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer0.org3.example.com:11051
-      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_ADDRESS=peer0.chemistry.universitymvp.com:11051
+      - CORE_PEER_LOCALMSPID=ChemistryMSP
       - CORE_PEER_TLS_ENABLED=true
-      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/server.crt
-      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/server.key
-      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/peerOrganizations/chemistry.universitymvp.com/users/Admin@chemistry.universitymvp.com/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
     volumes:
       - /var/run/:/host/var/run/
       - /home/ubuntu/hlf-docker-swarm/chaincode/:/opt/gopath/src/github.com/chaincode
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/
-      - /home/ubuntu/hlf-docker-swarm/test-network/scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
-      - /home/ubuntu/hlf-docker-swarm/test-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     networks:
-      test:
+      universitymvp:
         aliases:
-          - cliOrg3.example.com
+          - cliChemistry.universitymvp.com

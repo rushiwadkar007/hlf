@@ -156,8 +156,8 @@ const (
 	SYS_KTIMER_GETOVERRUN        = 239 // { int ktimer_getoverrun(int timerid); }
 	SYS_NANOSLEEP                = 240 // { int nanosleep(const struct timespec *rqtp, struct timespec *rmtp); }
 	SYS_FFCLOCK_GETCOUNTER       = 241 // { int ffclock_getcounter(ffcounter *ffcount); }
-	SYS_FFCLOCK_SETESTIMATE      = 242 // { int ffclock_setestimate( struct ffclock_estimate *cest); }
-	SYS_FFCLOCK_GETESTIMATE      = 243 // { int ffclock_getestimate( struct ffclock_estimate *cest); }
+	SYS_FFCLOCK_SEUNIVERSITYMVPIMATE      = 242 // { int ffclock_seuniversitymvpimate( struct ffclock_estimate *cest); }
+	SYS_FFCLOCK_GEUNIVERSITYMVPIMATE      = 243 // { int ffclock_geuniversitymvpimate( struct ffclock_estimate *cest); }
 	SYS_CLOCK_NANOSLEEP          = 244 // { int clock_nanosleep(clockid_t clock_id, int flags, const struct timespec *rqtp, struct timespec *rmtp); }
 	SYS_CLOCK_GETCPUCLOCKID2     = 247 // { int clock_getcpuclockid2(id_t id,int which, clockid_t *clock_id); }
 	SYS_NTP_GETTIME              = 248 // { int ntp_gettime(struct ntptimeval *ntvp); }

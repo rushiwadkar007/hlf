@@ -27,39 +27,39 @@ function yaml_ccp {
 }
 
 
-function Org1CCP {
+function PhysicsCCP {
     ORG=1
     P0PORT=7051
     CAPORT=7054
-    PEERPEM=organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
-    CAPEM=organizations/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem
+    PEERPEM=organizations/peerOrganizations/physics.universitymvp.com/tlsca/tlsca.physics.universitymvp.com-cert.pem
+    CAPEM=organizations/peerOrganizations/physics.universitymvp.com/ca/ca.physics.universitymvp.com-cert.pem
 
-    echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org1.example.com/connection-org1.json
-    echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org1.example.com/connection-org1.yaml
+    echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/physics.universitymvp.com/connection-physics.json
+    echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/physics.universitymvp.com/connection-physics.yaml
 
 }
 
-function Org2CCP {
+function MathsCCP {
     ORG=2
     P0PORT=9051
     CAPORT=8054
-    PEERPEM=organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
-    CAPEM=organizations/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem
+    PEERPEM=organizations/peerOrganizations/maths.universitymvp.com/tlsca/tlsca.maths.universitymvp.com-cert.pem
+    CAPEM=organizations/peerOrganizations/maths.universitymvp.com/ca/ca.maths.universitymvp.com-cert.pem
 
-    echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org2.example.com/connection-org2.json
-    echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org2.example.com/connection-org2.yaml
+    echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/maths.universitymvp.com/connection-maths.json
+    echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/maths.universitymvp.com/connection-maths.yaml
 
 }
 
-function Org3CCP {
+function ChemistryCCP {
 
     ORG=3
     P0PORT=11051
     CAPORT=9054
-    PEERPEM=organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
-    CAPEM=organizations/peerOrganizations/org3.example.com/ca/ca.org3.example.com-cert.pem
+    PEERPEM=organizations/peerOrganizations/chemistry.universitymvp.com/tlsca/tlsca.chemistry.universitymvp.com-cert.pem
+    CAPEM=organizations/peerOrganizations/chemistry.universitymvp.com/ca/ca.chemistry.universitymvp.com-cert.pem
 
-    echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org3.example.com/connection-org3.json
-    echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/org3.example.com/connection-org3.yaml
+    echo "$(json_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/chemistry.universitymvp.com/connection-chemistry.json
+    echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/chemistry.universitymvp.com/connection-chemistry.yaml
 
 }

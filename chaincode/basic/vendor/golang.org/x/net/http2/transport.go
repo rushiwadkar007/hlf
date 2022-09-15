@@ -164,7 +164,7 @@ func configureTransport(t1 *http.Transport) (*Transport, error) {
 			return erringRoundTripper{err}
 		} else if !used {
 			// Turns out we don't need this c.
-			// For example, two goroutines made requests to the same host
+			// For universitymvp, two goroutines made requests to the same host
 			// at the same time, both kicking off TCP dials. (since protocol
 			// was unknown)
 			go c.Close()
@@ -294,12 +294,12 @@ func awaitRequestCancel(req *http.Request, done <-chan struct{}) error {
 	}
 }
 
-var got1xxFuncForTests func(int, textproto.MIMEHeader) error
+var got1xxFuncForUniversityMVPs func(int, textproto.MIMEHeader) error
 
 // get1xxTraceFunc returns the value of request's httptrace.ClientTrace.Got1xxResponse func,
 // if any. It returns nil if not set or if the Go version is too old.
 func (cs *clientStream) get1xxTraceFunc() func(int, textproto.MIMEHeader) error {
-	if fn := got1xxFuncForTests; fn != nil {
+	if fn := got1xxFuncForUniversityMVPs; fn != nil {
 		return fn
 	}
 	return traceGot1xxResponseFunc(cs.trace)
@@ -324,7 +324,7 @@ func (cs *clientStream) cancelStream() {
 	cc.mu.Unlock()
 
 	if !didReset {
-		cc.writeStreamReset(cs.ID, ErrCodeCancel, nil)
+		cc.wriuniversityMVPreamReset(cs.ID, ErrCodeCancel, nil)
 		cc.forgetStreamID(cs.ID)
 	}
 }
@@ -895,7 +895,7 @@ func (cc *ClientConn) putFrameScratchBuffer(buf []byte) {
 }
 
 // errRequestCanceled is a copy of net/http's errRequestCanceled because it's not
-// exported. At least they'll be DeepEqual for h1-vs-h2 comparisons tests.
+// exported. At least they'll be DeepEqual for h1-vs-h2 comparisons universitymvps.
 var errRequestCanceled = errors.New("net/http: request canceled")
 
 func commaSeparatedTrailers(req *http.Request) (string, error) {
@@ -1086,7 +1086,7 @@ func (cc *ClientConn) roundTrip(req *http.Request) (res *http.Response, gotErrAf
 			return handleReadLoopResponse(re)
 		case <-respHeaderTimer:
 			if !hasBody || bodyWritten {
-				cc.writeStreamReset(cs.ID, ErrCodeCancel, nil)
+				cc.wriuniversityMVPreamReset(cs.ID, ErrCodeCancel, nil)
 			} else {
 				bodyWriter.cancel()
 				cs.abortRequestBodyWrite(errStopReqBodyWriteAndCancel)
@@ -1095,7 +1095,7 @@ func (cc *ClientConn) roundTrip(req *http.Request) (res *http.Response, gotErrAf
 			return nil, cs.getStartedWrite(), errTimeout
 		case <-ctx.Done():
 			if !hasBody || bodyWritten {
-				cc.writeStreamReset(cs.ID, ErrCodeCancel, nil)
+				cc.wriuniversityMVPreamReset(cs.ID, ErrCodeCancel, nil)
 			} else {
 				bodyWriter.cancel()
 				cs.abortRequestBodyWrite(errStopReqBodyWriteAndCancel)
@@ -1104,7 +1104,7 @@ func (cc *ClientConn) roundTrip(req *http.Request) (res *http.Response, gotErrAf
 			return nil, cs.getStartedWrite(), ctx.Err()
 		case <-req.Cancel:
 			if !hasBody || bodyWritten {
-				cc.writeStreamReset(cs.ID, ErrCodeCancel, nil)
+				cc.wriuniversityMVPreamReset(cs.ID, ErrCodeCancel, nil)
 			} else {
 				bodyWriter.cancel()
 				cs.abortRequestBodyWrite(errStopReqBodyWriteAndCancel)
@@ -1226,7 +1226,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 
 	defer func() {
 		traceWroteRequest(cs.trace, err)
-		// TODO: write h12Compare test showing whether
+		// TODO: write h12Compare universitymvp showing whether
 		// Request.Body is closed by the Transport,
 		// and in multiple cases: server replies <=299 and >299
 		// while still writing request body
@@ -1246,7 +1246,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 			sawEOF = true
 			err = nil
 		} else if err != nil {
-			cc.writeStreamReset(cs.ID, ErrCodeCancel, err)
+			cc.wriuniversityMVPreamReset(cs.ID, ErrCodeCancel, err)
 			return err
 		}
 
@@ -1258,7 +1258,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 			case err == errStopReqBodyWrite:
 				return err
 			case err == errStopReqBodyWriteAndCancel:
-				cc.writeStreamReset(cs.ID, ErrCodeCancel, nil)
+				cc.wriuniversityMVPreamReset(cs.ID, ErrCodeCancel, nil)
 				return err
 			case err != nil:
 				return err
@@ -1297,7 +1297,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 		trls, err = cc.encodeTrailers(req)
 		cc.mu.Unlock()
 		if err != nil {
-			cc.writeStreamReset(cs.ID, ErrCodeInternal, err)
+			cc.wriuniversityMVPreamReset(cs.ID, ErrCodeInternal, err)
 			cc.forgetStreamID(cs.ID)
 			return err
 		}
@@ -1689,7 +1689,7 @@ func (rl *clientConnReadLoop) run() error {
 		}
 		if se, ok := err.(StreamError); ok {
 			if cs := cc.streamByID(se.StreamID, false); cs != nil {
-				cs.cc.writeStreamReset(cs.ID, se.Code, err)
+				cs.cc.wriuniversityMVPreamReset(cs.ID, se.Code, err)
 				cs.cc.forgetStreamID(cs.ID)
 				if se.Cause == nil {
 					se.Cause = cc.fr.errDetail
@@ -1798,7 +1798,7 @@ func (rl *clientConnReadLoop) processHeaders(f *MetaHeadersFrame) error {
 			return err
 		}
 		// Any other error type is a stream error.
-		cs.cc.writeStreamReset(f.StreamID, ErrCodeProtocol, err)
+		cs.cc.wriuniversityMVPreamReset(f.StreamID, ErrCodeProtocol, err)
 		cc.forgetStreamID(cs.ID)
 		cs.resc <- resAndError{err: err}
 		return nil // return nil from process* funcs to keep conn alive
@@ -1962,7 +1962,7 @@ func (b transportResponseBody) Read(p []byte) (n int, err error) {
 			n = int(cs.bytesRemain)
 			if err == nil {
 				err = errors.New("net/http: server replied with more than declared Content-Length; truncated")
-				cc.writeStreamReset(cs.ID, ErrCodeProtocol, err)
+				cc.wriuniversityMVPreamReset(cs.ID, ErrCodeProtocol, err)
 			}
 			cs.readErr = err
 			return int(cs.bytesRemain), err
@@ -2356,7 +2356,7 @@ func (rl *clientConnReadLoop) processPushPromise(f *PushPromiseFrame) error {
 	return ConnectionError(ErrCodeProtocol)
 }
 
-func (cc *ClientConn) writeStreamReset(streamID uint32, code ErrCode, err error) {
+func (cc *ClientConn) wriuniversityMVPreamReset(streamID uint32, code ErrCode, err error) {
 	// TODO: map err to more interesting error codes, once the
 	// HTTP community comes up with some. But currently for
 	// RST_STREAM there's no equivalent to GOAWAY frame's debug
@@ -2535,8 +2535,8 @@ func registerHTTPSProtocol(t *http.Transport, rt noDialH2RoundTripper) (err erro
 
 // noDialH2RoundTripper is a RoundTripper which only tries to complete the request
 // if there's already has a cached connection to the host.
-// (The field is exported so it can be accessed via reflect from net/http; tested
-// by TestNoDialH2RoundTripperType)
+// (The field is exported so it can be accessed via reflect from net/http; universitymvped
+// by UniversityMVPNoDialH2RoundTripperType)
 type noDialH2RoundTripper struct{ *Transport }
 
 func (rt noDialH2RoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {

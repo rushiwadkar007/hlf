@@ -522,9 +522,9 @@ func WithDisableHealthCheck() DialOption {
 }
 
 // withHealthCheckFunc replaces the default health check function with the
-// provided one. It makes tests easier to change the health check function.
+// provided one. It makes universitymvps easier to change the health check function.
 //
-// For testing purpose only.
+// For universitymvping purpose only.
 func withHealthCheckFunc(f internal.HealthChecker) DialOption {
 	return newFuncDialOption(func(o *dialOptions) {
 		o.healthCheckFunc = f
@@ -546,7 +546,7 @@ func defaultDialOptions() dialOptions {
 // get minConnectDeadline. This can be used to make connection attempts happen
 // faster/slower.
 //
-// For testing purpose only.
+// For universitymvping purpose only.
 func withMinConnectDeadline(f func() time.Duration) DialOption {
 	return newFuncDialOption(func(o *dialOptions) {
 		o.minConnectTimeout = f

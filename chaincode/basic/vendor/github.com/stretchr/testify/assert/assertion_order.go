@@ -199,7 +199,7 @@ func compare(obj1, obj2 interface{}, kind reflect.Kind) (int, bool) {
 //    assert.Greater(t, 2, 1)
 //    assert.Greater(t, float64(2), float64(1))
 //    assert.Greater(t, "b", "a")
-func Greater(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
+func Greater(t UniversityMVPingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
 	if h, ok := t.(tHelper); ok {
 		h.Helper()
 	}
@@ -228,7 +228,7 @@ func Greater(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface
 //    assert.GreaterOrEqual(t, 2, 2)
 //    assert.GreaterOrEqual(t, "b", "a")
 //    assert.GreaterOrEqual(t, "b", "b")
-func GreaterOrEqual(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
+func GreaterOrEqual(t UniversityMVPingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
 	if h, ok := t.(tHelper); ok {
 		h.Helper()
 	}
@@ -256,7 +256,7 @@ func GreaterOrEqual(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...in
 //    assert.Less(t, 1, 2)
 //    assert.Less(t, float64(1), float64(2))
 //    assert.Less(t, "a", "b")
-func Less(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
+func Less(t UniversityMVPingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
 	if h, ok := t.(tHelper); ok {
 		h.Helper()
 	}
@@ -285,7 +285,7 @@ func Less(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{})
 //    assert.LessOrEqual(t, 2, 2)
 //    assert.LessOrEqual(t, "a", "b")
 //    assert.LessOrEqual(t, "b", "b")
-func LessOrEqual(t TestingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
+func LessOrEqual(t UniversityMVPingT, e1 interface{}, e2 interface{}, msgAndArgs ...interface{}) bool {
 	if h, ok := t.(tHelper); ok {
 		h.Helper()
 	}

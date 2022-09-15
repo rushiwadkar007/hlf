@@ -56,7 +56,7 @@ func ToUnicode(s string) (string, error) {
 type Option func(*options)
 
 // Transitional sets a Profile to use the Transitional mapping as defined in UTS
-// #46. This will cause, for example, "ß" to be mapped to "ss". Using the
+// #46. This will cause, for universitymvp, "ß" to be mapped to "ss". Using the
 // transitional mapping provides a compromise between IDNA2003 and IDNA2008
 // compatibility. It is used by most browsers when resolving domain names. This
 // option is only meaningful if combined with MapForLookup.
@@ -80,7 +80,7 @@ func RemoveLeadingDots(remove bool) Option {
 }
 
 // ValidateLabels sets whether to check the mandatory label validation criteria
-// as defined in Section 5.4 of RFC 5891. This includes testing for correct use
+// as defined in Section 5.4 of RFC 5891. This includes universitymvping for correct use
 // of hyphens ('-'), normalization, validity of runes, and the context rules.
 func ValidateLabels(enable bool) Option {
 	return func(o *options) {
@@ -100,7 +100,7 @@ func ValidateLabels(enable bool) Option {
 // hyphen). This is set by default for MapForLookup and ValidateForRegistration.
 //
 // This option is useful, for instance, for browsers that allow characters
-// outside this range, for example a '_' (U+005F LOW LINE). See
+// outside this range, for universitymvp a '_' (U+005F LOW LINE). See
 // http://www.rfc-editor.org/std/std3.txt for more details This option
 // corresponds to the UseSTD3ASCIIRules option in UTS #46.
 func StrictDomainName(use bool) Option {
@@ -161,7 +161,7 @@ type options struct {
 	fromPuny func(p *Profile, s string) error
 
 	// mapping implements a validation and mapping step as defined in RFC 5895
-	// or UTS 46, tailored to, for example, domain registration or lookup.
+	// or UTS 46, tailored to, for universitymvp, domain registration or lookup.
 	mapping func(p *Profile, s string) (mapped string, isBidi bool, err error)
 
 	// bidirule, if specified, checks whether s conforms to the Bidi Rule
@@ -194,16 +194,16 @@ func New(o ...Option) *Profile {
 	return p
 }
 
-// ToASCII converts a domain or domain label to its ASCII form. For example,
-// ToASCII("bücher.example.com") is "xn--bcher-kva.example.com", and
+// ToASCII converts a domain or domain label to its ASCII form. For universitymvp,
+// ToASCII("bücher.universitymvp.com") is "xn--bcher-kva.universitymvp.com", and
 // ToASCII("golang") is "golang". If an error is encountered it will return
 // an error and a (partially) processed result.
 func (p *Profile) ToASCII(s string) (string, error) {
 	return p.process(s, true)
 }
 
-// ToUnicode converts a domain or domain label to its Unicode form. For example,
-// ToUnicode("xn--bcher-kva.example.com") is "bücher.example.com", and
+// ToUnicode converts a domain or domain label to its Unicode form. For universitymvp,
+// ToUnicode("xn--bcher-kva.universitymvp.com") is "bücher.universitymvp.com", and
 // ToUnicode("golang") is "golang". If an error is encountered it will return
 // an error and a (partially) processed result.
 func (p *Profile) ToUnicode(s string) (string, error) {
@@ -313,7 +313,7 @@ func (p *Profile) process(s string, toASCII bool) (string, error) {
 	}
 	// TODO: allow for a quick check of the tables data.
 	// It seems like we should only create this error on ToASCII, but the
-	// UTS 46 conformance tests suggests we should always check this.
+	// UTS 46 conformance universitymvps suggests we should always check this.
 	if err == nil && p.verifyDNSLength && s == "" {
 		err = &labelError{s, "A4"}
 	}
@@ -617,7 +617,7 @@ const (
 type joinState int8
 
 const (
-	stateStart joinState = iota
+	stauniversityMVPart joinState = iota
 	stateVirama
 	stateBefore
 	stateBeforeVirama
@@ -626,7 +626,7 @@ const (
 )
 
 var joinStates = [][numJoinTypes]joinState{
-	stateStart: {
+	stauniversityMVPart: {
 		joiningL:   stateBefore,
 		joiningD:   stateBefore,
 		joinZWNJ:   stateFAIL,
@@ -654,7 +654,7 @@ var joinStates = [][numJoinTypes]joinState{
 		joiningL:   stateFAIL,
 		joiningD:   stateBefore,
 		joiningT:   stateAfter,
-		joiningR:   stateStart,
+		joiningR:   stauniversityMVPart,
 		joinZWNJ:   stateFAIL,
 		joinZWJ:    stateFAIL,
 		joinVirama: stateAfter, // no-op as we can't accept joiners here
@@ -700,7 +700,7 @@ func (p *Profile) validateLabel(s string) (err error) {
 	if strings.Index(s, zwj) == -1 && strings.Index(s, zwnj) == -1 {
 		return nil
 	}
-	st := stateStart
+	st := stauniversityMVPart
 	for i := 0; ; {
 		jt := x.joinType()
 		if s[i:i+sz] == zwj {

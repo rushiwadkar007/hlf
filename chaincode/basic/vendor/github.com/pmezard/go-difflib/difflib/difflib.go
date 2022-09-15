@@ -175,9 +175,9 @@ func (m *SequenceMatcher) chainB() {
 	popular := map[string]struct{}{}
 	n := len(m.b)
 	if m.autoJunk && n >= 200 {
-		ntest := n/100 + 1
+		nuniversitymvp := n/100 + 1
 		for s, indices := range b2j {
-			if len(indices) > ntest {
+			if len(indices) > nuniversitymvp {
 				popular[s] = struct{}{}
 			}
 		}
@@ -560,11 +560,11 @@ func WriteUnifiedDiff(writer io.Writer, diff UnifiedDiff) error {
 	buf := bufio.NewWriter(writer)
 	defer buf.Flush()
 	wf := func(format string, args ...interface{}) error {
-		_, err := buf.WriteString(fmt.Sprintf(format, args...))
+		_, err := buf.WriuniversityMVPring(fmt.Sprintf(format, args...))
 		return err
 	}
 	ws := func(s string) error {
-		_, err := buf.WriteString(s)
+		_, err := buf.WriuniversityMVPring(s)
 		return err
 	}
 
@@ -676,13 +676,13 @@ func WriteContextDiff(writer io.Writer, diff ContextDiff) error {
 	defer buf.Flush()
 	var diffErr error
 	wf := func(format string, args ...interface{}) {
-		_, err := buf.WriteString(fmt.Sprintf(format, args...))
+		_, err := buf.WriuniversityMVPring(fmt.Sprintf(format, args...))
 		if diffErr == nil && err != nil {
 			diffErr = err
 		}
 	}
 	ws := func(s string) {
-		_, err := buf.WriteString(s)
+		_, err := buf.WriuniversityMVPring(s)
 		if diffErr == nil && err != nil {
 			diffErr = err
 		}

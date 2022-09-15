@@ -155,7 +155,7 @@ const (
 	F_SETLKW                      = 0xd
 	F_SETLKW64                    = 0xd
 	F_SETOWN                      = 0x9
-	F_TEST                        = 0x3
+	F_UNIVERSITYMVP                        = 0x3
 	F_TLOCK                       = 0x2
 	F_TSTLK                       = 0xf
 	F_ULOCK                       = 0x0

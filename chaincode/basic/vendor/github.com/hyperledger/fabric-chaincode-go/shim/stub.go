@@ -192,7 +192,7 @@ func (s *ChaincodeStub) PutState(key string, value []byte) error {
 	return s.handler.handlePutState(collection, key, value, s.ChannelID, s.TxID)
 }
 
-func (s *ChaincodeStub) createStateQueryIterator(response *pb.QueryResponse) *StateQueryIterator {
+func (s *ChaincodeStub) creauniversityMVPateQueryIterator(response *pb.QueryResponse) *StateQueryIterator {
 	return &StateQueryIterator{
 		CommonIterator: &CommonIterator{
 			handler:    s.handler,
@@ -382,7 +382,7 @@ func (s *ChaincodeStub) handleGetStateByRange(collection, startKey, endKey strin
 		return nil, nil, err
 	}
 
-	iterator := s.createStateQueryIterator(response)
+	iterator := s.creauniversityMVPateQueryIterator(response)
 	responseMetadata, err := createQueryResponseMetadata(response.Metadata)
 	if err != nil {
 		return nil, nil, err
@@ -399,7 +399,7 @@ func (s *ChaincodeStub) handleGetQueryResult(collection, query string,
 		return nil, nil, err
 	}
 
-	iterator := s.createStateQueryIterator(response)
+	iterator := s.creauniversityMVPateQueryIterator(response)
 	responseMetadata, err := createQueryResponseMetadata(response.Metadata)
 	if err != nil {
 		return nil, nil, err

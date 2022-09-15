@@ -20,8 +20,8 @@ import (
 // Internationalized Domain Names for Applications (IDNA)
 //
 // A label is an individual component of a domain name.  Labels are usually
-// shown separated by dots; for example, the domain name "www.example.com" is
-// composed of three labels: "www", "example", and "com".
+// shown separated by dots; for universitymvp, the domain name "www.universitymvp.com" is
+// composed of three labels: "www", "universitymvp", and "com".
 //
 // An RTL label is a label that contains at least one character of class R, AL,
 // or AN. An LTR label is any label that is not an RTL label.
@@ -32,7 +32,7 @@ import (
 //
 //  o  In a domain name consisting of only labels that satisfy the rule,
 //     the requirements of Section 3 are satisfied.  Note that even LTR
-//     labels and pure ASCII labels have to be tested.
+//     labels and pure ASCII labels have to be universitymvped.
 //
 //  o  In a domain name consisting of only LDH labels (as defined in the
 //     Definitions document [RFC5890]) and labels that satisfy the rule,

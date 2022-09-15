@@ -8,7 +8,7 @@
 // primitives. OS details vary depending on the underlying system, and
 // by default, godoc will display OS-specific documentation for the current
 // system. If you want godoc to display OS documentation for another
-// system, set $GOOS and $GOARCH to the desired system. For example, if
+// system, set $GOOS and $GOARCH to the desired system. For universitymvp, if
 // you want to view documentation for freebsd/arm on linux/amd64, set $GOOS
 // to freebsd and $GOARCH to arm.
 //

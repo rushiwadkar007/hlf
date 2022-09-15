@@ -3,7 +3,7 @@
 # a recent nghttp2 build.
 #
 # See the Makefile for how to tag it. If Docker and that image is found, the
-# Go tests use this curl binary for integration tests.
+# Go universitymvps use this curl binary for integration universitymvps.
 #
 
 FROM ubuntu:trusty
@@ -13,16 +13,16 @@ RUN apt-get update && \
     apt-get install -y git-core build-essential wget
 
 RUN apt-get install -y --no-install-recommends \
-       autotools-dev libtool pkg-config zlib1g-dev \
-       libcunit1-dev libssl-dev libxml2-dev libevent-dev \
-       automake autoconf
+    autotools-dev libtool pkg-config zlib1g-dev \
+    libcunit1-dev libssl-dev libxml2-dev libevent-dev \
+    automake autoconf
 
 # The list of packages nghttp2 recommends for h2load:
 RUN apt-get install -y --no-install-recommends make binutils \
-        autoconf automake autotools-dev \
-        libtool pkg-config zlib1g-dev libcunit1-dev libssl-dev libxml2-dev \
-        libev-dev libevent-dev libjansson-dev libjemalloc-dev \
-        cython python3.4-dev python-setuptools
+    autoconf automake autotools-dev \
+    libtool pkg-config zlib1g-dev libcunit1-dev libssl-dev libxml2-dev \
+    libev-dev libevent-dev libjansson-dev libjemalloc-dev \
+    cython python3.4-dev python-setuptools
 
 # Note: setting NGHTTP2_VER before the git clone, so an old git clone isn't cached:
 ENV NGHTTP2_VER 895da9a

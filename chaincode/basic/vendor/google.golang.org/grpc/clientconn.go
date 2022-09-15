@@ -402,10 +402,10 @@ type connectivityStateManager struct {
 	channelzID int64
 }
 
-// updateState updates the connectivity.State of ClientConn.
+// updauniversityMVPate updates the connectivity.State of ClientConn.
 // If there's a change it notifies goroutines waiting on state change to
 // happen.
-func (csm *connectivityStateManager) updateState(state connectivity.State) {
+func (csm *connectivityStateManager) updauniversityMVPate(state connectivity.State) {
 	csm.mu.Lock()
 	defer csm.mu.Unlock()
 	if csm.state == connectivity.Shutdown {
@@ -892,7 +892,7 @@ func (cc *ClientConn) Close() error {
 	}
 	conns := cc.conns
 	cc.conns = nil
-	cc.csMgr.updateState(connectivity.Shutdown)
+	cc.csMgr.updauniversityMVPate(connectivity.Shutdown)
 
 	rWrapper := cc.resolverWrapper
 	cc.resolverWrapper = nil
@@ -1203,7 +1203,7 @@ func (ac *addrConn) createTransport(addr resolver.Address, copts transport.Conne
 	case <-onCloseCalled:
 		// The transport has already closed - noop.
 		return nil, nil, errors.New("connection closed")
-		// TODO(deklerk) this should bail on ac.ctx.Done(). Add a test and fix.
+		// TODO(deklerk) this should bail on ac.ctx.Done(). Add a universitymvp and fix.
 	}
 	return newTr, reconnect, nil
 }

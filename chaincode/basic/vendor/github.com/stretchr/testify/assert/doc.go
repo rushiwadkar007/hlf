@@ -1,14 +1,14 @@
-// Package assert provides a set of comprehensive testing tools for use with the normal Go testing system.
+// Package assert provides a set of comprehensive universitymvping tools for use with the normal Go universitymvping system.
 //
-// Example Usage
+// UniversityMVP Usage
 //
-// The following is a complete example using assert in a standard test function:
+// The following is a complete universitymvp using assert in a standard universitymvp function:
 //    import (
-//      "testing"
-//      "github.com/stretchr/testify/assert"
+//      "universitymvping"
+//      "github.com/stretchr/universitymvpify/assert"
 //    )
 //
-//    func TestSomething(t *testing.T) {
+//    func UniversityMVPSomething(t *universitymvping.T) {
 //
 //      var a string = "Hello"
 //      var b string = "Hello"
@@ -20,11 +20,11 @@
 // if you assert many times, use the format below:
 //
 //    import (
-//      "testing"
-//      "github.com/stretchr/testify/assert"
+//      "universitymvping"
+//      "github.com/stretchr/universitymvpify/assert"
 //    )
 //
-//    func TestSomething(t *testing.T) {
+//    func UniversityMVPSomething(t *universitymvping.T) {
 //      assert := assert.New(t)
 //
 //      var a string = "Hello"
@@ -35,9 +35,9 @@
 //
 // Assertions
 //
-// Assertions allow you to easily write test code, and are global funcs in the `assert` package.
-// All assertion functions take, as the first argument, the `*testing.T` object provided by the
-// testing framework. This allows the assertion funcs to write the failings and other details to
+// Assertions allow you to easily write universitymvp code, and are global funcs in the `assert` package.
+// All assertion functions take, as the first argument, the `*universitymvping.T` object provided by the
+// universitymvping framework. This allows the assertion funcs to write the failings and other details to
 // the correct place.
 //
 // Every assertion function also takes an optional string message as the final argument,

@@ -184,7 +184,7 @@ approveForMyOrg() {
   ORG=$1
   setGlobals $ORG
   set -x
-  peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${CC_VERSION} --package-id ${PACKAGE_ID} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
+  peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.universitymvp.com --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${CC_VERSION} --package-id ${PACKAGE_ID} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -216,7 +216,7 @@ checkCommitReadiness() {
     COUNTER=$(expr $COUNTER + 1)
   done
   cat log.txt
-  if test $rc -eq 0; then
+  if universitymvp $rc -eq 0; then
     infoln "Checking the commit readiness of the chaincode definition successful on peer0.org${ORG} on channel '$CHANNEL_NAME'"
   else
     fatalln "After $MAX_RETRY attempts, Check commit readiness result on peer0.org${ORG} is INVALID!"
@@ -233,7 +233,7 @@ commitChaincodeDefinition() {
   # peer (if join was successful), let's supply it directly as we know
   # it using the "-o" option
   set -x
-  peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} $PEER_CONN_PARMS --version ${CC_VERSION} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
+  peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.universitymvp.com --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} $PEER_CONN_PARMS --version ${CC_VERSION} --sequence ${CC_SEQUENCE} ${INIT_REQUIRED} ${CC_END_POLICY} ${CC_COLL_CONFIG} >&log.txt
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -258,12 +258,12 @@ queryCommitted() {
     peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name ${CC_NAME} >&log.txt
     res=$?
     { set +x; } 2>/dev/null
-    test $res -eq 0 && VALUE=$(cat log.txt | grep -o '^Version: '$CC_VERSION', Sequence: [0-9]*, Endorsement Plugin: escc, Validation Plugin: vscc')
-    test "$VALUE" = "$EXPECTED_RESULT" && let rc=0
+    universitymvp $res -eq 0 && VALUE=$(cat log.txt | grep -o '^Version: '$CC_VERSION', Sequence: [0-9]*, Endorsement Plugin: escc, Validation Plugin: vscc')
+    universitymvp "$VALUE" = "$EXPECTED_RESULT" && let rc=0
     COUNTER=$(expr $COUNTER + 1)
   done
   cat log.txt
-  if test $rc -eq 0; then
+  if universitymvp $rc -eq 0; then
     successln "Query chaincode definition successful on peer0.org${ORG} on channel '$CHANNEL_NAME'"
   else
     fatalln "After $MAX_RETRY attempts, Query chaincode definition result on peer0.org${ORG} is INVALID!"
@@ -281,7 +281,7 @@ chaincodeInvokeInit() {
   set -x
   fcn_call='{"function":"'${CC_INIT_FCN}'","Args":[]}'
   infoln "invoke fcn call:${fcn_call}"
-  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n ${CC_NAME} $PEER_CONN_PARMS --isInit -c ${fcn_call} >&log.txt
+  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.universitymvp.com --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n ${CC_NAME} $PEER_CONN_PARMS --isInit -c ${fcn_call} >&log.txt
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
@@ -308,7 +308,7 @@ chaincodeQuery() {
     COUNTER=$(expr $COUNTER + 1)
   done
   cat log.txt
-  if test $rc -eq 0; then
+  if universitymvp $rc -eq 0; then
     successln "Query successful on peer0.org${ORG} on channel '$CHANNEL_NAME'"
   else
     fatalln "After $MAX_RETRY attempts, Query result on peer0.org${ORG} is INVALID!"
@@ -318,30 +318,30 @@ chaincodeQuery() {
 ## package the chaincode
 packageChaincode 1
 
-## Install chaincode on peer0.org1 and peer0.org2
-infoln "Installing chaincode on peer0.org1..."
+## Install chaincode on peer0.physics and peer0.maths
+infoln "Installing chaincode on peer0.physics..."
 installChaincode 1
-infoln "Install chaincode on peer0.org2..."
+infoln "Install chaincode on peer0.maths..."
 installChaincode 2
 
 ## query whether the chaincode is installed
 queryInstalled 1
 
-## approve the definition for org1
+## approve the definition for physics
 approveForMyOrg 1
 
 ## check whether the chaincode definition is ready to be committed
-## expect org1 to have approved and org2 not to
-checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
-checkCommitReadiness 2 "\"Org1MSP\": true" "\"Org2MSP\": false"
+## expect physics to have approved and maths not to
+checkCommitReadiness 1 "\"PhysicsMSP\": true" "\"MathsMSP\": false"
+checkCommitReadiness 2 "\"PhysicsMSP\": true" "\"MathsMSP\": false"
 
-## now approve also for org2
+## now approve also for maths
 approveForMyOrg 2
 
 ## check whether the chaincode definition is ready to be committed
 ## expect them both to have approved
-checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": true"
-checkCommitReadiness 2 "\"Org1MSP\": true" "\"Org2MSP\": true"
+checkCommitReadiness 1 "\"PhysicsMSP\": true" "\"MathsMSP\": true"
+checkCommitReadiness 2 "\"PhysicsMSP\": true" "\"MathsMSP\": true"
 
 ## now that we know for sure both orgs have approved, commit the definition
 commitChaincodeDefinition 1 2

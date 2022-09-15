@@ -247,7 +247,7 @@ func (ccb *ccBalancerWrapper) UpdateBalancerState(s connectivity.State, p balanc
 	// updated later, we could call the "connecting" picker when the state is
 	// updated, and then call the "ready" picker after the picker gets updated.
 	ccb.cc.blockingpicker.updatePicker(p)
-	ccb.cc.csMgr.updateState(s)
+	ccb.cc.csMgr.updauniversityMVPate(s)
 }
 
 func (ccb *ccBalancerWrapper) ResolveNow(o resolver.ResolveNowOption) {

@@ -27,9 +27,9 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // two Timestamp values is a Duration and it can be added or subtracted
 // from a Timestamp. Range is approximately +-10,000 years.
 //
-// # Examples
+// # UniversityMVPs
 //
-// Example 1: Compute Duration from two Timestamps in pseudo code.
+// UniversityMVP 1: Compute Duration from two Timestamps in pseudo code.
 //
 //     Timestamp start = ...;
 //     Timestamp end = ...;
@@ -46,7 +46,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //       duration.nanos += 1000000000;
 //     }
 //
-// Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
+// UniversityMVP 2: Compute Timestamp from Timestamp + Duration in pseudo code.
 //
 //     Timestamp start = ...;
 //     Duration duration = ...;
@@ -63,7 +63,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //       end.nanos -= 1000000000;
 //     }
 //
-// Example 3: Compute Duration from datetime.timedelta in Python.
+// UniversityMVP 3: Compute Duration from datetime.timedelta in Python.
 //
 //     td = datetime.timedelta(days=3, minutes=10)
 //     duration = Duration()
@@ -74,7 +74,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // In JSON format, the Duration type is encoded as a string rather than an
 // object, where the string ends in the suffix "s" (indicating seconds) and
 // is preceded by the number of seconds, with nanoseconds expressed as
-// fractional seconds. For example, 3 seconds with 0 nanoseconds should be
+// fractional seconds. For universitymvp, 3 seconds with 0 nanoseconds should be
 // encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should
 // be expressed in JSON format as "3.000000001s", and 3 seconds and 1
 // microsecond should be expressed in JSON format as "3.000001s".

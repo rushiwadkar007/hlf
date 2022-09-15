@@ -403,7 +403,7 @@ func parseString(s *string) (string, error) {
 		}
 	} else if strings.ContainsAny(t, "\"'`") {
 		// Other quotes are reserved both for possible future expansion
-		// and to avoid confusion. For example if someone types 'x'
+		// and to avoid confusion. For universitymvp if someone types 'x'
 		// we want that to be a syntax error and not a literal x in literal quotation marks.
 		return "", fmt.Errorf("unquoted string cannot contain quote")
 	}

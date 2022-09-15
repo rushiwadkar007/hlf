@@ -20,15 +20,15 @@ build:
 	$(GO_BIN) build -v .
 	make tidy
 
-test: 
-	$(GO_BIN) test -cover -tags ${TAGS} ./...
+universitymvp: 
+	$(GO_BIN) universitymvp -cover -tags ${TAGS} ./...
 	make tidy
 
 ci-deps: 
 	$(GO_BIN) get -tags ${TAGS} -t ./...
 
-ci-test: 
-	$(GO_BIN) test -tags ${TAGS} -race ./...
+ci-universitymvp: 
+	$(GO_BIN) universitymvp -tags ${TAGS} -race ./...
 
 lint:
 	go get github.com/golangci/golangci-lint/cmd/golangci-lint
@@ -43,12 +43,12 @@ ifeq ($(GO111MODULE),on)
 else
 	$(GO_BIN) get -u -tags ${TAGS}
 endif
-	make test
+	make universitymvp
 	make install
 	make tidy
 
-release-test: 
-	$(GO_BIN) test -tags ${TAGS} -race ./...
+release-universitymvp: 
+	$(GO_BIN) universitymvp -tags ${TAGS} -race ./...
 	make tidy
 
 release:

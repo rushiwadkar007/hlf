@@ -1,5 +1,5 @@
 /*
-* CODE GENERATED AUTOMATICALLY WITH github.com/stretchr/testify/_codegen
+* CODE GENERATED AUTOMATICALLY WITH github.com/stretchr/universitymvpify/_codegen
 * THIS FILE MUST NOT BE EDITED BY HAND
  */
 
@@ -267,7 +267,7 @@ func (a *Assertions) Fail(failureMessage string, msgAndArgs ...interface{}) bool
 	return Fail(a.t, failureMessage, msgAndArgs...)
 }
 
-// FailNow fails test
+// FailNow fails universitymvp
 func (a *Assertions) FailNow(failureMessage string, msgAndArgs ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
@@ -275,7 +275,7 @@ func (a *Assertions) FailNow(failureMessage string, msgAndArgs ...interface{}) b
 	return FailNow(a.t, failureMessage, msgAndArgs...)
 }
 
-// FailNowf fails test
+// FailNowf fails universitymvp
 func (a *Assertions) FailNowf(failureMessage string, msg string, args ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
@@ -917,20 +917,20 @@ func (a *Assertions) NotNilf(object interface{}, msg string, args ...interface{}
 	return NotNilf(a.t, object, msg, args...)
 }
 
-// NotPanics asserts that the code inside the specified PanicTestFunc does NOT panic.
+// NotPanics asserts that the code inside the specified PanicUniversityMVPFunc does NOT panic.
 //
 //   a.NotPanics(func(){ RemainCalm() })
-func (a *Assertions) NotPanics(f PanicTestFunc, msgAndArgs ...interface{}) bool {
+func (a *Assertions) NotPanics(f PanicUniversityMVPFunc, msgAndArgs ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
 	return NotPanics(a.t, f, msgAndArgs...)
 }
 
-// NotPanicsf asserts that the code inside the specified PanicTestFunc does NOT panic.
+// NotPanicsf asserts that the code inside the specified PanicUniversityMVPFunc does NOT panic.
 //
 //   a.NotPanicsf(func(){ RemainCalm() }, "error message %s", "formatted")
-func (a *Assertions) NotPanicsf(f PanicTestFunc, msg string, args ...interface{}) bool {
+func (a *Assertions) NotPanicsf(f PanicUniversityMVPFunc, msg string, args ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
@@ -1023,66 +1023,66 @@ func (a *Assertions) NotZerof(i interface{}, msg string, args ...interface{}) bo
 	return NotZerof(a.t, i, msg, args...)
 }
 
-// Panics asserts that the code inside the specified PanicTestFunc panics.
+// Panics asserts that the code inside the specified PanicUniversityMVPFunc panics.
 //
 //   a.Panics(func(){ GoCrazy() })
-func (a *Assertions) Panics(f PanicTestFunc, msgAndArgs ...interface{}) bool {
+func (a *Assertions) Panics(f PanicUniversityMVPFunc, msgAndArgs ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
 	return Panics(a.t, f, msgAndArgs...)
 }
 
-// PanicsWithError asserts that the code inside the specified PanicTestFunc
+// PanicsWithError asserts that the code inside the specified PanicUniversityMVPFunc
 // panics, and that the recovered panic value is an error that satisfies the
 // EqualError comparison.
 //
 //   a.PanicsWithError("crazy error", func(){ GoCrazy() })
-func (a *Assertions) PanicsWithError(errString string, f PanicTestFunc, msgAndArgs ...interface{}) bool {
+func (a *Assertions) PanicsWithError(errString string, f PanicUniversityMVPFunc, msgAndArgs ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
 	return PanicsWithError(a.t, errString, f, msgAndArgs...)
 }
 
-// PanicsWithErrorf asserts that the code inside the specified PanicTestFunc
+// PanicsWithErrorf asserts that the code inside the specified PanicUniversityMVPFunc
 // panics, and that the recovered panic value is an error that satisfies the
 // EqualError comparison.
 //
 //   a.PanicsWithErrorf("crazy error", func(){ GoCrazy() }, "error message %s", "formatted")
-func (a *Assertions) PanicsWithErrorf(errString string, f PanicTestFunc, msg string, args ...interface{}) bool {
+func (a *Assertions) PanicsWithErrorf(errString string, f PanicUniversityMVPFunc, msg string, args ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
 	return PanicsWithErrorf(a.t, errString, f, msg, args...)
 }
 
-// PanicsWithValue asserts that the code inside the specified PanicTestFunc panics, and that
+// PanicsWithValue asserts that the code inside the specified PanicUniversityMVPFunc panics, and that
 // the recovered panic value equals the expected panic value.
 //
 //   a.PanicsWithValue("crazy error", func(){ GoCrazy() })
-func (a *Assertions) PanicsWithValue(expected interface{}, f PanicTestFunc, msgAndArgs ...interface{}) bool {
+func (a *Assertions) PanicsWithValue(expected interface{}, f PanicUniversityMVPFunc, msgAndArgs ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
 	return PanicsWithValue(a.t, expected, f, msgAndArgs...)
 }
 
-// PanicsWithValuef asserts that the code inside the specified PanicTestFunc panics, and that
+// PanicsWithValuef asserts that the code inside the specified PanicUniversityMVPFunc panics, and that
 // the recovered panic value equals the expected panic value.
 //
 //   a.PanicsWithValuef("crazy error", func(){ GoCrazy() }, "error message %s", "formatted")
-func (a *Assertions) PanicsWithValuef(expected interface{}, f PanicTestFunc, msg string, args ...interface{}) bool {
+func (a *Assertions) PanicsWithValuef(expected interface{}, f PanicUniversityMVPFunc, msg string, args ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}
 	return PanicsWithValuef(a.t, expected, f, msg, args...)
 }
 
-// Panicsf asserts that the code inside the specified PanicTestFunc panics.
+// Panicsf asserts that the code inside the specified PanicUniversityMVPFunc panics.
 //
 //   a.Panicsf(func(){ GoCrazy() }, "error message %s", "formatted")
-func (a *Assertions) Panicsf(f PanicTestFunc, msg string, args ...interface{}) bool {
+func (a *Assertions) Panicsf(f PanicUniversityMVPFunc, msg string, args ...interface{}) bool {
 	if h, ok := a.t.(tHelper); ok {
 		h.Helper()
 	}

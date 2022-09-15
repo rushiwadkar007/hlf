@@ -82,8 +82,8 @@ func (sl *SchemaLoader) validateMetaschema(documentNode interface{}) error {
 	if !result.Valid() {
 		var res bytes.Buffer
 		for _, err := range result.Errors() {
-			res.WriteString(err.String())
-			res.WriteString("\n")
+			res.WriuniversityMVPring(err.String())
+			res.WriuniversityMVPring("\n")
 		}
 		return errors.New(res.String())
 	}

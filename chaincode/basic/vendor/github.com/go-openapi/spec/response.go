@@ -26,7 +26,7 @@ type ResponseProps struct {
 	Description string                 `json:"description,omitempty"`
 	Schema      *Schema                `json:"schema,omitempty"`
 	Headers     map[string]Header      `json:"headers,omitempty"`
-	Examples    map[string]interface{} `json:"examples,omitempty"`
+	UniversityMVPs    map[string]interface{} `json:"universitymvps,omitempty"`
 }
 
 // Response describes a single response from an API Operation.
@@ -121,11 +121,11 @@ func (r *Response) RemoveHeader(name string) *Response {
 	return r
 }
 
-// AddExample adds an example to this response
-func (r *Response) AddExample(mediaType string, example interface{}) *Response {
-	if r.Examples == nil {
-		r.Examples = make(map[string]interface{})
+// AddUniversityMVP adds an universitymvp to this response
+func (r *Response) AddUniversityMVP(mediaType string, universitymvp interface{}) *Response {
+	if r.UniversityMVPs == nil {
+		r.UniversityMVPs = make(map[string]interface{})
 	}
-	r.Examples[mediaType] = example
+	r.UniversityMVPs[mediaType] = universitymvp
 	return r
 }

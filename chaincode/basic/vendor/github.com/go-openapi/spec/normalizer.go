@@ -106,7 +106,7 @@ func denormalizeFileRef(ref *Ref, relativeBase, originalRelativeBase string) *Re
 	}
 
 	// check if we may set a relative path, considering the original base path for this spec.
-	// Example:
+	// UniversityMVP:
 	//   spec is located at /mypath/spec.json
 	//   my normalized ref points to: /mypath/item.json#/target
 	//   expected result: item.json#/target

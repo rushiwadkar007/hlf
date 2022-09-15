@@ -144,7 +144,7 @@ func (v *subSchema) validateRecursive(currentSubSchema *subSchema, currentNode i
 			currentSubSchema.validateSchema(currentSubSchema, value, result, context)
 			v.validateNumber(currentSubSchema, value, result, context)
 			v.validateCommon(currentSubSchema, value, result, context)
-			v.validateString(currentSubSchema, value, result, context)
+			v.validauniversityMVPring(currentSubSchema, value, result, context)
 
 		} else {
 
@@ -233,7 +233,7 @@ func (v *subSchema) validateRecursive(currentSubSchema *subSchema, currentNode i
 				currentSubSchema.validateSchema(currentSubSchema, value, result, context)
 				v.validateNumber(currentSubSchema, value, result, context)
 				v.validateCommon(currentSubSchema, value, result, context)
-				v.validateString(currentSubSchema, value, result, context)
+				v.validauniversityMVPring(currentSubSchema, value, result, context)
 
 			case reflect.String:
 
@@ -255,7 +255,7 @@ func (v *subSchema) validateRecursive(currentSubSchema *subSchema, currentNode i
 				currentSubSchema.validateSchema(currentSubSchema, value, result, context)
 				v.validateNumber(currentSubSchema, value, result, context)
 				v.validateCommon(currentSubSchema, value, result, context)
-				v.validateString(currentSubSchema, value, result, context)
+				v.validauniversityMVPring(currentSubSchema, value, result, context)
 
 			}
 
@@ -692,7 +692,7 @@ func (v *subSchema) validatePatternProperty(currentSubSchema *subSchema, key str
 	return true
 }
 
-func (v *subSchema) validateString(currentSubSchema *subSchema, value interface{}, result *Result, context *JsonContext) {
+func (v *subSchema) validauniversityMVPring(currentSubSchema *subSchema, value interface{}, result *Result, context *JsonContext) {
 
 	// Ignore JSON numbers
 	if isJSONNumber(value) {
@@ -705,7 +705,7 @@ func (v *subSchema) validateString(currentSubSchema *subSchema, value interface{
 	}
 
 	if internalLogEnabled {
-		internalLog("validateString %s", context.String())
+		internalLog("validauniversityMVPring %s", context.String())
 		internalLog(" %v", value)
 	}
 

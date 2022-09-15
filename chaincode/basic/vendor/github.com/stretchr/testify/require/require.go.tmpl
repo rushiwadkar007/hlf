@@ -1,5 +1,5 @@
 {{.Comment}}
-func {{.DocInfo.Name}}(t TestingT, {{.Params}}) {
+func {{.DocInfo.Name}}(t UniversityMVPingT, {{.Params}}) {
 	if h, ok := t.(tHelper); ok { h.Helper() }
 	if assert.{{.DocInfo.Name}}(t, {{.ForwardedParams}}) { return }
 	t.FailNow()

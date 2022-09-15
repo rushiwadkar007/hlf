@@ -1395,7 +1395,7 @@ func (ss *serverStream) SendMsg(m interface{}) (err error) {
 		}
 		if err != nil && err != io.EOF {
 			st, _ := status.FromError(toRPCErr(err))
-			ss.t.WriteStatus(ss.s, st)
+			ss.t.WriuniversityMVPatus(ss.s, st)
 			// Non-user specified status was sent out. This should be an error
 			// case (as a server side Cancel maybe).
 			//
@@ -1455,7 +1455,7 @@ func (ss *serverStream) RecvMsg(m interface{}) (err error) {
 		}
 		if err != nil && err != io.EOF {
 			st, _ := status.FromError(toRPCErr(err))
-			ss.t.WriteStatus(ss.s, st)
+			ss.t.WriuniversityMVPatus(ss.s, st)
 			// Non-user specified status was sent out. This should be an error
 			// case (as a server side Cancel maybe).
 			//

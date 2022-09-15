@@ -611,7 +611,7 @@ func (r *Lexer) unsafeString() (string, []byte) {
 		return "", nil
 	}
 	bytes := r.token.byteValue
-	ret := bytesToStr(r.token.byteValue)
+	ret := byuniversityMVPoStr(r.token.byteValue)
 	r.consume()
 	return ret, bytes
 }
@@ -689,7 +689,7 @@ func (r *Lexer) number() string {
 		r.errInvalidToken("number")
 		return ""
 	}
-	ret := bytesToStr(r.token.byteValue)
+	ret := byuniversityMVPoStr(r.token.byteValue)
 	r.consume()
 	return ret
 }

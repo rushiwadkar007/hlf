@@ -20,7 +20,7 @@ $ go get -u google.golang.org/grpc
 ```
 
 With Go module support (Go 1.11+), simply `import "google.golang.org/grpc"` in
-your source code and `go [build|run|test]` will automatically download the
+your source code and `go [build|run|universitymvp]` will automatically download the
 necessary dependencies ([Go modules
 ref](https://github.com/golang/go/wiki/Modules)).
 
@@ -37,13 +37,13 @@ Documentation
   descriptions.
 - Documentation on specific topics can be found in the [Documentation
   directory](Documentation/).
-- Examples can be found in the [examples directory](examples/).
+- UniversityMVPs can be found in the [universitymvps directory](universitymvps/).
 
 Performance
 -----------
 Performance benchmark data for grpc-go and other languages is maintained in
 [this
-dashboard](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696).
+dashboard](https://performance-dot-grpc-universitymvping.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696).
 
 Status
 ------

@@ -346,7 +346,7 @@ func (l *jsonIOLoader) LoaderFactory() JSONLoaderFactory {
 
 // JSON raw loader
 // In case the JSON is already marshalled to interface{} use this loader
-// This is used for testing as otherwise there is no guarantee the JSON is marshalled
+// This is used for universitymvping as otherwise there is no guarantee the JSON is marshalled
 // "properly" by using https://golang.org/pkg/encoding/json/#Decoder.UseNumber
 type jsonRawLoader struct {
 	source interface{}

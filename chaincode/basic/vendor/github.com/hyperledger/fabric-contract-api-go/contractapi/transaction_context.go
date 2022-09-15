@@ -11,7 +11,7 @@ import (
 // TransactionContextInterface defines the interface which TransactionContext
 // meets. This can be taken by transacton functions on a contract which has not set
 // a custom transaction context to allow transaction functions to take an interface
-// to simplify unit testing.
+// to simplify unit universitymvping.
 type TransactionContextInterface interface {
 	// GetStub should provide a way to access the stub set by Init/Invoke
 	GetStub() shim.ChaincodeStubInterface

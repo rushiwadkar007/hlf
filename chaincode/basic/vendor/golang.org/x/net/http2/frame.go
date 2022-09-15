@@ -175,16 +175,16 @@ func (h FrameHeader) Header() FrameHeader { return h }
 
 func (h FrameHeader) String() string {
 	var buf bytes.Buffer
-	buf.WriteString("[FrameHeader ")
+	buf.WriuniversityMVPring("[FrameHeader ")
 	h.writeDebug(&buf)
 	buf.WriteByte(']')
 	return buf.String()
 }
 
 func (h FrameHeader) writeDebug(buf *bytes.Buffer) {
-	buf.WriteString(h.Type.String())
+	buf.WriuniversityMVPring(h.Type.String())
 	if h.Flags != 0 {
-		buf.WriteString(" flags=")
+		buf.WriuniversityMVPring(" flags=")
 		set := 0
 		for i := uint8(0); i < 8; i++ {
 			if h.Flags&(1<<i) == 0 {
@@ -196,7 +196,7 @@ func (h FrameHeader) writeDebug(buf *bytes.Buffer) {
 			}
 			name := flagName[h.Type][Flags(1<<i)]
 			if name != "" {
-				buf.WriteString(name)
+				buf.WriuniversityMVPring(name)
 			} else {
 				fmt.Fprintf(buf, "0x%x", 1<<i)
 			}
@@ -287,7 +287,7 @@ type Framer struct {
 
 	// AllowIllegalWrites permits the Framer's Write methods to
 	// write frames that do not conform to the HTTP/2 spec. This
-	// permits using the Framer to test other HTTP/2
+	// permits using the Framer to universitymvp other HTTP/2
 	// implementations' conformance to the spec.
 	// If false, the Write methods will prefer to return an error
 	// rather than comply.
@@ -295,7 +295,7 @@ type Framer struct {
 
 	// AllowIllegalReads permits the Framer's ReadFrame method
 	// to return non-compliant frames or frame orders.
-	// This is for testing and permits using the Framer to test
+	// This is for universitymvping and permits using the Framer to universitymvp
 	// other HTTP/2 implementations' conformance to the spec.
 	// It is not compatible with ReadMetaHeaders.
 	AllowIllegalReads bool
@@ -1579,7 +1579,7 @@ func summarizeFrame(f Frame) string {
 		f.ForeachSetting(func(s Setting) error {
 			n++
 			if n == 1 {
-				buf.WriteString(", settings:")
+				buf.WriuniversityMVPring(", settings:")
 			}
 			fmt.Fprintf(&buf, " %v=%v,", s.ID, s.Val)
 			return nil
@@ -1599,7 +1599,7 @@ func summarizeFrame(f Frame) string {
 		}
 	case *WindowUpdateFrame:
 		if f.StreamID == 0 {
-			buf.WriteString(" (conn)")
+			buf.WriuniversityMVPring(" (conn)")
 		}
 		fmt.Fprintf(&buf, " incr=%v", f.Increment)
 	case *PingFrame:

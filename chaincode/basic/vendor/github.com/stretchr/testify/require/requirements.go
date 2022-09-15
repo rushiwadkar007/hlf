@@ -1,7 +1,7 @@
 package require
 
-// TestingT is an interface wrapper around *testing.T
-type TestingT interface {
+// UniversityMVPingT is an interface wrapper around *universitymvping.T
+type UniversityMVPingT interface {
 	Errorf(format string, args ...interface{})
 	FailNow()
 }
@@ -11,19 +11,19 @@ type tHelper interface {
 }
 
 // ComparisonAssertionFunc is a common function prototype when comparing two values.  Can be useful
-// for table driven tests.
-type ComparisonAssertionFunc func(TestingT, interface{}, interface{}, ...interface{})
+// for table driven universitymvps.
+type ComparisonAssertionFunc func(UniversityMVPingT, interface{}, interface{}, ...interface{})
 
 // ValueAssertionFunc is a common function prototype when validating a single value.  Can be useful
-// for table driven tests.
-type ValueAssertionFunc func(TestingT, interface{}, ...interface{})
+// for table driven universitymvps.
+type ValueAssertionFunc func(UniversityMVPingT, interface{}, ...interface{})
 
 // BoolAssertionFunc is a common function prototype when validating a bool value.  Can be useful
-// for table driven tests.
-type BoolAssertionFunc func(TestingT, bool, ...interface{})
+// for table driven universitymvps.
+type BoolAssertionFunc func(UniversityMVPingT, bool, ...interface{})
 
 // ErrorAssertionFunc is a common function prototype when validating an error value.  Can be useful
-// for table driven tests.
-type ErrorAssertionFunc func(TestingT, error, ...interface{})
+// for table driven universitymvps.
+type ErrorAssertionFunc func(UniversityMVPingT, error, ...interface{})
 
 //go:generate sh -c "cd ../_codegen && go build && cd - && ../_codegen/_codegen -output-package=require -template=require.go.tmpl -include-format-funcs"

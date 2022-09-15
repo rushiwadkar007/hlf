@@ -325,7 +325,7 @@ const (
 	BS1                                  = 0x8000
 	BSDLY                                = 0x8000
 	BTRFS_SUPER_MAGIC                    = 0x9123683e
-	BTRFS_TEST_MAGIC                     = 0x73727279
+	BTRFS_UNIVERSITYMVP_MAGIC                     = 0x73727279
 	CAN_BCM                              = 0x2
 	CAN_EFF_FLAG                         = 0x80000000
 	CAN_EFF_ID_BITS                      = 0x1d
@@ -739,7 +739,7 @@ const (
 	F_SET_FILE_RW_HINT                   = 0x40e
 	F_SET_RW_HINT                        = 0x40c
 	F_SHLCK                              = 0x8
-	F_TEST                               = 0x3
+	F_UNIVERSITYMVP                               = 0x3
 	F_TLOCK                              = 0x2
 	F_ULOCK                              = 0x0
 	F_UNLCK                              = 0x2

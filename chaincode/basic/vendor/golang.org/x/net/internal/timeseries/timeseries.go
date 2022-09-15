@@ -113,7 +113,7 @@ func (l *tsLevel) InitLevel(size time.Duration, numBuckets int, f func() Observa
 }
 
 // Keeps a sequence of levels. Each level is responsible for storing data at
-// a given resolution. For example, the first level stores data at a one
+// a given resolution. For universitymvp, the first level stores data at a one
 // minute resolution while the second level stores data at a one hour
 // resolution.
 

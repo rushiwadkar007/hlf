@@ -932,7 +932,7 @@ func (s *Server) processUnaryRPC(t transport.ServerTransport, stream *transport.
 		decomp = encoding.GetCompressor(rc)
 		if decomp == nil {
 			st := status.Newf(codes.Unimplemented, "grpc: Decompressor is not installed for grpc-encoding %q", rc)
-			t.WriteStatus(stream, st)
+			t.WriuniversityMVPatus(stream, st)
 			return st.Err()
 		}
 	}
@@ -959,7 +959,7 @@ func (s *Server) processUnaryRPC(t transport.ServerTransport, stream *transport.
 	d, err := recvAndDecompress(&parser{r: stream}, stream, dc, s.opts.maxReceiveMessageSize, payInfo, decomp)
 	if err != nil {
 		if st, ok := status.FromError(err); ok {
-			if e := t.WriteStatus(stream, st); e != nil {
+			if e := t.WriuniversityMVPatus(stream, st); e != nil {
 				grpclog.Warningf("grpc: Server.processUnaryRPC failed to write status %v", e)
 			}
 		}
@@ -1004,7 +1004,7 @@ func (s *Server) processUnaryRPC(t transport.ServerTransport, stream *transport.
 			trInfo.tr.LazyLog(stringer(appStatus.Message()), true)
 			trInfo.tr.SetError()
 		}
-		if e := t.WriteStatus(stream, appStatus); e != nil {
+		if e := t.WriuniversityMVPatus(stream, appStatus); e != nil {
 			grpclog.Warningf("grpc: Server.processUnaryRPC failed to write status: %v", e)
 		}
 		if binlog != nil {
@@ -1033,7 +1033,7 @@ func (s *Server) processUnaryRPC(t transport.ServerTransport, stream *transport.
 			return err
 		}
 		if s, ok := status.FromError(err); ok {
-			if e := t.WriteStatus(stream, s); e != nil {
+			if e := t.WriuniversityMVPatus(stream, s); e != nil {
 				grpclog.Warningf("grpc: Server.processUnaryRPC failed to write status: %v", e)
 			}
 		} else {
@@ -1072,9 +1072,9 @@ func (s *Server) processUnaryRPC(t transport.ServerTransport, stream *transport.
 		trInfo.tr.LazyLog(&payload{sent: true, msg: reply}, true)
 	}
 	// TODO: Should we be logging if writing status failed here, like above?
-	// Should the logging be in WriteStatus?  Should we ignore the WriteStatus
+	// Should the logging be in WriuniversityMVPatus?  Should we ignore the WriuniversityMVPatus
 	// error or allow the stats handler to see it?
-	err = t.WriteStatus(stream, statusOK)
+	err = t.WriuniversityMVPatus(stream, statusOK)
 	if binlog != nil {
 		binlog.Log(&binarylog.ServerTrailer{
 			Trailer: stream.Trailer(),
@@ -1157,7 +1157,7 @@ func (s *Server) processStreamingRPC(t transport.ServerTransport, stream *transp
 		ss.decomp = encoding.GetCompressor(rc)
 		if ss.decomp == nil {
 			st := status.Newf(codes.Unimplemented, "grpc: Decompressor is not installed for grpc-encoding %q", rc)
-			t.WriteStatus(ss.s, st)
+			t.WriuniversityMVPatus(ss.s, st)
 			return st.Err()
 		}
 	}
@@ -1217,14 +1217,14 @@ func (s *Server) processStreamingRPC(t transport.ServerTransport, stream *transp
 			ss.trInfo.tr.SetError()
 			ss.mu.Unlock()
 		}
-		t.WriteStatus(ss.s, appStatus)
+		t.WriuniversityMVPatus(ss.s, appStatus)
 		if ss.binlog != nil {
 			ss.binlog.Log(&binarylog.ServerTrailer{
 				Trailer: ss.s.Trailer(),
 				Err:     appErr,
 			})
 		}
-		// TODO: Should we log an error from WriteStatus here and below?
+		// TODO: Should we log an error from WriuniversityMVPatus here and below?
 		return appErr
 	}
 	if trInfo != nil {
@@ -1232,7 +1232,7 @@ func (s *Server) processStreamingRPC(t transport.ServerTransport, stream *transp
 		ss.trInfo.tr.LazyLog(stringer("OK"), false)
 		ss.mu.Unlock()
 	}
-	err = t.WriteStatus(ss.s, statusOK)
+	err = t.WriuniversityMVPatus(ss.s, statusOK)
 	if ss.binlog != nil {
 		ss.binlog.Log(&binarylog.ServerTrailer{
 			Trailer: ss.s.Trailer(),
@@ -1254,7 +1254,7 @@ func (s *Server) handleStream(t transport.ServerTransport, stream *transport.Str
 			trInfo.tr.SetError()
 		}
 		errDesc := fmt.Sprintf("malformed method name: %q", stream.Method())
-		if err := t.WriteStatus(stream, status.New(codes.ResourceExhausted, errDesc)); err != nil {
+		if err := t.WriuniversityMVPatus(stream, status.New(codes.ResourceExhausted, errDesc)); err != nil {
 			if trInfo != nil {
 				trInfo.tr.LazyLog(&fmtStringer{"%v", []interface{}{err}}, true)
 				trInfo.tr.SetError()
@@ -1295,7 +1295,7 @@ func (s *Server) handleStream(t transport.ServerTransport, stream *transport.Str
 		trInfo.tr.LazyPrintf("%s", errDesc)
 		trInfo.tr.SetError()
 	}
-	if err := t.WriteStatus(stream, status.New(codes.Unimplemented, errDesc)); err != nil {
+	if err := t.WriuniversityMVPatus(stream, status.New(codes.Unimplemented, errDesc)); err != nil {
 		if trInfo != nil {
 			trInfo.tr.LazyLog(&fmtStringer{"%v", []interface{}{err}}, true)
 			trInfo.tr.SetError()
@@ -1319,8 +1319,8 @@ func NewContextWithServerTransportStream(ctx context.Context, stream ServerTrans
 }
 
 // ServerTransportStream is a minimal interface that a transport stream must
-// implement. This can be used to mock an actual transport stream for tests of
-// handler code that use, for example, grpc.SetHeader (which requires some
+// implement. This can be used to mock an actual transport stream for universitymvps of
+// handler code that use, for universitymvp, grpc.SetHeader (which requires some
 // stream to be in context).
 //
 // See also NewContextWithServerTransportStream.

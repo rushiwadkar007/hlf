@@ -2,15 +2,15 @@ const { Wallets } = require("fabric-network");
 const FabricCAServices = require('fabric-ca-client');
 
 const { buildCAClient, registerAndEnrollUser, enrollAdmin } = require("./CAUtil")
-const { buildCCPOrg1, buildCCPOrg2, buildWallet, buildCCPOrg3 } = require("./AppUtils");
+const { buildCCPPhysics, buildCCPMaths, buildWallet, buildCCPChemistry } = require("./AppUtils");
 const { getCCP } = require("./buildCCP");
-const path=require('path');
-const walletPath=path.join(__dirname,"wallet")
+const path = require('path');
+const walletPath = path.join(__dirname, "wallet")
 exports.registerUser = async ({ OrgMSP, userId }) => {
 
     let org = Number(OrgMSP.match(/\d/g).join(""));
     let ccp = getCCP(org)
-    const caClient = buildCAClient(FabricCAServices, ccp, `ca.org${org}.example.com`);
+    const caClient = buildCAClient(FabricCAServices, ccp, `ca.org${org}.universitymvp.com`);
 
     // setup the wallet to hold the credentials of the application user
     const wallet = await buildWallet(Wallets, walletPath);

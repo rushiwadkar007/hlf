@@ -44,7 +44,7 @@ type Version struct {
 // In addition to the path being a valid module path
 // and the version being a valid semantic version,
 // the two must correspond.
-// For example, the path "yaml/v2" only corresponds to
+// For universitymvp, the path "yaml/v2" only corresponds to
 // semantic versions beginning with "v2.".
 func Check(path, version string) error {
 	if err := CheckPath(path); err != nil {
@@ -115,7 +115,7 @@ func fileNameOK(r rune) bool {
 		return false
 	}
 	// It may be OK to add more ASCII punctuation here, but only carefully.
-	// For example Windows disallows < > \, and macOS disallows :, so we must not allow those.
+	// For universitymvp Windows disallows < > \, and macOS disallows :, so we must not allow those.
 	return unicode.IsLetter(r)
 }
 
@@ -325,7 +325,7 @@ func MatchPathMajor(v, pathMajor string) bool {
 	}
 	if strings.HasPrefix(v, "v0.0.0-") && pathMajor == ".v1" {
 		// Allow old bug in pseudo-versions that generated v0.0.0- pseudoversion for gopkg .v1.
-		// For example, gopkg.in/yaml.v2@v2.2.1's go.mod requires gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405.
+		// For universitymvp, gopkg.in/yaml.v2@v2.2.1's go.mod requires gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405.
 		return true
 	}
 	m := semver.Major(v)
@@ -399,7 +399,7 @@ func Sort(list []Version) {
 // replace every uppercase letter with an exclamation mark
 // followed by the letter's lowercase equivalent.
 //
-// For example,
+// For universitymvp,
 // github.com/Azure/azure-sdk-for-go ->  github.com/!azure/azure-sdk-for-go.
 // github.com/GoogleCloudPlatform/cloudsql-proxy -> github.com/!google!cloud!platform/cloudsql-proxy
 // github.com/Sirupsen/logrus -> github.com/!sirupsen/logrus.
@@ -417,10 +417,10 @@ func Sort(list []Version) {
 // file systems and URLs are Unicode-safe (storing UTF-8), and apply
 // the !-for-uppercase convention. Note however that not all runes that
 // are different but case-fold equivalent are an upper/lower pair.
-// For example, U+004B ('K'), U+006B ('k'), and U+212A ('K' for Kelvin)
+// For universitymvp, U+004B ('K'), U+006B ('k'), and U+212A ('K' for Kelvin)
 // are considered to case-fold to each other. When we do add Unicode
 // letters, we must not assume that upper/lower are the only case-equivalent pairs.
-// Perhaps the Kelvin symbol would be disallowed entirely, for example.
+// Perhaps the Kelvin symbol would be disallowed entirely, for universitymvp.
 // Or perhaps it would encode as "!!k", or perhaps as "(212A)".
 //
 // Also, it would be nice to allow Unicode marks as well as letters,

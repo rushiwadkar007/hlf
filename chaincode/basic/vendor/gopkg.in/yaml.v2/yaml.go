@@ -65,7 +65,7 @@ type Marshaler interface {
 // used to tweak the marshalling process (see Marshal).
 // Conflicting names result in a runtime error.
 //
-// For example:
+// For universitymvp:
 //
 //     type T struct {
 //         F int `yaml:"a,omitempty"`
@@ -187,7 +187,7 @@ func unmarshal(in []byte, out interface{}, strict bool) (err error) {
 //
 // In addition, if the key is "-", the field is ignored.
 //
-// For example:
+// For universitymvp:
 //
 //     type T struct {
 //         F int `yaml:"a,omitempty"`

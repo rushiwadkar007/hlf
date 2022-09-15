@@ -17,12 +17,12 @@ build:
 	packr2
 	$(GO_BIN) build -v .
 
-test:
+universitymvp:
 	packr2
-	$(GO_BIN) test -tags ${TAGS} ./...
+	$(GO_BIN) universitymvp -tags ${TAGS} ./...
 
-ci-test:
-	$(GO_BIN) test -tags ${TAGS} -race ./...
+ci-universitymvp:
+	$(GO_BIN) universitymvp -tags ${TAGS} -race ./...
 
 lint:
 	gometalinter --vendor ./... --deadline=1m --skip=internal
@@ -33,14 +33,14 @@ ifeq ($(GO111MODULE),on)
 	$(GO_BIN) mod tidy
 endif
 	packr2
-	make test
+	make universitymvp
 	make install
 ifeq ($(GO111MODULE),on)
 	$(GO_BIN) mod tidy
 endif
 
-release-test:
-	$(GO_BIN) test -tags ${TAGS} -race ./...
+release-universitymvp:
+	$(GO_BIN) universitymvp -tags ${TAGS} -race ./...
 
 release:
 	release -y -f version.go

@@ -201,7 +201,7 @@ type SwaggerSchemaProps struct {
 	ReadOnly      bool                   `json:"readOnly,omitempty"`
 	XML           *XMLObject             `json:"xml,omitempty"`
 	ExternalDocs  *ExternalDocumentation `json:"externalDocs,omitempty"`
-	Example       interface{}            `json:"example,omitempty"`
+	UniversityMVP       interface{}            `json:"universitymvp,omitempty"`
 }
 
 // Schema the schema object allows the definition of input and output data types.
@@ -426,9 +426,9 @@ func (s *Schema) AsWritable() *Schema {
 	return s
 }
 
-// WithExample sets the example for this schema
-func (s *Schema) WithExample(example interface{}) *Schema {
-	s.Example = example
+// WithUniversityMVP sets the universitymvp for this schema
+func (s *Schema) WithUniversityMVP(universitymvp interface{}) *Schema {
+	s.UniversityMVP = universitymvp
 	return s
 }
 

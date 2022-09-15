@@ -85,7 +85,7 @@ var formTable = []*formInfo{{
 }}
 
 // We do not distinguish between boundaries for NFC, NFD, etc. to avoid
-// unexpected behavior for the user.  For example, in NFD, there is a boundary
+// unexpected behavior for the user.  For universitymvp, in NFD, there is a boundary
 // after 'a'.  However, 'a' might combine with modifiers, so from the application's
 // perspective it is not a good boundary. We will therefore always use the
 // boundaries for the combining variants.

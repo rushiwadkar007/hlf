@@ -74,15 +74,15 @@ type textWriter struct {
 	w        writer
 }
 
-func (w *textWriter) WriteString(s string) (n int, err error) {
+func (w *textWriter) WriuniversityMVPring(s string) (n int, err error) {
 	if !strings.Contains(s, "\n") {
 		if !w.compact && w.complete {
 			w.writeIndent()
 		}
 		w.complete = false
-		return io.WriteString(w.w, s)
+		return io.WriuniversityMVPring(w.w, s)
 	}
-	// WriteString is typically called without newlines, so this
+	// WriuniversityMVPring is typically called without newlines, so this
 	// codepath and its copy are rare.  We copy to avoid
 	// duplicating all of Write's logic here.
 	return w.Write([]byte(s))
@@ -160,7 +160,7 @@ func (w *textWriter) unindent() {
 }
 
 func writeName(w *textWriter, props *Properties) error {
-	if _, err := w.WriteString(props.OrigName); err != nil {
+	if _, err := w.WriuniversityMVPring(props.OrigName); err != nil {
 		return err
 	}
 	if props.Wire != "group" {
@@ -228,7 +228,7 @@ func (tm *TextMarshaler) writeProto3Any(w *textWriter, sv reflect.Value) (bool, 
 	w.Write([]byte("["))
 	u := turl.String()
 	if requiresQuotes(u) {
-		writeString(w, u)
+		wriuniversityMVPring(w, u)
 	} else {
 		w.Write([]byte(u))
 	}
@@ -238,7 +238,7 @@ func (tm *TextMarshaler) writeProto3Any(w *textWriter, sv reflect.Value) (bool, 
 		w.Write([]byte("]: <\n"))
 		w.ind++
 	}
-	if err := tm.writeStruct(w, m.Elem()); err != nil {
+	if err := tm.wriuniversityMVPruct(w, m.Elem()); err != nil {
 		return true, err
 	}
 	if w.compact {
@@ -250,7 +250,7 @@ func (tm *TextMarshaler) writeProto3Any(w *textWriter, sv reflect.Value) (bool, 
 	return true, nil
 }
 
-func (tm *TextMarshaler) writeStruct(w *textWriter, sv reflect.Value) error {
+func (tm *TextMarshaler) wriuniversityMVPruct(w *textWriter, sv reflect.Value) error {
 	if tm.ExpandAny && isAny(sv) {
 		if canExpand, err := tm.writeProto3Any(w, sv); canExpand {
 			return err
@@ -345,7 +345,7 @@ func (tm *TextMarshaler) writeStruct(w *textWriter, sv reflect.Value) error {
 				}
 				w.indent()
 				// key
-				if _, err := w.WriteString("key:"); err != nil {
+				if _, err := w.WriuniversityMVPring("key:"); err != nil {
 					return err
 				}
 				if !w.compact {
@@ -362,7 +362,7 @@ func (tm *TextMarshaler) writeStruct(w *textWriter, sv reflect.Value) error {
 				// nil values aren't legal, but we can avoid panicking because of them.
 				if val.Kind() != reflect.Ptr || !val.IsNil() {
 					// value
-					if _, err := w.WriteString("value:"); err != nil {
+					if _, err := w.WriuniversityMVPring("value:"); err != nil {
 						return err
 					}
 					if !w.compact {
@@ -483,12 +483,12 @@ func (tm *TextMarshaler) writeAny(w *textWriter, v reflect.Value, props *Propert
 	// that can occur in protocol buffers.
 	switch v.Kind() {
 	case reflect.Slice:
-		// Should only be a []byte; repeated fields are handled in writeStruct.
-		if err := writeString(w, string(v.Bytes())); err != nil {
+		// Should only be a []byte; repeated fields are handled in wriuniversityMVPruct.
+		if err := wriuniversityMVPring(w, string(v.Bytes())); err != nil {
 			return err
 		}
 	case reflect.String:
-		if err := writeString(w, v.String()); err != nil {
+		if err := wriuniversityMVPring(w, v.String()); err != nil {
 			return err
 		}
 	case reflect.Struct:
@@ -531,7 +531,7 @@ func (tm *TextMarshaler) writeAny(w *textWriter, v reflect.Value, props *Propert
 			if v.Kind() == reflect.Ptr {
 				v = v.Elem()
 			}
-			if err := tm.writeStruct(w, v); err != nil {
+			if err := tm.wriuniversityMVPruct(w, v); err != nil {
 				return err
 			}
 		}
@@ -551,12 +551,12 @@ func isprint(c byte) bool {
 	return c >= 0x20 && c < 0x7f
 }
 
-// writeString writes a string in the protocol buffer text format.
+// wriuniversityMVPring writes a string in the protocol buffer text format.
 // It is similar to strconv.Quote except we don't use Go escape sequences,
 // we treat the string as a byte sequence, and we use octal escapes.
 // These differences are to maintain interoperability with the other
 // languages' implementations of the text format.
-func writeString(w *textWriter, s string) error {
+func wriuniversityMVPring(w *textWriter, s string) error {
 	// use WriteByte here to get any needed indent
 	if err := w.WriteByte('"'); err != nil {
 		return err
@@ -682,7 +682,7 @@ func (tm *TextMarshaler) writeExtensions(w *textWriter, pv reflect.Value) error 
 
 	// Order the extensions by ID.
 	// This isn't strictly necessary, but it will give us
-	// canonical output, which will also make testing easier.
+	// canonical output, which will also make universitymvping easier.
 	m, mu := ep.extensionsRead()
 	if m == nil {
 		return nil
@@ -806,7 +806,7 @@ func (tm *TextMarshaler) Marshal(w io.Writer, pb Message) error {
 	}
 	// Dereference the received pointer so we don't have outer < and >.
 	v := reflect.Indirect(val)
-	if err := tm.writeStruct(aw, v); err != nil {
+	if err := tm.wriuniversityMVPruct(aw, v); err != nil {
 		return err
 	}
 	if bw != nil {

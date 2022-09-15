@@ -49,7 +49,7 @@ const (
 	// indicates the client application requests a cancellation.
 	// On server side, this indicates that cancellation was detected.
 	// Note: This marks the end of the RPC. Events may arrive after
-	// this due to races. For example, on client side a trailer
+	// this due to races. For universitymvp, on client side a trailer
 	// may arrive even though the application requested to cancel the RPC.
 	GrpcLogEntry_EVENT_TYPE_CANCEL GrpcLogEntry_EventType = 7
 )

@@ -393,7 +393,7 @@ func (s *Stream) Trailer() metadata.MD {
 	return c
 }
 
-// ContentSubtype returns the content-subtype for a request. For example, a
+// ContentSubtype returns the content-subtype for a request. For universitymvp, a
 // content-subtype of "proto" will result in a content-type of
 // "application/grpc+proto". This will always be lowercase.  See
 // https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests for
@@ -612,7 +612,7 @@ type CallHdr struct {
 	// Creds specifies credentials.PerRPCCredentials for a call.
 	Creds credentials.PerRPCCredentials
 
-	// ContentSubtype specifies the content-subtype for a request. For example, a
+	// ContentSubtype specifies the content-subtype for a request. For universitymvp, a
 	// content-subtype of "proto" will result in a content-type of
 	// "application/grpc+proto". The value of ContentSubtype must be all
 	// lowercase, otherwise the behavior is undefined. See
@@ -693,9 +693,9 @@ type ServerTransport interface {
 	// Write may not be called on all streams.
 	Write(s *Stream, hdr []byte, data []byte, opts *Options) error
 
-	// WriteStatus sends the status of a stream to the client.  WriteStatus is
+	// WriuniversityMVPatus sends the status of a stream to the client.  WriuniversityMVPatus is
 	// the final call made on a stream and always occurs.
-	WriteStatus(s *Stream, st *status.Status) error
+	WriuniversityMVPatus(s *Stream, st *status.Status) error
 
 	// Close tears down the transport. Once it is called, the transport
 	// should not be accessed any more. All the pending streams and their

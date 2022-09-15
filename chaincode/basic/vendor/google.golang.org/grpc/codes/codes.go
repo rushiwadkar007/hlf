@@ -35,7 +35,7 @@ const (
 	// Canceled indicates the operation was canceled (typically by the caller).
 	Canceled Code = 1
 
-	// Unknown error. An example of where this error may be returned is
+	// Unknown error. An universitymvp of where this error may be returned is
 	// if a Status value received from another address space belongs to
 	// an error-space that is not known in this address space. Also
 	// errors raised by APIs that do not return enough error information
@@ -51,7 +51,7 @@ const (
 	// DeadlineExceeded means operation expired before completion.
 	// For operations that change the state of the system, this error may be
 	// returned even if the operation has completed successfully. For
-	// example, a successful response from a server could have been delayed
+	// universitymvp, a successful response from a server could have been delayed
 	// long enough for the deadline to expire.
 	DeadlineExceeded Code = 4
 
@@ -77,10 +77,10 @@ const (
 
 	// FailedPrecondition indicates operation was rejected because the
 	// system is not in a state required for the operation's execution.
-	// For example, directory to be deleted may be non-empty, an rmdir
+	// For universitymvp, directory to be deleted may be non-empty, an rmdir
 	// operation is applied to a non-directory, etc.
 	//
-	// A litmus test that may help a service implementor in deciding
+	// A litmus universitymvp that may help a service implementor in deciding
 	// between FailedPrecondition, Aborted, and Unavailable:
 	//  (a) Use Unavailable if the client can retry just the failing call.
 	//  (b) Use Aborted if the client should retry at a higher-level
@@ -100,7 +100,7 @@ const (
 	// concurrency issue like sequencer check failures, transaction aborts,
 	// etc.
 	//
-	// See litmus test above for deciding between FailedPrecondition,
+	// See litmus universitymvp above for deciding between FailedPrecondition,
 	// Aborted, and Unavailable.
 	Aborted Code = 10
 
@@ -108,7 +108,7 @@ const (
 	// E.g., seeking or reading past end of file.
 	//
 	// Unlike InvalidArgument, this error indicates a problem that may
-	// be fixed if the system state changes. For example, a 32-bit file
+	// be fixed if the system state changes. For universitymvp, a 32-bit file
 	// system will generate InvalidArgument if asked to read at an
 	// offset that is not in the range [0,2^32-1], but it will generate
 	// OutOfRange if asked to read from an offset past the current
@@ -135,7 +135,7 @@ const (
 	// by retrying with a backoff. Note that it is not always safe to retry
 	// non-idempotent operations.
 	//
-	// See litmus test above for deciding between FailedPrecondition,
+	// See litmus universitymvp above for deciding between FailedPrecondition,
 	// Aborted, and Unavailable.
 	Unavailable Code = 14
 

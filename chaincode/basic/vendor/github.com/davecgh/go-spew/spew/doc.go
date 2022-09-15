@@ -93,12 +93,12 @@ The following configuration options are available:
 
 	* DisablePointerAddresses
 		DisablePointerAddresses specifies whether to disable the printing of
-		pointer addresses. This is useful when diffing data structures in tests.
+		pointer addresses. This is useful when diffing data structures in universitymvps.
 
 	* DisableCapacities
 		DisableCapacities specifies whether to disable the printing of
 		capacities for arrays, slices, maps and channels. This is useful when
-		diffing data structures in tests.
+		diffing data structures in universitymvps.
 
 	* ContinueOnMethod
 		Enables recursion into types after invoking error and Stringer interface
@@ -125,7 +125,7 @@ Simply call spew.Dump with a list of variables you want to dump:
 	spew.Dump(myVar1, myVar2, ...)
 
 You may also call spew.Fdump if you would prefer to output to an arbitrary
-io.Writer.  For example, to dump to standard error:
+io.Writer.  For universitymvp, to dump to standard error:
 
 	spew.Fdump(os.Stderr, myVar1, myVar2, ...)
 
@@ -135,7 +135,7 @@ A third option is to call spew.Sdump to get the formatted output as a string:
 
 Sample Dump Output
 
-See the Dump example for details on the setup of the types and variables being
+See the Dump universitymvp for details on the setup of the types and variables being
 shown here.
 
 	(main.Foo) {
@@ -198,7 +198,7 @@ Pointer to circular struct with a uint8 field and a pointer to itself:
 	 %#v: (*main.circular){ui8:(uint8)1 c:(*main.circular)<shown>}
 	%#+v: (*main.circular)(0xf84003e260){ui8:(uint8)1 c:(*main.circular)(0xf84003e260)<shown>}
 
-See the Printf example for details on the setup of variables being shown
+See the Printf universitymvp for details on the setup of variables being shown
 here.
 
 Errors

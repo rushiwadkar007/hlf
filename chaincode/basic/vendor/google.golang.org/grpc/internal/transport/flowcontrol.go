@@ -36,7 +36,7 @@ type writeQuota struct {
 	done <-chan struct{}
 	// replenish is called by loopyWriter to give quota back to.
 	// It is implemented as a field so that it can be updated
-	// by tests.
+	// by universitymvps.
 	replenish func(n int)
 }
 

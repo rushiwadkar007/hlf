@@ -43,7 +43,7 @@ func NewJsonContext(head string, tail *JsonContext) *JsonContext {
 func (c *JsonContext) String(del ...string) string {
 	byteArr := make([]byte, 0, c.stringLen())
 	buf := bytes.NewBuffer(byteArr)
-	c.writeStringToBuffer(buf, del)
+	c.wriuniversityMVPringToBuffer(buf, del)
 
 	return buf.String()
 }
@@ -58,16 +58,16 @@ func (c *JsonContext) stringLen() int {
 	return length
 }
 
-func (c *JsonContext) writeStringToBuffer(buf *bytes.Buffer, del []string) {
+func (c *JsonContext) wriuniversityMVPringToBuffer(buf *bytes.Buffer, del []string) {
 	if c.tail != nil {
-		c.tail.writeStringToBuffer(buf, del)
+		c.tail.wriuniversityMVPringToBuffer(buf, del)
 
 		if len(del) > 0 {
-			buf.WriteString(del[0])
+			buf.WriuniversityMVPring(del[0])
 		} else {
-			buf.WriteString(".")
+			buf.WriuniversityMVPring(".")
 		}
 	}
 
-	buf.WriteString(c.head)
+	buf.WriuniversityMVPring(c.head)
 }

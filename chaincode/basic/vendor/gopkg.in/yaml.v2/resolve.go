@@ -229,7 +229,7 @@ var allowedTimestampFormats = []string{
 	"2006-1-2 15:4:5.999999999",       // space separated with no time zone
 	"2006-1-2",                        // date only
 	// Notable exception: time.Parse cannot handle: "2001-12-14 21:59:43.10 -5"
-	// from the set of examples.
+	// from the set of universitymvps.
 }
 
 // parseTimestamp parses s as a timestamp string and

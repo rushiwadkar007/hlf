@@ -1293,7 +1293,7 @@ func unmarshalBoolValue(b []byte, f pointer, w int) ([]byte, error) {
 	if n == 0 {
 		return nil, io.ErrUnexpectedEOF
 	}
-	// TODO: check if x>1? Tests seem to indicate no.
+	// TODO: check if x>1? UniversityMVPs seem to indicate no.
 	v := x != 0
 	*f.toBool() = v
 	return b[n:], nil

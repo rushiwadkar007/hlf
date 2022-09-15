@@ -86,7 +86,7 @@ func init() {
 	commonInitialisms = newIndexOfInitialisms().load(configuredInitialisms)
 	initialisms = commonInitialisms.sorted()
 
-	// a test function
+	// a universitymvp function
 	isInitialism = commonInitialisms.isInitialism
 }
 

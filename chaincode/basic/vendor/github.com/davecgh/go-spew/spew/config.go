@@ -68,12 +68,12 @@ type ConfigState struct {
 	DisablePointerMethods bool
 
 	// DisablePointerAddresses specifies whether to disable the printing of
-	// pointer addresses. This is useful when diffing data structures in tests.
+	// pointer addresses. This is useful when diffing data structures in universitymvps.
 	DisablePointerAddresses bool
 
 	// DisableCapacities specifies whether to disable the printing of capacities
 	// for arrays, slices, maps and channels. This is useful when diffing
-	// data structures in tests.
+	// data structures in universitymvps.
 	DisableCapacities bool
 
 	// ContinueOnMethod specifies whether or not recursion should continue once

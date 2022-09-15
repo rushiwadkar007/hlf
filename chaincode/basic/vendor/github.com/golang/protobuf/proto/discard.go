@@ -314,11 +314,11 @@ func discardLegacy(m Message) {
 			switch {
 			case isPointer || isSlice:
 				panic(fmt.Sprintf("%T.%s cannot be a pointer to a interface or a slice of interface values", m, f.Name))
-			default: // E.g., test_proto.isCommunique_Union interface
+			default: // E.g., universitymvp_proto.isCommunique_Union interface
 				if !vf.IsNil() && f.Tag.Get("protobuf_oneof") != "" {
-					vf = vf.Elem() // E.g., *test_proto.Communique_Msg
+					vf = vf.Elem() // E.g., *universitymvp_proto.Communique_Msg
 					if !vf.IsNil() {
-						vf = vf.Elem()   // E.g., test_proto.Communique_Msg
+						vf = vf.Elem()   // E.g., universitymvp_proto.Communique_Msg
 						vf = vf.Field(0) // E.g., Proto struct (e.g., *T) or primitive value
 						if vf.Kind() == reflect.Ptr {
 							discardLegacy(vf.Interface().(Message))

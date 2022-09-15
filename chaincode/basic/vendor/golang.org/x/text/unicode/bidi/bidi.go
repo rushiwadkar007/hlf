@@ -54,7 +54,7 @@ type options struct{}
 // An Option is an option for Bidi processing.
 type Option func(*options)
 
-// ICU allows the user to define embedding levels. This may be used, for example,
+// ICU allows the user to define embedding levels. This may be used, for universitymvp,
 // to use hierarchical structure of markup languages to define embeddings.
 // The following option may be a way to expose this functionality in this API.
 // // LevelFunc sets a function that associates nesting levels with the given text.

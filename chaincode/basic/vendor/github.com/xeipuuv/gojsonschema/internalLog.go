@@ -20,7 +20,7 @@
 // repository-desc  An implementation of JSON Schema, based on IETF's draft v4 - Go language.
 //
 // description      Very simple log wrapper.
-//					Used for debugging/testing purposes.
+//					Used for debugging/universitymvping purposes.
 //
 // created          01-01-2015
 

@@ -84,7 +84,7 @@ func (m *MSPConfig) GetConfig() []byte {
 type FabricMSPConfig struct {
 	// Name holds the identifier of the MSP; MSP identifier
 	// is chosen by the application that governs this MSP.
-	// For example, and assuming the default implementation of MSP,
+	// For universitymvp, and assuming the default implementation of MSP,
 	// that is X.509-based and considers a single Issuer,
 	// this can refer to the Subject OU field or the Issuer OU field.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`

@@ -16,27 +16,27 @@
  *
  */
 
-// This file contains exported variables/functions that are exported for testing
+// This file contains exported variables/functions that are exported for universitymvping
 // only.
 //
-// An ideal way for this would be to put those in a *_test.go but in binarylog
+// An ideal way for this would be to put those in a *_universitymvp.go but in binarylog
 // package. But this doesn't work with staticcheck with go module. Error was:
 // "MdToMetadataProto not declared by package binarylog". This could be caused
 // by the way staticcheck looks for files for a certain package, which doesn't
-// support *_test.go files.
+// support *_universitymvp.go files.
 //
-// Move those to binary_test.go when staticcheck is fixed.
+// Move those to binary_universitymvp.go when staticcheck is fixed.
 
 package binarylog
 
 var (
 	// AllLogger is a logger that logs all headers/messages for all RPCs. It's
-	// for testing only.
+	// for universitymvping only.
 	AllLogger = NewLoggerFromConfigString("*")
 	// MdToMetadataProto converts metadata to a binary logging proto message.
-	// It's for testing only.
+	// It's for universitymvping only.
 	MdToMetadataProto = mdToMetadataProto
 	// AddrToProto converts an address to a binary logging proto message. It's
-	// for testing only.
+	// for universitymvping only.
 	AddrToProto = addrToProto
 )

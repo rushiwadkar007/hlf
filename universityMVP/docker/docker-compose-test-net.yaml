@@ -6,27 +6,27 @@
 version: "3"
 
 volumes:
-  ordererexamplecom:
-  orderer2examplecom:
-  orderer3examplecom:
-  orderer4examplecom:
-  orderer5examplecom:
-  peer0org1examplecom:
-  peer0org2examplecom:
-  peer0org3examplecom:
+  ordereruniversitymvpcom:
+  orderer2universitymvpcom:
+  orderer3universitymvpcom:
+  orderer4universitymvpcom:
+  orderer5universitymvpcom:
+  peer0physicsuniversitymvpcom:
+  peer0mathsuniversitymvpcom:
+  peer0chemistryuniversitymvpcom:
 
 networks:
-  test:
+  universitymvp:
     external:
-      name: test
+      name: universitymvp
 
 services:
-  ordererexamplecom:
+  ordereruniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
-    container_name: orderer.example.com
+    container_name: orderer.universitymvp.com
     image: hyperledger/fabric-orderer:2.3
     environment:
       - FABRIC_LOGGING_SPEC=INFO
@@ -49,22 +49,22 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-      - /home/ubuntu/hlf-docker-swarm/test-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
-      - ordererexamplecom:/var/hyperledger/production/orderer
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/msp:/var/hyperledger/orderer/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/tls/:/var/hyperledger/orderer/tls
+      - ordereruniversitymvpcom:/var/hyperledger/production/orderer
     ports:
       - 7050:7050
     networks:
-      test:
+      universitymvp:
         aliases:
-          - orderer.example.com
-  orderer2examplecom:
+          - orderer.universitymvp.com
+  orderer2universitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
-    container_name: orderer2.example.com
+    container_name: orderer2.universitymvp.com
     image: hyperledger/fabric-orderer:2.3
     environment:
       - FABRIC_LOGGING_SPEC=INFO
@@ -87,23 +87,23 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-      - /home/ubuntu/hlf-docker-swarm/test-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
-      - orderer2examplecom:/var/hyperledger/production/orderer
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer2.universitymvp.com/msp:/var/hyperledger/orderer/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer2.universitymvp.com/tls/:/var/hyperledger/orderer/tls
+      - orderer2universitymvpcom:/var/hyperledger/production/orderer
     ports:
       - 8050:7050
     networks:
-      test:
+      universitymvp:
         aliases:
-          - orderer2.example.com
+          - orderer2.universitymvp.com
 
-  orderer3examplecom:
+  orderer3universitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
-    container_name: orderer3.example.com
+    container_name: orderer3.universitymvp.com
     image: hyperledger/fabric-orderer:2.3
     environment:
       - FABRIC_LOGGING_SPEC=INFO
@@ -126,23 +126,23 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-      - /home/ubuntu/hlf-docker-swarm/test-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
-      - orderer3examplecom:/var/hyperledger/production/orderer
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer3.universitymvp.com/msp:/var/hyperledger/orderer/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer3.universitymvp.com/tls/:/var/hyperledger/orderer/tls
+      - orderer3universitymvpcom:/var/hyperledger/production/orderer
     ports:
       - 9050:7050
     networks:
-      test:
+      universitymvp:
         aliases:
-          - orderer3.example.com
+          - orderer3.universitymvp.com
 
-  orderer4examplecom:
+  orderer4universitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
-    container_name: orderer4.example.com
+    container_name: orderer4.universitymvp.com
     image: hyperledger/fabric-orderer:2.3
     environment:
       - FABRIC_LOGGING_SPEC=INFO
@@ -165,23 +165,23 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-      - /home/ubuntu/hlf-docker-swarm/test-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
-      - orderer4examplecom:/var/hyperledger/production/orderer
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer4.universitymvp.com/msp:/var/hyperledger/orderer/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer4.universitymvp.com/tls/:/var/hyperledger/orderer/tls
+      - orderer4universitymvpcom:/var/hyperledger/production/orderer
     ports:
       - 10050:7050
     networks:
-      test:
+      universitymvp:
         aliases:
-          - orderer4.example.com
+          - orderer4.universitymvp.com
 
-  orderer5examplecom:
+  orderer5universitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
-    container_name: orderer5.example.com
+    container_name: orderer5.universitymvp.com
     image: hyperledger/fabric-orderer:2.3
     environment:
       - FABRIC_LOGGING_SPEC=INFO
@@ -204,23 +204,23 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-      - /home/ubuntu/hlf-docker-swarm/test-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/msp:/var/hyperledger/orderer/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/:/var/hyperledger/orderer/tls
-      - orderer5examplecom:/var/hyperledger/production/orderer
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer5.universitymvp.com/msp:/var/hyperledger/orderer/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/ordererOrganizations/universitymvp.com/orderers/orderer5.universitymvp.com/tls/:/var/hyperledger/orderer/tls
+      - orderer5universitymvpcom:/var/hyperledger/production/orderer
     ports:
       - 11050:7050
     networks:
-      test:
+      universitymvp:
         aliases:
-          - orderer5.example.com
+          - orderer5.universitymvp.com
 
-  peer0org1examplecom:
+  peer0physicsuniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == manager
-    container_name: peer0.org1.example.com
+    container_name: peer0.physics.universitymvp.com
     image: hyperledger/fabric-peer:2.3
     environment:
       #Generic peer variables
@@ -228,7 +228,7 @@ services:
       # the following setting starts chaincode containers on the same
       # bridge network as the peers
       # https://docs.docker.com/compose/networking/
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=universitymvp
       - FABRIC_LOGGING_SPEC=INFO
       #- FABRIC_LOGGING_SPEC=DEBUG
       - CORE_PEER_TLS_ENABLED=true
@@ -238,37 +238,37 @@ services:
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
       # Peer specific variabes
-      - CORE_PEER_ID=peer0.org1.example.com
-      - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+      - CORE_PEER_ID=peer0.physics.universitymvp.com
+      - CORE_PEER_ADDRESS=peer0.physics.universitymvp.com:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org1.example.com:7052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.physics.universitymvp.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.example.com:7051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.example.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.physics.universitymvp.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.physics.universitymvp.com:7051
+      - CORE_PEER_LOCALMSPID=PhysicsMSP
       - CORE_PEER_GOSSIP_USELEADERELECTION=true
       - CORE_PEER_GOSSIP_ORGLEADER=false
       - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false
     volumes:
       - /var/run/:/host/var/run/
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls
-      - peer0org1examplecom:/var/hyperledger/production
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/msp:/etc/hyperledger/fabric/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls:/etc/hyperledger/fabric/tls
+      - peer0physicsuniversitymvpcom:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
       - 7051:7051
     networks:
-      test:
+      universitymvp:
         aliases:
-          - peer0.org1.example.com
+          - peer0.physics.universitymvp.com
 
-  peer0org2examplecom:
+  peer0mathsuniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == worker1
-    container_name: peer0.org2.example.com
+    container_name: peer0.maths.universitymvp.com
     image: hyperledger/fabric-peer:2.3
     environment:
       #Generic peer variables
@@ -276,7 +276,7 @@ services:
       # the following setting starts chaincode containers on the same
       # bridge network as the peers
       # https://docs.docker.com/compose/networking/
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=universitymvp
       - FABRIC_LOGGING_SPEC=INFO
       #- FABRIC_LOGGING_SPEC=DEBUG
       - CORE_PEER_TLS_ENABLED=true
@@ -286,37 +286,37 @@ services:
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
       # Peer specific variabes
-      - CORE_PEER_ID=peer0.org2.example.com
-      - CORE_PEER_ADDRESS=peer0.org2.example.com:9051
+      - CORE_PEER_ID=peer0.maths.universitymvp.com
+      - CORE_PEER_ADDRESS=peer0.maths.universitymvp.com:9051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.example.com:9052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.maths.universitymvp.com:9052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.example.com:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.example.com:9051
-      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.maths.universitymvp.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.maths.universitymvp.com:9051
+      - CORE_PEER_LOCALMSPID=MathsMSP
       - CORE_PEER_GOSSIP_USELEADERELECTION=true
       - CORE_PEER_GOSSIP_ORGLEADER=false
       - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false
     volumes:
       - /var/run/:/host/var/run/
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/etc/hyperledger/fabric/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/etc/hyperledger/fabric/tls
-      - peer0org2examplecom:/var/hyperledger/production
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/msp:/etc/hyperledger/fabric/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls:/etc/hyperledger/fabric/tls
+      - peer0mathsuniversitymvpcom:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
       - 9051:9051
     networks:
-      test:
+      universitymvp:
         aliases:
-          - peer0.org2.example.com
+          - peer0.maths.universitymvp.com
 
-  peer0org3examplecom:
+  peer0chemistryuniversitymvpcom:
     deploy:
       placement:
         constraints:
           - node.labels.name == worker2
-    container_name: peer0.org3.example.com
+    container_name: peer0.chemistry.universitymvp.com
     image: hyperledger/fabric-peer:2.3
     environment:
       #Generic peer variables
@@ -324,7 +324,7 @@ services:
       # the following setting starts chaincode containers on the same
       # bridge network as the peers
       # https://docs.docker.com/compose/networking/
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=universitymvp
       - FABRIC_LOGGING_SPEC=INFO
       #- FABRIC_LOGGING_SPEC=DEBUG
       - CORE_PEER_TLS_ENABLED=true
@@ -334,27 +334,27 @@ services:
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
       # Peer specific variabes
-      - CORE_PEER_ID=peer0.org3.example.com
-      - CORE_PEER_ADDRESS=peer0.org3.example.com:11051
+      - CORE_PEER_ID=peer0.chemistry.universitymvp.com
+      - CORE_PEER_ADDRESS=peer0.chemistry.universitymvp.com:11051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org3.example.com:11052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.chemistry.universitymvp.com:11052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.example.com:11051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org3.example.com:11051
-      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.chemistry.universitymvp.com:11051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.chemistry.universitymvp.com:11051
+      - CORE_PEER_LOCALMSPID=ChemistryMSP
       - CORE_PEER_GOSSIP_USELEADERELECTION=true
       - CORE_PEER_GOSSIP_ORGLEADER=false
       - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false
     volumes:
       - /var/run/:/host/var/run/
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/msp:/etc/hyperledger/fabric/msp
-      - /home/ubuntu/hlf-docker-swarm/test-network/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls:/etc/hyperledger/fabric/tls
-      - peer0org3examplecom:/var/hyperledger/production
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/msp:/etc/hyperledger/fabric/msp
+      - /home/ubuntu/hlf-docker-swarm/universitymvp-network/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls:/etc/hyperledger/fabric/tls
+      - peer0chemistryuniversitymvpcom:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
       - 11051:11051
     networks:
-      test:
+      universitymvp:
         aliases:
-          - peer0.org3.example.com
+          - peer0.chemistry.universitymvp.com

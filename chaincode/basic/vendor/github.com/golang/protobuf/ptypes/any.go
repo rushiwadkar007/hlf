@@ -74,7 +74,7 @@ func MarshalAny(pb proto.Message) (*any.Any, error) {
 // allocate a proto.Message for the type specified in a google.protobuf.Any
 // message. The allocated message is stored in the embedded proto.Message.
 //
-// Example:
+// UniversityMVP:
 //
 //   var x ptypes.DynamicAny
 //   if err := ptypes.UnmarshalAny(a, &x); err != nil { ... }

@@ -1,4 +1,4 @@
-all: vet test testrace
+all: vet universitymvp universitymvprace
 
 build: deps
 	go build google.golang.org/grpc/...
@@ -16,25 +16,25 @@ proto:
 	fi
 	go generate google.golang.org/grpc/...
 
-test: testdeps
-	go test -cpu 1,4 -timeout 7m google.golang.org/grpc/...
+universitymvp: universitymvpdeps
+	go universitymvp -cpu 1,4 -timeout 7m google.golang.org/grpc/...
 
-testappengine: testappenginedeps
-	goapp test -cpu 1,4 -timeout 7m google.golang.org/grpc/...
+universitymvpappengine: universitymvpappenginedeps
+	goapp universitymvp -cpu 1,4 -timeout 7m google.golang.org/grpc/...
 
-testappenginedeps:
+universitymvpappenginedeps:
 	goapp get -d -v -t -tags 'appengine appenginevm' google.golang.org/grpc/...
 
-testdeps:
+universitymvpdeps:
 	go get -d -v -t google.golang.org/grpc/...
 
-testrace: testdeps
-	go test -race -cpu 1,4 -timeout 7m google.golang.org/grpc/...
+universitymvprace: universitymvpdeps
+	go universitymvp -race -cpu 1,4 -timeout 7m google.golang.org/grpc/...
 
 updatedeps:
 	go get -d -v -u -f google.golang.org/grpc/...
 
-updatetestdeps:
+updateuniversitymvpdeps:
 	go get -d -v -t -u -f google.golang.org/grpc/...
 
 vet: vetdeps
@@ -49,12 +49,12 @@ vetdeps:
 	clean \
 	deps \
 	proto \
-	test \
-	testappengine \
-	testappenginedeps \
-	testdeps \
-	testrace \
+	universitymvp \
+	universitymvpappengine \
+	universitymvpappenginedeps \
+	universitymvpdeps \
+	universitymvprace \
 	updatedeps \
-	updatetestdeps \
+	updateuniversitymvpdeps \
 	vet \
 	vetdeps

@@ -41,8 +41,8 @@ func YAMLToJSON(data interface{}) (json.RawMessage, error) {
 	return json.RawMessage(b), err
 }
 
-// BytesToYAMLDoc converts a byte slice into a YAML document
-func BytesToYAMLDoc(data []byte) (interface{}, error) {
+// ByuniversityMVPoYAMLDoc converts a byte slice into a YAML document
+func ByuniversityMVPoYAMLDoc(data []byte) (interface{}, error) {
 	var canary map[interface{}]interface{} // validate this is an object and not a different type
 	if err := yaml.Unmarshal(data, &canary); err != nil {
 		return nil, err
@@ -242,5 +242,5 @@ func YAMLData(path string) (interface{}, error) {
 		return nil, err
 	}
 
-	return BytesToYAMLDoc(data)
+	return ByuniversityMVPoYAMLDoc(data)
 }

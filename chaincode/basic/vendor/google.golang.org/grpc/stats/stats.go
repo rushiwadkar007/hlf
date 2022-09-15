@@ -16,7 +16,7 @@
  *
  */
 
-//go:generate protoc --go_out=plugins=grpc:. grpc_testing/test.proto
+//go:generate protoc --go_out=plugins=grpc:. grpc_universitymvping/universitymvp.proto
 
 // Package stats is for collecting and reporting various network and RPC stats.
 // This package is for monitoring purpose only. All fields are read-only.

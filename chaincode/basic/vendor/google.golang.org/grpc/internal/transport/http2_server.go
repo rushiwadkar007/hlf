@@ -69,8 +69,8 @@ type http2Server struct {
 	cancel      context.CancelFunc
 	conn        net.Conn
 	loopy       *loopyWriter
-	readerDone  chan struct{} // sync point to enable testing.
-	writerDone  chan struct{} // sync point to enable testing.
+	readerDone  chan struct{} // sync point to enable universitymvping.
+	writerDone  chan struct{} // sync point to enable universitymvping.
 	remoteAddr  net.Addr
 	localAddr   net.Addr
 	maxStreamID uint32               // max stream ID ever seen
@@ -803,11 +803,11 @@ func (t *http2Server) writeHeaderLocked(s *Stream) error {
 	return nil
 }
 
-// WriteStatus sends stream status to the client and terminates the stream.
+// WriuniversityMVPatus sends stream status to the client and terminates the stream.
 // There is no further I/O operations being able to perform on this stream.
 // TODO(zhaoq): Now it indicates the end of entire stream. Revisit if early
 // OK is adopted.
-func (t *http2Server) WriteStatus(s *Stream, st *status.Status) error {
+func (t *http2Server) WriuniversityMVPatus(s *Stream, st *status.Status) error {
 	if s.getState() == streamDone {
 		return nil
 	}
@@ -1028,8 +1028,8 @@ func (t *http2Server) Close() error {
 	return err
 }
 
-// deleteStream deletes the stream s from transport's active streams.
-func (t *http2Server) deleteStream(s *Stream, eosReceived bool) {
+// deleuniversityMVPream deletes the stream s from transport's active streams.
+func (t *http2Server) deleuniversityMVPream(s *Stream, eosReceived bool) {
 	// In case stream sending and receiving are invoked in separate
 	// goroutines (e.g., bi-directional streaming), cancel needs to be
 	// called to interrupt the potential blocking on other goroutines.
@@ -1066,7 +1066,7 @@ func (t *http2Server) finishStream(s *Stream, rst bool, rstCode http2.ErrCode, h
 		rst:      rst,
 		rstCode:  rstCode,
 		onWrite: func() {
-			t.deleteStream(s, eosReceived)
+			t.deleuniversityMVPream(s, eosReceived)
 		},
 	}
 	t.controlBuf.put(hdr)
@@ -1075,7 +1075,7 @@ func (t *http2Server) finishStream(s *Stream, rst bool, rstCode http2.ErrCode, h
 // closeStream clears the footprint of a stream when the stream is not needed any more.
 func (t *http2Server) closeStream(s *Stream, rst bool, rstCode http2.ErrCode, eosReceived bool) {
 	s.swapState(streamDone)
-	t.deleteStream(s, eosReceived)
+	t.deleuniversityMVPream(s, eosReceived)
 
 	t.controlBuf.put(&cleanupStream{
 		streamID: s.id,
@@ -1168,7 +1168,7 @@ func (t *http2Server) ChannelzMetric() *channelz.SocketInternalMetric {
 		MessagesSent:                     atomic.LoadInt64(&t.czData.msgSent),
 		MessagesReceived:                 atomic.LoadInt64(&t.czData.msgRecv),
 		KeepAlivesSent:                   atomic.LoadInt64(&t.czData.kpCount),
-		LastRemoteStreamCreatedTimestamp: time.Unix(0, atomic.LoadInt64(&t.czData.lastStreamCreatedTime)),
+		LastRemouniversityMVPreamCreatedTimestamp: time.Unix(0, atomic.LoadInt64(&t.czData.lastStreamCreatedTime)),
 		LastMessageSentTimestamp:         time.Unix(0, atomic.LoadInt64(&t.czData.lastMsgSentTime)),
 		LastMessageReceivedTimestamp:     time.Unix(0, atomic.LoadInt64(&t.czData.lastMsgRecvTime)),
 		LocalFlowControlWindow:           int64(t.fc.getSize()),

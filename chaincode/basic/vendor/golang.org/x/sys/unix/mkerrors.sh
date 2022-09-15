@@ -11,7 +11,7 @@ unset LANG
 export LC_ALL=C
 export LC_CTYPE=C
 
-if test -z "$GOARCH" -o -z "$GOOS"; then
+if universitymvp -z "$GOARCH" -o -z "$GOOS"; then
 	echo 1>&2 "GOARCH or GOOS not defined in environment"
 	exit 1
 fi

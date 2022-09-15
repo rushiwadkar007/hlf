@@ -204,7 +204,7 @@ func Render(w io.Writer, req *http.Request, sensitive bool) {
 
 	data.ShowSensitive = sensitive
 	if req != nil {
-		// Allow show_sensitive=0 to force hiding of sensitive data for testing.
+		// Allow show_sensitive=0 to force hiding of sensitive data for universitymvping.
 		// This only goes one way; you can't use show_sensitive=1 to see things.
 		if req.FormValue("show_sensitive") == "0" {
 			data.ShowSensitive = false

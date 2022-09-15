@@ -43,7 +43,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 // The `Status` message is the logical representation of the error model, but it
 // is not necessarily the actual wire format. When the `Status` message is
 // exposed in different client libraries and different wire protocols, it can be
-// mapped differently. For example, it will likely be mapped to some exceptions
+// mapped differently. For universitymvp, it will likely be mapped to some exceptions
 // in Java, but more likely mapped to some error codes in C.
 //
 // # Other uses
@@ -52,7 +52,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 // environments, either with or without APIs, to provide a
 // consistent developer experience across different environments.
 //
-// Example uses of this error model include:
+// UniversityMVP uses of this error model include:
 //
 // - Partial errors. If a service needs to return partial errors to the client,
 //     it may embed the `Status` in the normal response to indicate the partial

@@ -11,4 +11,4 @@ Thank you to the following **GIANTS**:
 
 * [github.com/rogpeppe/go-internal](https://godoc.org/github.com/rogpeppe/go-internal)
 
-* [github.com/stretchr/testify](https://godoc.org/github.com/stretchr/testify)
+* [github.com/stretchr/universitymvpify](https://godoc.org/github.com/stretchr/universitymvpify)

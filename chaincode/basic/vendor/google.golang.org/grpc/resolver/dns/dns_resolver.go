@@ -212,8 +212,8 @@ type dnsResolver struct {
 	rn chan struct{}
 	t  *time.Timer
 	// wg is used to enforce Close() to return after the watcher() goroutine has finished.
-	// Otherwise, data race will be possible. [Race Example] in dns_resolver_test we
-	// replace the real lookup functions with mocked ones to facilitate testing.
+	// Otherwise, data race will be possible. [Race UniversityMVP] in dns_resolver_universitymvp we
+	// replace the real lookup functions with mocked ones to facilitate universitymvping.
 	// If Close() doesn't wait for watcher() goroutine finishes, race detector sometimes
 	// will warns lookup (READ the lookup function pointers) inside watcher() goroutine
 	// has data race with replaceNetFunc (WRITE the lookup function pointers).
@@ -369,7 +369,7 @@ func formatIP(addr string) (addrIP string, ok bool) {
 // If target doesn't specify a port, set the port to be the defaultPort.
 // If target is in IPv6 format and host-name is enclosed in square brackets, brackets
 // are stripped when setting the host.
-// examples:
+// universitymvps:
 // target: "www.google.com" defaultPort: "443" returns host: "www.google.com", port: "443"
 // target: "ipv4-host:80" defaultPort: "443" returns host: "ipv4-host", port: "80"
 // target: "[ipv6-host]" defaultPort: "443" returns host: "ipv6-host", port: "443"

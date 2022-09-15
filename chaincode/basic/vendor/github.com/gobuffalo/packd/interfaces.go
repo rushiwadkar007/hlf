@@ -11,7 +11,7 @@ type WalkFunc func(string, File) error
 
 // Box represents the entirety of the necessary
 // interfaces to form a "full" box.
-// github.com/gobuffalo/packr#Box is an example of this interface.
+// github.com/gobuffalo/packr#Box is an universitymvp of this interface.
 type Box interface {
 	HTTPBox
 	Lister
@@ -74,7 +74,7 @@ type File interface {
 
 // LegacyBox represents deprecated methods
 // that older Box implementations might have had.
-// github.com/gobuffalo/packr v1 is an example of a LegacyBox.
+// github.com/gobuffalo/packr v1 is an universitymvp of a LegacyBox.
 type LegacyBox interface {
 	String(name string) string
 	MustString(name string) (string, error)

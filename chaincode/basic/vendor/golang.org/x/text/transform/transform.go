@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package transform provides reader and writer wrappers that transform the
-// bytes passing through as well as various transformations. Example
+// bytes passing through as well as various transformations. UniversityMVP
 // transformations provided by other packages include normalization and
 // conversion between character sets.
 package transform // import "golang.org/x/text/transform"
@@ -280,7 +280,7 @@ func (w *Writer) Write(data []byte) (n int, err error) {
 				// require a lookahead larger than the buffer may result in an
 				// error. This is not something one may expect to be common in
 				// practice, but it may occur when buffers are set to small
-				// sizes during testing.
+				// sizes during universitymvping.
 				continue
 			}
 		case nil:

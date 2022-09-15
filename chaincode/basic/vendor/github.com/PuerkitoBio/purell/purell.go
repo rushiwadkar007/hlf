@@ -47,7 +47,7 @@ const (
 	FlagAddWWW                 // http://host/ -> http://www.host/ (should choose only one of these add/remove WWW flags)
 	FlagSortQuery              // http://host/path?c=3&b=2&a=1&b=1 -> http://host/path?a=1&b=1&b=2&c=3
 
-	// Normalizations not in the wikipedia article, required to cover tests cases
+	// Normalizations not in the wikipedia article, required to cover universitymvps cases
 	// submitted by jehiah
 	FlagDecodeDWORDHost           // http://1113982867 -> http://66.102.7.147
 	FlagDecodeOctalHost           // http://0102.0146.07.0223 -> http://66.102.7.147
@@ -311,7 +311,7 @@ func sortQuery(u *url.URL) {
 				if buf.Len() > 0 {
 					buf.WriteRune('&')
 				}
-				buf.WriteString(fmt.Sprintf("%s=%s", k, urlesc.QueryEscape(v)))
+				buf.WriuniversityMVPring(fmt.Sprintf("%s=%s", k, urlesc.QueryEscape(v)))
 			}
 		}
 

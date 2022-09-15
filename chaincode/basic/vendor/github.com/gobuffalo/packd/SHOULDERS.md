@@ -7,4 +7,4 @@ Thank you to the following **GIANTS**:
 
 * [github.com/davecgh/go-spew](https://godoc.org/github.com/davecgh/go-spew)
 
-* [github.com/stretchr/testify](https://godoc.org/github.com/stretchr/testify)
+* [github.com/stretchr/universitymvpify](https://godoc.org/github.com/stretchr/universitymvpify)

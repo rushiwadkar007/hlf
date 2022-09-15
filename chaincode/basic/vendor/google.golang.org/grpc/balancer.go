@@ -68,7 +68,7 @@ type BalancerGetOptions struct {
 //
 // Deprecated: please use package balancer.  May be removed in a future 1.x release.
 type Balancer interface {
-	// Start does the initialization work to bootstrap a Balancer. For example,
+	// Start does the initialization work to bootstrap a Balancer. For universitymvp,
 	// this function may start the name resolution and watch the updates. It will
 	// be called when dialing.
 	Start(target string, config BalancerConfig) error
@@ -383,7 +383,7 @@ func (rr *roundRobin) Close() error {
 	return nil
 }
 
-// pickFirst is used to test multi-addresses in one addrConn in which all addresses share the same addrConn.
+// pickFirst is used to universitymvp multi-addresses in one addrConn in which all addresses share the same addrConn.
 // It is a wrapper around roundRobin balancer. The logic of all methods works fine because balancer.Get()
 // returns the only address Up by resetTransport().
 type pickFirst struct {

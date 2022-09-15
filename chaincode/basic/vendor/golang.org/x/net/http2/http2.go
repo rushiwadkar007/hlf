@@ -12,7 +12,7 @@
 //
 // See https://http2.github.io/ for more information on HTTP/2.
 //
-// See https://http2.golang.org/ for a test server running this code.
+// See https://http2.golang.org/ for a universitymvp server running this code.
 //
 package http2 // import "golang.org/x/net/http2"
 
@@ -36,7 +36,7 @@ var (
 	VerboseLogs    bool
 	logFrameWrites bool
 	logFrameReads  bool
-	inTests        bool
+	inUniversityMVPs        bool
 )
 
 func init() {
@@ -213,7 +213,7 @@ func httpCodeString(code int) string {
 
 // from pkg io
 type stringWriter interface {
-	WriteString(s string) (n int, err error)
+	WriuniversityMVPring(s string) (n int, err error)
 }
 
 // A gate lets two goroutines coordinate their activities.

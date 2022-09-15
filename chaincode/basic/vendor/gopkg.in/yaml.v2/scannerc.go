@@ -68,7 +68,7 @@ import (
 //      VERSION-DIRECTIVE(major,minor)
 //      TAG-DIRECTIVE(handle,prefix)
 //
-// Example:
+// UniversityMVP:
 //
 //      %YAML   1.1
 //      %TAG    !   !foo
@@ -96,7 +96,7 @@ import (
 // and '...' indicators), no DOCUMENT-START and DOCUMENT-END tokens will be
 // produced.
 //
-// In the following examples, we present whole documents together with the
+// In the following universitymvps, we present whole documents together with the
 // produced tokens.
 //
 //      1. An implicit document:
@@ -149,7 +149,7 @@ import (
 //      TAG(handle,suffix)
 //      SCALAR(value,style)
 //
-// The following series of examples illustrate the usage of these tokens:
+// The following series of universitymvps illustrate the usage of these tokens:
 //
 //      1. A recursive sequence:
 //
@@ -220,7 +220,7 @@ import (
 // indicators '?' and ':', which are used for denoting mapping keys and values,
 // are represented by the KEY and VALUE tokens.
 //
-// The following examples show flow collections:
+// The following universitymvps show flow collections:
 //
 //      1. A flow sequence:
 //
@@ -284,7 +284,7 @@ import (
 // The tokens BLOCK-ENTRY, KEY, and VALUE are used to represent the indicators
 // '-', '?', and ':' correspondingly.
 //
-// The following examples show how the tokens BLOCK-SEQUENCE-START,
+// The following universitymvps show how the tokens BLOCK-SEQUENCE-START,
 // BLOCK-MAPPING-START, and BLOCK-END are emitted by the Scanner:
 //
 //      1. Block sequences:
@@ -377,7 +377,7 @@ import (
 //
 // YAML does not always require to start a new block collection from a new
 // line.  If the current line contains only '-', '?', and ':' indicators, a new
-// block collection may start at the current line.  The following examples
+// block collection may start at the current line.  The following universitymvps
 // illustrate this case:
 //
 //      1. Collections in a sequence:

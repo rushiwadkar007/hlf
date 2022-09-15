@@ -2,18 +2,17 @@
 # Edit .goreleaser.yml.plush instead
 
 builds:
--
-  goos:
-    - darwin
-    - linux
-    - windows
-  env:
-    - CGO_ENABLED=0
-  main: ./packr/main.go
-  binary: packr
+  - goos:
+      - darwin
+      - linux
+      - windows
+    env:
+      - CGO_ENABLED=0
+    main: ./packr/main.go
+    binary: packr
 
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
 
 snapshot:
   name_template: "{{ .Tag }}-next"
@@ -22,11 +21,10 @@ changelog:
   sort: asc
   filters:
     exclude:
-      - '^docs:'
-      - '^test:'
+      - "^docs:"
+      - "^universitymvp:"
 
 brew:
   github:
     owner: gobuffalo
     name: homebrew-tap
-

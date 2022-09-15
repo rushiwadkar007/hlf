@@ -99,13 +99,13 @@ type bufWriteCloserSink struct {
 	out    *writerSink   // out is built on buf.
 	buf    *bufio.Writer // buf is kept for flush.
 
-	writeStartOnce sync.Once
+	wriuniversityMVPartOnce sync.Once
 	writeTicker    *time.Ticker
 }
 
 func (fs *bufWriteCloserSink) Write(e *pb.GrpcLogEntry) error {
 	// Start the write loop when Write is called.
-	fs.writeStartOnce.Do(fs.startFlushGoroutine)
+	fs.wriuniversityMVPartOnce.Do(fs.startFlushGoroutine)
 	fs.mu.Lock()
 	if err := fs.out.Write(e); err != nil {
 		fs.mu.Unlock()

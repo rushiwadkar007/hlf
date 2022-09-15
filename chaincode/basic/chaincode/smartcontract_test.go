@@ -1,16 +1,16 @@
-package chaincode_test
+package chaincode_universitymvp
 
 import (
 	"encoding/json"
 	"fmt"
-	"testing"
+	"universitymvping"
 
 	"github.com/hyperledger/fabric-chaincode-go/shim"
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 	"github.com/hyperledger/fabric-protos-go/ledger/queryresult"
 	"github.com/hyperledger/fabric-samples/asset-transfer-basic/chaincode-go/chaincode"
 	"github.com/hyperledger/fabric-samples/asset-transfer-basic/chaincode-go/chaincode/mocks"
-	"github.com/stretchr/testify/require"
+	"github.com/stretchr/universitymvpify/require"
 )
 
 //go:generate counterfeiter -o mocks/transaction.go -fake-name TransactionContext . transactionContext
@@ -28,7 +28,7 @@ type stateQueryIterator interface {
 	shim.StateQueryIteratorInterface
 }
 
-func TestInitLedger(t *testing.T) {
+func UniversityMVPInitLedger(t *universitymvping.T) {
 	chaincodeStub := &mocks.ChaincodeStub{}
 	transactionContext := &mocks.TransactionContext{}
 	transactionContext.GetStubReturns(chaincodeStub)
@@ -42,7 +42,7 @@ func TestInitLedger(t *testing.T) {
 	require.EqualError(t, err, "failed to put to world state. failed inserting key")
 }
 
-func TestCreateAsset(t *testing.T) {
+func UniversityMVPCreateAsset(t *universitymvping.T) {
 	chaincodeStub := &mocks.ChaincodeStub{}
 	transactionContext := &mocks.TransactionContext{}
 	transactionContext.GetStubReturns(chaincodeStub)
@@ -60,7 +60,7 @@ func TestCreateAsset(t *testing.T) {
 	require.EqualError(t, err, "failed to read from world state: unable to retrieve asset")
 }
 
-func TestReadAsset(t *testing.T) {
+func UniversityMVPReadAsset(t *universitymvping.T) {
 	chaincodeStub := &mocks.ChaincodeStub{}
 	transactionContext := &mocks.TransactionContext{}
 	transactionContext.GetStubReturns(chaincodeStub)
@@ -85,7 +85,7 @@ func TestReadAsset(t *testing.T) {
 	require.Nil(t, asset)
 }
 
-func TestUpdateAsset(t *testing.T) {
+func UniversityMVPUpdateAsset(t *universitymvping.T) {
 	chaincodeStub := &mocks.ChaincodeStub{}
 	transactionContext := &mocks.TransactionContext{}
 	transactionContext.GetStubReturns(chaincodeStub)
@@ -108,7 +108,7 @@ func TestUpdateAsset(t *testing.T) {
 	require.EqualError(t, err, "failed to read from world state: unable to retrieve asset")
 }
 
-func TestDeleteAsset(t *testing.T) {
+func UniversityMVPDeleteAsset(t *universitymvping.T) {
 	chaincodeStub := &mocks.ChaincodeStub{}
 	transactionContext := &mocks.TransactionContext{}
 	transactionContext.GetStubReturns(chaincodeStub)
@@ -132,7 +132,7 @@ func TestDeleteAsset(t *testing.T) {
 	require.EqualError(t, err, "failed to read from world state: unable to retrieve asset")
 }
 
-func TestTransferAsset(t *testing.T) {
+func UniversityMVPTransferAsset(t *universitymvping.T) {
 	chaincodeStub := &mocks.ChaincodeStub{}
 	transactionContext := &mocks.TransactionContext{}
 	transactionContext.GetStubReturns(chaincodeStub)
@@ -151,7 +151,7 @@ func TestTransferAsset(t *testing.T) {
 	require.EqualError(t, err, "failed to read from world state: unable to retrieve asset")
 }
 
-func TestGetAllAssets(t *testing.T) {
+func UniversityMVPGetAllAssets(t *universitymvping.T) {
 	asset := &chaincode.Asset{ID: "asset1"}
 	bytes, err := json.Marshal(asset)
 	require.NoError(t, err)

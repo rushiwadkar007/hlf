@@ -37,7 +37,7 @@ var (
 	// BalancerUnregister is exported by package balancer to unregister a balancer.
 	BalancerUnregister func(name string)
 	// KeepaliveMinPingTime is the minimum ping interval.  This must be 10s by
-	// default, but tests may wish to set it lower for convenience.
+	// default, but universitymvps may wish to set it lower for convenience.
 	KeepaliveMinPingTime = 10 * time.Second
 	// ParseServiceConfig is a function to parse JSON service configs into
 	// opaque data structures.

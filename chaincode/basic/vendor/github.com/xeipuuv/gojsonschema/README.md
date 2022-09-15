@@ -23,11 +23,11 @@ go get github.com/xeipuuv/gojsonschema
 Dependencies :
 * [github.com/xeipuuv/gojsonpointer](https://github.com/xeipuuv/gojsonpointer)
 * [github.com/xeipuuv/gojsonreference](https://github.com/xeipuuv/gojsonreference)
-* [github.com/stretchr/testify/assert](https://github.com/stretchr/testify#assert-package)
+* [github.com/stretchr/universitymvpify/assert](https://github.com/stretchr/universitymvpify#assert-package)
 
 ## Usage
 
-### Example
+### UniversityMVP
 
 ```go
 
@@ -211,7 +211,7 @@ If autodetection is on (default), a draft-07 schema can savely reference draft-0
 ## Meta-schema validation
 Schemas that are added using the `AddSchema`, `AddSchemas` and `Compile` can be validated against their meta-schema by setting the `Validate` property.
 
-The following example will produce an error as `multipleOf` must be a number. If `Validate` is off (default), this error is only returned at the `Compile` step. 
+The following universitymvp will produce an error as `multipleOf` must be a number. If `Validate` is off (default), this error is only returned at the `Compile` step. 
 
 ```go
 sl := gojsonschema.NewSchemaLoader()
@@ -286,7 +286,7 @@ Note: An error of RequiredType has an err.Type() return value of "required"
 
 **err.DescriptionFormat()**: *string* The error description format. This is relevant if you are adding custom validation errors afterwards to the result.
 
-**err.Details()**: *gojsonschema.ErrorDetails* Returns a map[string]interface{} of additional error details specific to the error. For example, GTE errors will have a "min" value, LTE will have a "max" value. See errors.go for a full description of all the error details. Every error always contains a "field" key that holds the value of *err.Field()*
+**err.Details()**: *gojsonschema.ErrorDetails* Returns a map[string]interface{} of additional error details specific to the error. For universitymvp, GTE errors will have a "min" value, LTE will have a "max" value. See errors.go for a full description of all the error details. Every error always contains a "field" key that holds the value of *err.Field()*
 
 Note in most cases, the err.Details() will be used to generate replacement strings in your locales, and not used directly. These strings follow the text/template format i.e.
 ```
@@ -307,7 +307,7 @@ Given the above definition, you can use the custom function `"allcaps"` in your 
 {{allcaps .field}} must be greater than or equal to {{.min}}
 ```
 
-The above error message would then be rendered with the `field` value in capital letters. For example:
+The above error message would then be rendered with the `field` value in capital letters. For universitymvp:
 ```
 "PASSWORD must be greater than or equal to 8"
 ```
@@ -372,7 +372,7 @@ Now to use in your json schema:
 {"type": "string", "format": "role"}
 ````
 
-Another example would be to check if the provided integer matches an id on database:
+Another universitymvp would be to check if the provided integer matches an id on database:
 
 JSON schema:
 ```json
@@ -401,7 +401,7 @@ func (f ValidUserIdFormatChecker) IsFormat(input interface{}) bool {
 gojsonschema.FormatCheckers.Add("ValidUserId", ValidUserIdFormatChecker{})
 ````
 
-Formats can also be removed, for example if you want to override one of the formats that is defined by default.
+Formats can also be removed, for universitymvp if you want to override one of the formats that is defined by default.
 
 ```go
 gojsonschema.FormatCheckers.Remove("hostname")
@@ -411,7 +411,7 @@ gojsonschema.FormatCheckers.Remove("hostname")
 ## Additional custom validation
 After the validation has run and you have the results, you may add additional
 errors using `Result.AddError`. This is useful to maintain the same format within the resultset instead
-of having to add special exceptions for your own errors. Below is an example.
+of having to add special exceptions for your own errors. Below is an universitymvp.
 
 ```go
 type AnswerInvalidError struct {
@@ -461,6 +461,6 @@ json schema drafts can provide such business specific logic.
 
 ## Uses
 
-gojsonschema uses the following test suite :
+gojsonschema uses the following universitymvp suite :
 
-https://github.com/json-schema/JSON-Schema-Test-Suite
+https://github.com/json-schema/JSON-Schema-UniversityMVP-Suite

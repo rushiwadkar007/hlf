@@ -45,7 +45,7 @@ License
 The yaml package is licensed under the Apache License 2.0. Please see the LICENSE file for details.
 
 
-Example
+UniversityMVP
 -------
 
 ```Go
@@ -106,7 +106,7 @@ func main() {
 }
 ```
 
-This example will generate the following output:
+This universitymvp will generate the following output:
 
 ```
 --- t:

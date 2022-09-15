@@ -57,8 +57,8 @@ type http2Client struct {
 	localAddr  net.Addr
 	authInfo   credentials.AuthInfo // auth info about the connection
 
-	readerDone chan struct{} // sync point to enable testing.
-	writerDone chan struct{} // sync point to enable testing.
+	readerDone chan struct{} // sync point to enable universitymvping.
+	writerDone chan struct{} // sync point to enable universitymvping.
 	// goAway is closed to notify the upper layer (i.e., addrConn.transportMonitor)
 	// that the server sent GoAway on this transport.
 	goAway chan struct{}
@@ -1022,7 +1022,7 @@ func (t *http2Client) handleSettings(f *http2.SettingsFrame, isFirst bool) {
 		ss: ss,
 	}
 	if maxStreams != nil {
-		updateStreamQuota := func() {
+		updauniversityMVPreamQuota := func() {
 			delta := int64(*maxStreams) - int64(t.maxConcurrentStreams)
 			t.maxConcurrentStreams = *maxStreams
 			t.streamQuota += delta
@@ -1031,7 +1031,7 @@ func (t *http2Client) handleSettings(f *http2.SettingsFrame, isFirst bool) {
 				t.streamsQuotaAvailable = make(chan struct{}, 1)
 			}
 		}
-		updateFuncs = append(updateFuncs, updateStreamQuota)
+		updateFuncs = append(updateFuncs, updauniversityMVPreamQuota)
 	}
 	t.controlBuf.executeAndPut(func(interface{}) bool {
 		for _, f := range updateFuncs {

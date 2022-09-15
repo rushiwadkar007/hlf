@@ -75,14 +75,14 @@ When the .proto file specifies `syntax="proto3"`, there are some differences:
   - Non-repeated fields of non-message type are values instead of pointers.
   - Enum types do not get an Enum method.
 
-The simplest way to describe this is to see an example.
-Given file test.proto, containing
+The simplest way to describe this is to see an universitymvp.
+Given file universitymvp.proto, containing
 
-	package example;
+	package universitymvp;
 
 	enum FOO { X = 17; }
 
-	message Test {
+	message UniversityMVP {
 	  required string label = 1;
 	  optional int32 type = 2 [default=77];
 	  repeated int64 reps = 3;
@@ -95,9 +95,9 @@ Given file test.proto, containing
 	  }
 	}
 
-The resulting file, test.pb.go, is:
+The resulting file, universitymvp.pb.go, is:
 
-	package example
+	package universitymvp
 
 	import proto "github.com/golang/protobuf/proto"
 	import math "math"
@@ -130,96 +130,96 @@ The resulting file, test.pb.go, is:
 		return nil
 	}
 
-	type Test struct {
+	type UniversityMVP struct {
 		Label         *string             `protobuf:"bytes,1,req,name=label" json:"label,omitempty"`
 		Type          *int32              `protobuf:"varint,2,opt,name=type,def=77" json:"type,omitempty"`
 		Reps          []int64             `protobuf:"varint,3,rep,name=reps" json:"reps,omitempty"`
-		Optionalgroup *Test_OptionalGroup `protobuf:"group,4,opt,name=OptionalGroup" json:"optionalgroup,omitempty"`
+		Optionalgroup *UniversityMVP_OptionalGroup `protobuf:"group,4,opt,name=OptionalGroup" json:"optionalgroup,omitempty"`
 		// Types that are valid to be assigned to Union:
-		//	*Test_Number
-		//	*Test_Name
-		Union            isTest_Union `protobuf_oneof:"union"`
+		//	*UniversityMVP_Number
+		//	*UniversityMVP_Name
+		Union            isUniversityMVP_Union `protobuf_oneof:"union"`
 		XXX_unrecognized []byte       `json:"-"`
 	}
-	func (m *Test) Reset()         { *m = Test{} }
-	func (m *Test) String() string { return proto.CompactTextString(m) }
-	func (*Test) ProtoMessage() {}
+	func (m *UniversityMVP) Reset()         { *m = UniversityMVP{} }
+	func (m *UniversityMVP) String() string { return proto.CompactTextString(m) }
+	func (*UniversityMVP) ProtoMessage() {}
 
-	type isTest_Union interface {
-		isTest_Union()
+	type isUniversityMVP_Union interface {
+		isUniversityMVP_Union()
 	}
 
-	type Test_Number struct {
+	type UniversityMVP_Number struct {
 		Number int32 `protobuf:"varint,6,opt,name=number"`
 	}
-	type Test_Name struct {
+	type UniversityMVP_Name struct {
 		Name string `protobuf:"bytes,7,opt,name=name"`
 	}
 
-	func (*Test_Number) isTest_Union() {}
-	func (*Test_Name) isTest_Union()   {}
+	func (*UniversityMVP_Number) isUniversityMVP_Union() {}
+	func (*UniversityMVP_Name) isUniversityMVP_Union()   {}
 
-	func (m *Test) GetUnion() isTest_Union {
+	func (m *UniversityMVP) GetUnion() isUniversityMVP_Union {
 		if m != nil {
 			return m.Union
 		}
 		return nil
 	}
-	const Default_Test_Type int32 = 77
+	const Default_UniversityMVP_Type int32 = 77
 
-	func (m *Test) GetLabel() string {
+	func (m *UniversityMVP) GetLabel() string {
 		if m != nil && m.Label != nil {
 			return *m.Label
 		}
 		return ""
 	}
 
-	func (m *Test) GetType() int32 {
+	func (m *UniversityMVP) GetType() int32 {
 		if m != nil && m.Type != nil {
 			return *m.Type
 		}
-		return Default_Test_Type
+		return Default_UniversityMVP_Type
 	}
 
-	func (m *Test) GetOptionalgroup() *Test_OptionalGroup {
+	func (m *UniversityMVP) GetOptionalgroup() *UniversityMVP_OptionalGroup {
 		if m != nil {
 			return m.Optionalgroup
 		}
 		return nil
 	}
 
-	type Test_OptionalGroup struct {
+	type UniversityMVP_OptionalGroup struct {
 		RequiredField *string `protobuf:"bytes,5,req" json:"RequiredField,omitempty"`
 	}
-	func (m *Test_OptionalGroup) Reset()         { *m = Test_OptionalGroup{} }
-	func (m *Test_OptionalGroup) String() string { return proto.CompactTextString(m) }
+	func (m *UniversityMVP_OptionalGroup) Reset()         { *m = UniversityMVP_OptionalGroup{} }
+	func (m *UniversityMVP_OptionalGroup) String() string { return proto.CompactTextString(m) }
 
-	func (m *Test_OptionalGroup) GetRequiredField() string {
+	func (m *UniversityMVP_OptionalGroup) GetRequiredField() string {
 		if m != nil && m.RequiredField != nil {
 			return *m.RequiredField
 		}
 		return ""
 	}
 
-	func (m *Test) GetNumber() int32 {
-		if x, ok := m.GetUnion().(*Test_Number); ok {
+	func (m *UniversityMVP) GetNumber() int32 {
+		if x, ok := m.GetUnion().(*UniversityMVP_Number); ok {
 			return x.Number
 		}
 		return 0
 	}
 
-	func (m *Test) GetName() string {
-		if x, ok := m.GetUnion().(*Test_Name); ok {
+	func (m *UniversityMVP) GetName() string {
+		if x, ok := m.GetUnion().(*UniversityMVP_Name); ok {
 			return x.Name
 		}
 		return ""
 	}
 
 	func init() {
-		proto.RegisterEnum("example.FOO", FOO_name, FOO_value)
+		proto.RegisterEnum("universitymvp.FOO", FOO_name, FOO_value)
 	}
 
-To create and play with a Test object:
+To create and play with a UniversityMVP object:
 
 	package main
 
@@ -227,36 +227,36 @@ To create and play with a Test object:
 		"log"
 
 		"github.com/golang/protobuf/proto"
-		pb "./example.pb"
+		pb "./universitymvp.pb"
 	)
 
 	func main() {
-		test := &pb.Test{
+		universitymvp := &pb.UniversityMVP{
 			Label: proto.String("hello"),
 			Type:  proto.Int32(17),
 			Reps:  []int64{1, 2, 3},
-			Optionalgroup: &pb.Test_OptionalGroup{
+			Optionalgroup: &pb.UniversityMVP_OptionalGroup{
 				RequiredField: proto.String("good bye"),
 			},
-			Union: &pb.Test_Name{"fred"},
+			Union: &pb.UniversityMVP_Name{"fred"},
 		}
-		data, err := proto.Marshal(test)
+		data, err := proto.Marshal(universitymvp)
 		if err != nil {
 			log.Fatal("marshaling error: ", err)
 		}
-		newTest := &pb.Test{}
-		err = proto.Unmarshal(data, newTest)
+		newUniversityMVP := &pb.UniversityMVP{}
+		err = proto.Unmarshal(data, newUniversityMVP)
 		if err != nil {
 			log.Fatal("unmarshaling error: ", err)
 		}
-		// Now test and newTest contain the same data.
-		if test.GetLabel() != newTest.GetLabel() {
-			log.Fatalf("data mismatch %q != %q", test.GetLabel(), newTest.GetLabel())
+		// Now universitymvp and newUniversityMVP contain the same data.
+		if universitymvp.GetLabel() != newUniversityMVP.GetLabel() {
+			log.Fatalf("data mismatch %q != %q", universitymvp.GetLabel(), newUniversityMVP.GetLabel())
 		}
 		// Use a type switch to determine which oneof was set.
-		switch u := test.Union.(type) {
-		case *pb.Test_Number: // u.Number contains the number.
-		case *pb.Test_Name: // u.Name contains the string.
+		switch u := universitymvp.Union.(type) {
+		case *pb.UniversityMVP_Number: // u.Number contains the number.
+		case *pb.UniversityMVP_Name: // u.Name contains the string.
 		}
 		// etc.
 	}
@@ -498,7 +498,7 @@ func UnmarshalJSONEnum(m map[string]int32, data []byte, enumName string) (int32,
 }
 
 // DebugPrint dumps the encoded data in b in a debugging format with a header
-// including the string s. Used in testing but made available for general debugging.
+// including the string s. Used in universitymvping but made available for general debugging.
 func (p *Buffer) DebugPrint(s string, b []byte) {
 	var u uint64
 

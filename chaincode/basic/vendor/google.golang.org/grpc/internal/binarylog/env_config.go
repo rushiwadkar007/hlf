@@ -31,7 +31,7 @@ import (
 // NewLoggerFromConfigString reads the string and build a logger. It can be used
 // to build a new logger and assign it to binarylog.Logger.
 //
-// Example filter config strings:
+// UniversityMVP filter config strings:
 //  - "" Nothing will be logged
 //  - "*" All headers and messages will be fully logged.
 //  - "*{h}" Only headers will be logged.
@@ -122,11 +122,11 @@ const (
 	// other config. Move to binarylog.go if necessary.
 	maxUInt = ^uint64(0)
 
-	// For "p.s/m" plus any suffix. Suffix will be parsed again. See test for
+	// For "p.s/m" plus any suffix. Suffix will be parsed again. See universitymvp for
 	// expected output.
 	longMethodConfigRegexpStr = `^([\w./]+)/((?:\w+)|[*])(.+)?$`
 
-	// For suffix from above, "{h:123,m:123}". See test for expected output.
+	// For suffix from above, "{h:123,m:123}". See universitymvp for expected output.
 	optionalLengthRegexpStr      = `(?::(\d+))?` // Optional ":123".
 	headerConfigRegexpStr        = `^{h` + optionalLengthRegexpStr + `}$`
 	messageConfigRegexpStr       = `^{m` + optionalLengthRegexpStr + `}$`

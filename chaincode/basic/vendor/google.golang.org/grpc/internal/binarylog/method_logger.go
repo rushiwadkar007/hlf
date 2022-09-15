@@ -41,7 +41,7 @@ func (g *callIDGenerator) next() uint64 {
 	return id
 }
 
-// reset is for testing only, and doesn't need to be thread safe.
+// reset is for universitymvping only, and doesn't need to be thread safe.
 func (g *callIDGenerator) reset() {
 	g.id = 0
 }

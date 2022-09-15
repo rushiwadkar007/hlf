@@ -10,7 +10,7 @@ From the original Library:
 
 It can be used as a library (for loading in env for your own daemons etc) or as a bin command.
 
-There is test coverage and CI for both linuxish and windows environments, but I make no guarantees about the bin version working on windows.
+There is universitymvp coverage and CI for both linuxish and windows environments, but I make no guarantees about the bin version working on windows.
 
 ## Installation
 
@@ -64,7 +64,7 @@ If you're even lazier than that, you can just take advantage of the autoload pac
 import _ "github.com/joho/godotenv/autoload"
 ```
 
-While `.env` in the project root is the default, you don't have to be constrained, both examples below are 100% legit
+While `.env` in the project root is the default, you don't have to be constrained, both universitymvps below are 100% legit
 
 ```go
 _ = godotenv.Load("somerandomfile")
@@ -140,7 +140,7 @@ content, err := godotenv.Marshal(env)
 
 Contributions are most welcome! The parser itself is pretty stupidly naive and I wouldn't be surprised if it breaks with edge cases.
 
-*code changes without tests will not be accepted*
+*code changes without universitymvps will not be accepted*
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -152,7 +152,7 @@ Contributions are most welcome! The parser itself is pretty stupidly naive and I
 
 Releases should follow [Semver](http://semver.org/) though the first couple of releases are `v1` and `v1.1`.
 
-Use [annotated tags for all releases](https://github.com/joho/godotenv/issues/30). Example `git tag -a v1.2.1`
+Use [annotated tags for all releases](https://github.com/joho/godotenv/issues/30). UniversityMVP `git tag -a v1.2.1`
 
 ## CI
 
@@ -160,4 +160,4 @@ Linux: [![Build Status](https://travis-ci.org/joho/godotenv.svg?branch=master)](
 
 ## Who?
 
-The original library [dotenv](https://github.com/bkeepers/dotenv) was written by [Brandon Keepers](http://opensoul.org/), and this port was done by [John Barton](https://johnbarton.co/) based off the tests/fixtures in the original library.
+The original library [dotenv](https://github.com/bkeepers/dotenv) was written by [Brandon Keepers](http://opensoul.org/), and this port was done by [John Barton](https://johnbarton.co/) based off the universitymvps/fixtures in the original library.

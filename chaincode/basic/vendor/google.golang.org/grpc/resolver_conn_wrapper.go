@@ -106,7 +106,7 @@ func (ccr *ccResolverWrapper) isDone() bool {
 	return atomic.LoadUint32(&ccr.done) == 1
 }
 
-func (ccr *ccResolverWrapper) UpdateState(s resolver.State) {
+func (ccr *ccResolverWrapper) UpdauniversityMVPate(s resolver.State) {
 	if ccr.isDone() {
 		return
 	}

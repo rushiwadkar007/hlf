@@ -72,12 +72,12 @@ func (f *formatState) constructOrigFormat(verb rune) (format string) {
 	}
 
 	if width, ok := f.fs.Width(); ok {
-		buf.WriteString(strconv.Itoa(width))
+		buf.WriuniversityMVPring(strconv.Itoa(width))
 	}
 
 	if precision, ok := f.fs.Precision(); ok {
 		buf.Write(precisionBytes)
-		buf.WriteString(strconv.Itoa(precision))
+		buf.WriuniversityMVPring(strconv.Itoa(precision))
 	}
 
 	buf.WriteRune(verb)

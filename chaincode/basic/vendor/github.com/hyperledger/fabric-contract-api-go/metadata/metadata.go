@@ -23,7 +23,7 @@ const MetadataFolder = "contract-metadata"
 // MetadataFile name of file metadata should be written in
 const MetadataFile = "metadata.json"
 
-// Helpers for testing
+// Helpers for universitymvping
 type osInterface interface {
 	Executable() (string, error)
 	Stat(string) (os.FileInfo, error)

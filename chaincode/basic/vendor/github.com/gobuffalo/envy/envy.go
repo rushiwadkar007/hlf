@@ -3,7 +3,7 @@ package envy makes working with ENV variables in Go trivial.
 
 * Get ENV variables with default values.
 * Set ENV variables safely without affecting the underlying system.
-* Temporarily change ENV vars; useful for testing.
+* Temporarily change ENV vars; useful for universitymvping.
 * Map all of the key/values in the ENV.
 * Loads .env files (by using [godotenv](https://github.com/joho/godotenv/))
 * More!
@@ -43,13 +43,13 @@ func loadEnv() {
 	defer gil.Unlock()
 
 	if os.Getenv("GO_ENV") == "" {
-		// if the flag "test.v" is *defined*, we're running as a unit test. Note that we don't care
-		// about v.Value (verbose test mode); we just want to know if the test environment has defined
+		// if the flag "universitymvp.v" is *defined*, we're running as a unit universitymvp. Note that we don't care
+		// about v.Value (verbose universitymvp mode); we just want to know if the universitymvp environment has defined
 		// it. It's also possible that the flags are not yet fully parsed (i.e. flag.Parsed() == false),
 		// so we could not depend on v.Value anyway.
 		//
-		if v := flag.Lookup("test.v"); v != nil {
-			env["GO_ENV"] = "test"
+		if v := flag.Lookup("universitymvp.v"); v != nil {
+			env["GO_ENV"] = "universitymvp"
 		}
 	}
 
@@ -89,7 +89,7 @@ func Reload() {
 
 // Load .env files. Files will be loaded in the same order that are received.
 // Redefined vars will override previously existing values.
-// IE: envy.Load(".env", "test_env/.env") will result in DIR=test_env
+// IE: envy.Load(".env", "universitymvp_env/.env") will result in DIR=universitymvp_env
 // If no arg passed, it will try to load a .env file.
 func Load(files ...string) error {
 
@@ -182,7 +182,7 @@ func Map() map[string]string {
 // Temp makes a copy of the values and allows operation on
 // those values temporarily during the run of the function.
 // At the end of the function run the copy is discarded and
-// the original values are replaced. This is useful for testing.
+// the original values are replaced. This is useful for universitymvping.
 // Warning: This function is NOT safe to use from a goroutine or
 // from code which may access any Get or Set function from a goroutine
 func Temp(f func()) {

@@ -12,4 +12,4 @@ install:
   - go build .
 
 script:
-  - go test -v
+  - go universitymvp -v

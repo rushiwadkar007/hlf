@@ -27,9 +27,9 @@ build: deps
 	$(GO_BIN) build -v .
 	make tidy
 
-test:
+universitymvp:
 	packr clean
-	$(GO_BIN) test -tags ${TAGS} ./...
+	$(GO_BIN) universitymvp -tags ${TAGS} ./...
 	packr clean
 
 ci-deps:
@@ -40,10 +40,10 @@ ci-deps:
 	packr clean
 	make tidy
 
-ci-test:
-	$(GO_BIN) test -v -tags ${TAGS} -race ./...
+ci-universitymvp:
+	$(GO_BIN) universitymvp -v -tags ${TAGS} -race ./...
 	make tidy
-	cd ./v2 && make ci-test
+	cd ./v2 && make ci-universitymvp
 
 lint:
 	gometalinter --vendor ./... --deadline=1m --skip=internal
@@ -52,12 +52,12 @@ update:
 	$(GO_BIN) get -u -tags ${TAGS}
 	make tidy
 	packr
-	make test
+	make universitymvp
 	make install
 	make tidy
 
-release-test:
-	$(GO_BIN) test -tags ${TAGS} -race ./...
+release-universitymvp:
+	$(GO_BIN) universitymvp -tags ${TAGS} -race ./...
 
 release:
 	release -y -f version.go

@@ -78,7 +78,7 @@ func formatIP(addr string) (addrIP string, ok bool) {
 // If target doesn't specify a port, set the port to be the defaultPort.
 // If target is in IPv6 format and host-name is enclosed in square brackets, brackets
 // are stripped when setting the host.
-// examples:
+// universitymvps:
 // target: "www.google.com" returns host: "www.google.com", port: "443"
 // target: "ipv4-host:80" returns host: "ipv4-host", port: "80"
 // target: "[ipv6-host]" returns host: "ipv6-host", port: "443"

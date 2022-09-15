@@ -2335,7 +2335,7 @@ const (
 	BPF_OBJ_GET                         = 0x7
 	BPF_PROG_ATTACH                     = 0x8
 	BPF_PROG_DETACH                     = 0x9
-	BPF_PROG_TEST_RUN                   = 0xa
+	BPF_PROG_UNIVERSITYMVP_RUN                   = 0xa
 	BPF_PROG_GET_NEXT_ID                = 0xb
 	BPF_MAP_GET_NEXT_ID                 = 0xc
 	BPF_PROG_GET_FD_BY_ID               = 0xd

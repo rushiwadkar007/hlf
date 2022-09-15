@@ -9,16 +9,16 @@
 source scriptUtils.sh
 
 export CORE_PEER_TLS_ENABLED=true
-export ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
-export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
-export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
-export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt
+export ORDERER_CA=${PWD}/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/msp/tlscacerts/tlsca.universitymvp.com-cert.pem
+export PEER0_PHYSICS_CA=${PWD}/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls/ca.crt
+export PEER0_MATHS_CA=${PWD}/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls/ca.crt
+export PEER0_CHEMISTRY_CA=${PWD}/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls/ca.crt
 
 # Set OrdererOrg.Admin globals
 setOrdererGlobals() {
   export CORE_PEER_LOCALMSPID="OrdererMSP"
-  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
-  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/ordererOrganizations/example.com/users/Admin@example.com/msp
+  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/ordererOrganizations/universitymvp.com/orderers/orderer.universitymvp.com/msp/tlscacerts/tlsca.universitymvp.com-cert.pem
+  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/ordererOrganizations/universitymvp.com/users/Admin@universitymvp.com/msp
 }
 
 # Set environment variables for the peer org
@@ -31,26 +31,26 @@ setGlobals() {
   fi
   infoln "Using organization ${USING_ORG}"
   if [ $USING_ORG -eq 1 ]; then
-    export CORE_PEER_LOCALMSPID="Org1MSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG1_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
-    export CORE_PEER_ADDRESS=peer0.org1.example.com:7051
-    export CORE_PEER_TLS_CERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
-    export CORE_PEER_TLS_KEY_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.key
+    export CORE_PEER_LOCALMSPID="PhysicsMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_PHYSICS_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/physics.universitymvp.com/users/Admin@physics.universitymvp.com/msp
+    export CORE_PEER_ADDRESS=peer0.physics.universitymvp.com:7051
+    export CORE_PEER_TLS_CERT_FILE=${PWD}/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls/server.crt
+    export CORE_PEER_TLS_KEY_FILE=${PWD}/organizations/peerOrganizations/physics.universitymvp.com/peers/peer0.physics.universitymvp.com/tls/server.key
   elif [ $USING_ORG -eq 2 ]; then
-    export CORE_PEER_LOCALMSPID="Org2MSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG2_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
-    export CORE_PEER_ADDRESS=peer0.org2.example.com:9051
-    export CORE_PEER_TLS_CERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.crt
-    export CORE_PEER_TLS_KEY_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.key
+    export CORE_PEER_LOCALMSPID="MathsMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_MATHS_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/maths.universitymvp.com/users/Admin@maths.universitymvp.com/msp
+    export CORE_PEER_ADDRESS=peer0.maths.universitymvp.com:9051
+    export CORE_PEER_TLS_CERT_FILE=${PWD}/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls/server.crt
+    export CORE_PEER_TLS_KEY_FILE=${PWD}/organizations/peerOrganizations/maths.universitymvp.com/peers/peer0.maths.universitymvp.com/tls/server.key
   elif [ $USING_ORG -eq 3 ]; then
-    export CORE_PEER_LOCALMSPID="Org3MSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG3_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp
-    export CORE_PEER_ADDRESS=peer0.org3.example.com:11051
-    export CORE_PEER_TLS_CERT_FILE=${PWD}/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/server.crt
-    export CORE_PEER_TLS_KEY_FILE=${PWD}/organizations/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/server.key
+    export CORE_PEER_LOCALMSPID="ChemistryMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_CHEMISTRY_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/chemistry.universitymvp.com/users/Admin@chemistry.universitymvp.com/msp
+    export CORE_PEER_ADDRESS=peer0.chemistry.universitymvp.com:11051
+    export CORE_PEER_TLS_CERT_FILE=${PWD}/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls/server.crt
+    export CORE_PEER_TLS_KEY_FILE=${PWD}/organizations/peerOrganizations/chemistry.universitymvp.com/peers/peer0.chemistry.universitymvp.com/tls/server.key
   else
     errorln "ORG Unknown"
   fi

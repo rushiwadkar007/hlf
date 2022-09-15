@@ -47,7 +47,7 @@ html, err := box.FindBytes("index.html")
 
 A box represents a folder, and any sub-folders, on disk that you want to have access to in your binary. When compiling a binary using the `packr` CLI the contents of the folder will be converted into Go files that can be compiled inside of a "standard" go binary. Inside of the compiled binary the files will be read from memory. When working locally the files will be read directly off of disk. This is a seamless switch that doesn't require any special attention on your part.
 
-#### Example
+#### UniversityMVP
 
 Assume the follow directory structure:
 
@@ -94,7 +94,7 @@ Packr uses the following resolution rules when looking for a file:
 
 Because Packr knows how to fall through to the file system, developers don't need to worry about constantly compiling their static files into a binary. They can work unimpeded.
 
-Packr takes file resolution a step further. When declaring a new box you use a relative path, `./templates`. When Packr receives this call it calculates out the absolute path to that directory. By doing this it means you can be guaranteed that Packr can find your files correctly, even if you're not running in the directory that the box was created in. This helps with the problem of testing, where Go changes the `pwd` for each package, making relative paths difficult to work with. This is not a problem when using Packr.
+Packr takes file resolution a step further. When declaring a new box you use a relative path, `./templates`. When Packr receives this call it calculates out the absolute path to that directory. By doing this it means you can be guaranteed that Packr can find your files correctly, even if you're not running in the directory that the box was created in. This helps with the problem of universitymvping, where Go changes the `pwd` for each package, making relative paths difficult to work with. This is not a problem when using Packr.
 
 ---
 
@@ -153,7 +153,7 @@ Why do you want to do this? Packr first looks to the information stored in these
 
 When it comes to building multiple releases you typically want that release to be built in a specific directory.
 
-For example: `./releases`
+For universitymvp: `./releases`
 
 However, because passing a `.go` file requires absolute paths, we must compile the release in the appropriate absolute path.
 
@@ -189,7 +189,7 @@ Now you can make multiple releases and all of your needed static files will be a
 
 #### Summing it up:
 
-Example Script for building to 3 common targets:
+UniversityMVP Script for building to 3 common targets:
 
 ```bash
 GOOS=darwin GOARCH=amd64 packr build && mv ./project_name ./releases/darwin-project_name \

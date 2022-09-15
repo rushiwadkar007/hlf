@@ -12,16 +12,16 @@ Based on the [wikipedia paper][wiki] and the [RFC 3986 document][rfc].
 
 ## Changelog
 
-*    **v1.1.1** : Fix failing test due to Go1.12 changes (thanks to @ianlancetaylor).
+*    **v1.1.1** : Fix failing universitymvp due to Go1.12 changes (thanks to @ianlancetaylor).
 *    **2016-11-14 (v1.1.0)** : IDN: Conform to RFC 5895: Fold character width (thanks to @beeker1121).
 *    **2016-07-27 (v1.0.0)** : Normalize IDN to ASCII (thanks to @zenovich).
 *    **2015-02-08** : Add fix for relative paths issue ([PR #5][pr5]) and add fix for unnecessary encoding of reserved characters ([see issue #7][iss7]).
 *    **v0.2.0** : Add benchmarks, Attempt IDN support.
 *    **v0.1.0** : Initial release.
 
-## Examples
+## UniversityMVPs
 
-From `example_test.go` (note that in your code, you would import "github.com/PuerkitoBio/purell", and would prefix references to its methods and constants with "purell."):
+From `universitymvp_universitymvp.go` (note that in your code, you would import "github.com/PuerkitoBio/purell", and would prefix references to its methods and constants with "purell."):
 
 ```go
 package purell
@@ -31,7 +31,7 @@ import (
   "net/url"
 )
 
-func ExampleNormalizeURLString() {
+func UniversityMVPNormalizeURLString() {
   if normalized, err := NormalizeURLString("hTTp://someWEBsite.com:80/Amazing%3f/url/",
     FlagLowercaseScheme|FlagLowercaseHost|FlagUppercaseEscapes); err != nil {
     panic(err)
@@ -41,7 +41,7 @@ func ExampleNormalizeURLString() {
   // Output: http://somewebsite.com:80/Amazing%3F/url/
 }
 
-func ExampleMustNormalizeURLString() {
+func UniversityMVPMustNormalizeURLString() {
   normalized := MustNormalizeURLString("hTTpS://someWEBsite.com:443/Amazing%fa/url/",
     FlagsUnsafeGreedy)
   fmt.Print(normalized)
@@ -49,7 +49,7 @@ func ExampleMustNormalizeURLString() {
   // Output: http://somewebsite.com/Amazing%FA/url
 }
 
-func ExampleNormalizeURL() {
+func UniversityMVPNormalizeURL() {
   if u, err := url.Parse("Http://SomeUrl.com:8080/a/b/.././c///g?c=3&a=1&b=9&c=0#target"); err != nil {
     panic(err)
   } else {
@@ -63,7 +63,7 @@ func ExampleNormalizeURL() {
 
 ## API
 
-As seen in the examples above, purell offers three methods, `NormalizeURLString(string, NormalizationFlags) (string, error)`, `MustNormalizeURLString(string, NormalizationFlags) (string)` and `NormalizeURL(*url.URL, NormalizationFlags) (string)`. They all normalize the provided URL based on the specified flags. Here are the available flags:
+As seen in the universitymvps above, purell offers three methods, `NormalizeURLString(string, NormalizationFlags) (string, error)`, `MustNormalizeURLString(string, NormalizationFlags) (string)` and `NormalizeURL(*url.URL, NormalizationFlags) (string)`. They all normalize the provided URL based on the specified flags. Here are the available flags:
 
 ```go
 const (
@@ -90,7 +90,7 @@ const (
 	FlagAddWWW                 // http://host/ -> http://www.host/ (should choose only one of these add/remove WWW flags)
 	FlagSortQuery              // http://host/path?c=3&b=2&a=1&b=1 -> http://host/path?a=1&b=1&b=2&c=3
 
-	// Normalizations not in the wikipedia article, required to cover tests cases
+	// Normalizations not in the wikipedia article, required to cover universitymvps cases
 	// submitted by jehiah
 	FlagDecodeDWORDHost           // http://1113982867 -> http://66.102.7.147
 	FlagDecodeOctalHost           // http://0102.0146.07.0223 -> http://66.102.7.147
@@ -139,7 +139,7 @@ Some things to note:
 
 *    When the `NormalizeURL` function is used (passing an URL object), this source URL object is modified (that is, after the call, the URL object will be modified to reflect the normalization).
 
-*    The *replace IP with domain name* normalization (`http://208.77.188.166/ → http://www.example.com/`) is obviously not possible for a library without making some network requests. This is not implemented in purell.
+*    The *replace IP with domain name* normalization (`http://208.77.188.166/ → http://www.universitymvp.com/`) is obviously not possible for a library without making some network requests. This is not implemented in purell.
 
 *    The *remove unused query string parameters* and *remove default query parameters* are also not implemented, since this is a very case-specific normalization, and it is quite trivial to do with an URL object.
 

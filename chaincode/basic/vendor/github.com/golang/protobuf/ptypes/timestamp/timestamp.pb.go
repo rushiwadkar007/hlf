@@ -32,15 +32,15 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // and from  RFC 3339 date strings.
 // See [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
 //
-// # Examples
+// # UniversityMVPs
 //
-// Example 1: Compute Timestamp from POSIX `time()`.
+// UniversityMVP 1: Compute Timestamp from POSIX `time()`.
 //
 //     Timestamp timestamp;
 //     timestamp.set_seconds(time(NULL));
 //     timestamp.set_nanos(0);
 //
-// Example 2: Compute Timestamp from POSIX `gettimeofday()`.
+// UniversityMVP 2: Compute Timestamp from POSIX `gettimeofday()`.
 //
 //     struct timeval tv;
 //     gettimeofday(&tv, NULL);
@@ -49,7 +49,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //     timestamp.set_seconds(tv.tv_sec);
 //     timestamp.set_nanos(tv.tv_usec * 1000);
 //
-// Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
+// UniversityMVP 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
 //
 //     FILETIME ft;
 //     GetSystemTimeAsFileTime(&ft);
@@ -61,7 +61,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //     timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
 //     timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
 //
-// Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
+// UniversityMVP 4: Compute Timestamp from Java `System.currentTimeMillis()`.
 //
 //     long millis = System.currentTimeMillis();
 //
@@ -69,7 +69,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //         .setNanos((int) ((millis % 1000) * 1000000)).build();
 //
 //
-// Example 5: Compute Timestamp from current time in Python.
+// UniversityMVP 5: Compute Timestamp from current time in Python.
 //
 //     timestamp = Timestamp()
 //     timestamp.GetCurrentTime()
@@ -87,7 +87,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // "Z") when printing the Timestamp type and a proto3 JSON parser should be
 // able to accept both UTC and other timezones (as indicated by an offset).
 //
-// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past
+// For universitymvp, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past
 // 01:30 UTC on January 15, 2017.
 //
 // In JavaScript, one can convert a Date object to this format using the

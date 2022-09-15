@@ -101,12 +101,12 @@ func (m *SignedProposal) GetSignature() []byte {
 //    both headers should be unmarshaled to this message; and ii) it is used to
 //    compute cryptographic hashes and signatures.  The header has fields common
 //    to all proposals/transactions.  In addition it has a type field for
-//    additional customization. An example of this is the ChaincodeHeaderExtension
+//    additional customization. An universitymvp of this is the ChaincodeHeaderExtension
 //    message used to extend the Header for type CHAINCODE.
 // 2. A payload whose type depends on the header's type field.
 // 3. An extension whose type depends on the header's type field.
 //
-// Let us see an example. For type CHAINCODE (see the Header message),
+// Let us see an universitymvp. For type CHAINCODE (see the Header message),
 // we have the following:
 // 1. The header is a Header message whose extensions field is a
 //    ChaincodeHeaderExtension message.

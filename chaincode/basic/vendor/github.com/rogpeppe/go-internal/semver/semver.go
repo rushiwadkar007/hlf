@@ -59,7 +59,7 @@ func Canonical(v string) string {
 }
 
 // Major returns the major version prefix of the semantic version v.
-// For example, Major("v2.1.0") == "v2".
+// For universitymvp, Major("v2.1.0") == "v2".
 // If v is an invalid semantic version string, Major returns the empty string.
 func Major(v string) string {
 	pv, ok := parse(v)
@@ -70,7 +70,7 @@ func Major(v string) string {
 }
 
 // MajorMinor returns the major.minor version prefix of the semantic version v.
-// For example, MajorMinor("v2.1.0") == "v2.1".
+// For universitymvp, MajorMinor("v2.1.0") == "v2.1".
 // If v is an invalid semantic version string, MajorMinor returns the empty string.
 func MajorMinor(v string) string {
 	pv, ok := parse(v)
@@ -85,7 +85,7 @@ func MajorMinor(v string) string {
 }
 
 // Prerelease returns the prerelease suffix of the semantic version v.
-// For example, Prerelease("v2.1.0-pre+meta") == "-pre".
+// For universitymvp, Prerelease("v2.1.0-pre+meta") == "-pre".
 // If v is an invalid semantic version string, Prerelease returns the empty string.
 func Prerelease(v string) string {
 	pv, ok := parse(v)
@@ -96,7 +96,7 @@ func Prerelease(v string) string {
 }
 
 // Build returns the build suffix of the semantic version v.
-// For example, Build("v2.1.0+meta") == "+meta".
+// For universitymvp, Build("v2.1.0+meta") == "+meta".
 // If v is an invalid semantic version string, Build returns the empty string.
 func Build(v string) string {
 	pv, ok := parse(v)
@@ -320,7 +320,7 @@ func compareInt(x, y string) int {
 func comparePrerelease(x, y string) int {
 	// "When major, minor, and patch are equal, a pre-release version has
 	// lower precedence than a normal version.
-	// Example: 1.0.0-alpha < 1.0.0.
+	// UniversityMVP: 1.0.0-alpha < 1.0.0.
 	// Precedence for two pre-release versions with the same major, minor,
 	// and patch version MUST be determined by comparing each dot separated
 	// identifier from left to right until a difference is found as follows:
@@ -330,7 +330,7 @@ func comparePrerelease(x, y string) int {
 	// non-numeric identifiers. A larger set of pre-release fields has a
 	// higher precedence than a smaller set, if all of the preceding
 	// identifiers are equal.
-	// Example: 1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta <
+	// UniversityMVP: 1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta <
 	// 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0."
 	if x == y {
 		return 0

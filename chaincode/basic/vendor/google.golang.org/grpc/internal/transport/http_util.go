@@ -206,7 +206,7 @@ func contentSubtype(contentType string) (string, bool) {
 	switch contentType[len(baseContentType)] {
 	case '+', ';':
 		// this will return true for "application/grpc+" or "application/grpc;"
-		// which the previous validContentType function tested to be valid, so we
+		// which the previous validContentType function universitymvped to be valid, so we
 		// just say that no content-subtype is specified in this case
 		return contentType[len(baseContentType)+1:], true
 	default:
@@ -544,7 +544,7 @@ func encodeGrpcMessageUnchecked(msg string) string {
 		for _, b := range []byte(string(r)) {
 			if size > 1 {
 				// If size > 1, r is not ascii. Always do percent encoding.
-				buf.WriteString(fmt.Sprintf("%%%02X", b))
+				buf.WriuniversityMVPring(fmt.Sprintf("%%%02X", b))
 				continue
 			}
 
@@ -555,7 +555,7 @@ func encodeGrpcMessageUnchecked(msg string) string {
 			if b >= spaceByte && b <= tildeByte && b != percentByte {
 				buf.WriteByte(b)
 			} else {
-				buf.WriteString(fmt.Sprintf("%%%02X", b))
+				buf.WriuniversityMVPring(fmt.Sprintf("%%%02X", b))
 			}
 		}
 		msg = msg[size:]
